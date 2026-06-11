@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
+import { SectionShell } from "@/components/ui/section-shell";
+import { SectionPanel } from "@/components/ui/section-panel";
 
 function FaqAccordionItem({
   item,
@@ -19,27 +21,27 @@ function FaqAccordionItem({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      className={`rounded-2xl border transition-colors duration-300 ${
+      transition={{ duration: 0.4, delay: index * 0.04 }}
+      className={`rounded-xl border transition-colors duration-300 ${
         isOpen
-          ? "border-turquoise-400/20 bg-white/[0.04]"
-          : "border-white/[0.06] bg-transparent hover:border-white/10"
+          ? "border-turquoise-400/25 bg-white/[0.05]"
+          : "border-white/[0.08] bg-white/[0.02] hover:border-white/12"
       }`}
     >
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+        className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6"
       >
-        <span className="text-base font-medium text-white lg:text-lg">
+        <span className="text-base font-medium text-white sm:text-lg">
           {item.question}
         </span>
         <div
-          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
             isOpen
-              ? "border-turquoise-400/30 bg-turquoise-500/15 rotate-0"
+              ? "border-turquoise-400/30 bg-turquoise-500/15"
               : "border-white/10 bg-white/[0.03]"
           }`}
         >
@@ -60,8 +62,8 @@ function FaqAccordionItem({
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-5">
-              <p className="text-sm leading-relaxed text-white/45 lg:text-base">
+            <div className="px-5 pb-5 sm:px-6">
+              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
                 {item.answer}
               </p>
             </div>
@@ -76,64 +78,53 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative py-32 lg:py-40">
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/3 -right-20 h-80 w-80 rounded-full bg-turquoise-500/[0.03] blur-[120px]" />
-      </div>
-
-      <div className="relative mx-auto max-w-3xl px-6 lg:px-8">
-        <SectionHeader
-          label="Common Questions"
-          title="Before You Book"
-          subtitle="Quick answers to the questions we hear most \u2014 so you can reserve with confidence"
-        />
-
-        <div className="mt-14 space-y-3">
-          {faqs.map((faq, i) => (
-            <FaqAccordionItem
-              key={i}
-              item={faq}
-              index={i}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-            />
-          ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="mt-14 text-center"
-        >
-          <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] px-8 py-8 backdrop-blur-sm sm:py-10">
-            <p className="text-lg font-medium text-white/70">
-              Ready to reserve your spot?
-            </p>
-            <p className="mt-2 text-sm text-white/30">
-              No payment upfront &middot; Free cancellation up to 24h &middot; Reply within hours
+    <SectionShell id="faq" bg="950">
+      <div className="grid w-full gap-10 lg:grid-cols-5 lg:gap-12">
+        <div className="lg:col-span-2">
+          <SectionHeader
+            label="Common Questions"
+            title="Before You Book"
+            subtitle="Quick answers so you can reserve your Omiš tour with confidence."
+          />
+          <div className="mt-8 hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 lg:block">
+            <p className="font-serif text-xl italic leading-relaxed text-white/50">
+              No payment upfront. Free cancellation. Reply within hours.
             </p>
             <a
               href="#contact"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-turquoise-500 px-7 py-3.5 text-[15px] font-semibold text-navy-950 shadow-lg shadow-turquoise-500/20 transition-all duration-300 hover:bg-turquoise-400 hover:shadow-turquoise-400/30 hover:scale-[1.03]"
+              className="mt-6 inline-flex text-[13px] font-semibold uppercase tracking-[0.12em] text-turquoise-400 transition-colors hover:text-turquoise-300"
             >
-              Book Your Experience
+              Reserve your experience &rarr;
             </a>
           </div>
-          <p className="mt-6 text-sm text-white/25">
-            Something else on your mind?{" "}
-            <a
-              href="#contact"
-              className="font-medium text-turquoise-400 transition-colors hover:text-turquoise-300"
-            >
-              Send us a message
-            </a>{" "}
-            &mdash; we typically respond within a couple of hours.
-          </p>
-        </motion.div>
+        </div>
+
+        <SectionPanel className="lg:col-span-3" accent={false}>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <FaqAccordionItem
+                key={i}
+                item={faq}
+                index={i}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+              />
+            ))}
+          </div>
+        </SectionPanel>
       </div>
-    </section>
+
+      <div className="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center lg:hidden">
+        <p className="font-serif text-lg italic text-white/50">
+          No payment upfront. Free cancellation. Reply within hours.
+        </p>
+        <a
+          href="#contact"
+          className="mt-4 inline-flex text-[13px] font-semibold uppercase tracking-[0.12em] text-turquoise-400"
+        >
+          Reserve your experience &rarr;
+        </a>
+      </div>
+    </SectionShell>
   );
 }

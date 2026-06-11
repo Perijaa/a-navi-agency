@@ -15,9 +15,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "A-Navi Agency | Touring Agency in Omiš, Croatia",
+  title: "A-Navi Agency | Boat Tours & Rafting in Omiš, Croatia",
   description:
-    "Discover the Adriatic with A-Navi Agency. Glass boat tours, semi-submarine adventures, boat rentals, taxi boats, and Cetina river rafting in Omiš, Croatia.",
+    "Five boat tours from Omiš harbour: glass boat, taxi boat, rent a boat, semi submarine & Cetina rafting. Departures from Cetina promenade — from €15.",
   keywords: [
     "boat tours",
     "Omiš",

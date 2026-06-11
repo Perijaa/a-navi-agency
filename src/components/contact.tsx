@@ -15,19 +15,21 @@ import {
   Check,
 } from "lucide-react";
 import { experiences } from "@/lib/data";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SectionPanel } from "@/components/ui/section-panel";
 
 const promises = [
   {
     icon: Clock,
     title: "Response Within Hours",
     description:
-      "Our team is on the promenade every day. Most inquiries are confirmed within 2\u20133 hours during season.",
+      "Our team is on the Omi\u0161 promenade every day during season. Most inquiries are confirmed within 2\u20133 hours.",
   },
   {
     icon: MapPin,
     title: "Local Support on Arrival",
     description:
-      "We\u2019re not a call centre. Meet us in person at our desk on the Cetina promenade when you arrive in Omi\u0161.",
+      "Meet us in person at our desk on the Cetina promenade when you arrive in Omi\u0161. We\u2019ll walk you to the boat.",
   },
   {
     icon: ShieldCheck,
@@ -39,7 +41,7 @@ const promises = [
     icon: Users,
     title: "Families and Groups Welcome",
     description:
-      "Travelling with children, large groups, or pets? Just let us know and we\u2019ll tailor the experience for you.",
+      "Travelling with children, large groups, or pets? Tell us about your party and we\u2019ll recommend the right Omi\u0161 experience.",
   },
 ];
 
@@ -69,63 +71,52 @@ export function Contact() {
   };
 
   const inputClasses =
-    "w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3.5 text-[15px] text-white placeholder:text-white/25 backdrop-blur-sm transition-all duration-300 focus:border-turquoise-400/40 focus:bg-white/[0.05] focus:outline-none focus:ring-1 focus:ring-turquoise-400/20";
+    "w-full rounded-xl border border-white/[0.10] bg-white/[0.04] px-4 py-3.5 text-[15px] text-white placeholder:text-white/35 backdrop-blur-sm transition-all duration-300 focus:border-turquoise-400/40 focus:bg-white/[0.06] focus:outline-none focus:ring-1 focus:ring-turquoise-400/20";
 
   const labelClasses =
-    "mb-2 block text-[13px] font-medium uppercase tracking-wider text-white/35";
+    "mb-2 block text-[13px] font-medium uppercase tracking-wider text-white/50";
 
   return (
-    <section id="contact" className="relative py-32 lg:py-40 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-900/80 to-navy-950" />
-
-      {/* Ambient light */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 -left-40 h-[600px] w-[600px] rounded-full bg-turquoise-500/[0.03] blur-[180px]" />
-        <div className="absolute bottom-1/4 -right-40 h-[500px] w-[500px] rounded-full bg-blue-400/[0.02] blur-[150px]" />
+    <section id="contact" className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+      {/* Ambient video background */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/854669/854669-hd_1920_1080_25fps.mp4"
+            type="video/mp4"
+          />
+        </video>
       </div>
 
+      {/* Heavy overlays for readability */}
+      <div className="absolute inset-0 bg-navy-950/85" />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-950/70 to-navy-950" />
+
       {/* Top divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 max-w-xl bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 max-w-xl bg-gradient-to-r from-transparent via-white/[0.10] to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Section header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-turquoise-400/80">
-            Reserve Your Experience
-          </span>
-          <h2 className="mt-3 font-serif text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
-            Book Your Adventure
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base text-white/40 lg:text-lg">
-            Tell us what you&apos;re looking for. We&apos;ll confirm
-            availability and handle the rest.
-          </p>
-          <div className="mx-auto mt-6 h-px w-20 bg-gradient-to-r from-transparent via-turquoise-400 to-transparent" />
-        </motion.div>
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+        <SectionHeader
+          label="Reserve Your Omiš Experience"
+          title="Book Your Omiš Adventure"
+          subtitle="Tell us what you're looking for — we're on the Cetina promenade and confirm availability within hours."
+        />
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-5 lg:gap-12">
-          {/* ── Left panel: Promises ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7 }}
-            className="flex flex-col justify-between lg:col-span-2"
-          >
-            <div>
+        <div className="mt-14 grid w-full gap-8 lg:mt-16 lg:grid-cols-5 lg:gap-10">
+          <SectionPanel className="lg:col-span-2">
               <h3 className="font-serif text-2xl font-bold text-white">
                 Our Booking Promise
               </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-white/35">
-                Reserving with A-Navi is simple, personal, and risk-free. Here&apos;s
-                what to expect when you reach out.
+              <p className="mt-3 text-[15px] leading-relaxed text-white/55">
+                Reserving your Omi&#353; experience is simple, personal, and
+                risk-free. We&apos;re a local crew on the Cetina promenade, not
+                a call centre &mdash; here&apos;s what to expect.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -139,64 +130,52 @@ export function Contact() {
                     className="group flex gap-4"
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-white/[0.03] transition-colors duration-500 group-hover:border-turquoise-400/20 group-hover:bg-turquoise-500/[0.08]">
-                      <p.icon className="h-4.5 w-4.5 text-white/30 transition-colors duration-500 group-hover:text-turquoise-400" />
+                      <p.icon className="h-4.5 w-4.5 text-white/40 transition-colors duration-500 group-hover:text-turquoise-400" />
                     </div>
                     <div>
                       <h4 className="text-[15px] font-semibold text-white">
                         {p.title}
                       </h4>
-                      <p className="mt-1 text-sm leading-relaxed text-white/30">
+                      <p className="mt-1 text-sm leading-relaxed text-white/50">
                         {p.description}
                       </p>
                     </div>
                   </motion.div>
                 ))}
               </div>
-            </div>
-
-            {/* Direct contact */}
-            <div className="mt-10 space-y-3 rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6">
-              <p className="text-xs font-medium uppercase tracking-wider text-white/25">
+            <div className="mt-10 space-y-3 rounded-xl border border-white/[0.08] bg-white/[0.03] p-5">
+              <p className="text-xs font-medium uppercase tracking-wider text-white/40">
                 Prefer to reach us directly?
               </p>
               <div className="space-y-2.5">
-                <a
+                  <a
                   href="tel:+385991234567"
-                  className="flex items-center gap-3 text-sm text-white/45 transition-colors hover:text-turquoise-400"
+                  className="flex items-center gap-3 text-sm text-white/55 transition-colors hover:text-turquoise-400"
                 >
-                  <Phone className="h-4 w-4 text-turquoise-400/50" />
+                  <Phone className="h-4 w-4 text-turquoise-400/60" />
                   +385 99 123 4567
                 </a>
                 <a
                   href="mailto:info@a-navi-agency.com"
-                  className="flex items-center gap-3 text-sm text-white/45 transition-colors hover:text-turquoise-400"
+                  className="flex items-center gap-3 text-sm text-white/55 transition-colors hover:text-turquoise-400"
                 >
-                  <Mail className="h-4 w-4 text-turquoise-400/50" />
+                  <Mail className="h-4 w-4 text-turquoise-400/60" />
                   info@a-navi-agency.com
                 </a>
                 <a
                   href="https://wa.me/385991234567"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm text-white/45 transition-colors hover:text-turquoise-400"
+                  className="flex items-center gap-3 text-sm text-white/55 transition-colors hover:text-turquoise-400"
                 >
-                  <MessageCircle className="h-4 w-4 text-emerald-400/50" />
+                  <MessageCircle className="h-4 w-4 text-emerald-400/60" />
                   WhatsApp — instant reply
                 </a>
               </div>
             </div>
-          </motion.div>
+          </SectionPanel>
 
-          {/* ── Right panel: Form ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:col-span-3"
-          >
-            <div className="rounded-2xl border border-white/[0.06] bg-white/[0.025] p-1.5 shadow-2xl shadow-black/30 backdrop-blur-2xl">
-              <div className="rounded-xl border border-white/[0.04] bg-white/[0.015] p-6 sm:p-8 lg:p-10">
+          <SectionPanel className="lg:col-span-3" accent={false}>
                 {submitted ? (
                   /* ── Success state ── */
                   <motion.div
@@ -243,14 +222,14 @@ export function Contact() {
                             className={`flex items-center gap-2 rounded-xl border px-3.5 py-3 text-left text-sm transition-all duration-300 ${
                               formData.experience === exp.id
                                 ? "border-turquoise-400/30 bg-turquoise-500/10 text-turquoise-300"
-                                : "border-white/[0.06] bg-white/[0.02] text-white/45 hover:border-white/10 hover:text-white/60"
+                                : "border-white/[0.08] bg-white/[0.03] text-white/55 hover:border-white/12 hover:text-white/70"
                             }`}
                           >
                             <exp.icon
                               className={`h-4 w-4 shrink-0 ${
                                 formData.experience === exp.id
                                   ? "text-turquoise-400"
-                                  : "text-white/25"
+                                  : "text-white/40"
                               }`}
                             />
                             <span className="truncate">{exp.title}</span>
@@ -322,7 +301,7 @@ export function Contact() {
                     <div className="mb-6">
                       <label className={labelClasses}>
                         Phone / WhatsApp{" "}
-                        <span className="normal-case tracking-normal text-white/20">
+                        <span className="normal-case tracking-normal text-white/35">
                           (optional)
                         </span>
                       </label>
@@ -340,7 +319,7 @@ export function Contact() {
                     <div className="mb-8">
                       <label className={labelClasses}>
                         Anything we should know?{" "}
-                        <span className="normal-case tracking-normal text-white/20">
+                        <span className="normal-case tracking-normal text-white/35">
                           (optional)
                         </span>
                       </label>
@@ -366,26 +345,24 @@ export function Contact() {
 
                     {/* Trust note */}
                     <div className="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4">
-                      <span className="flex items-center gap-1.5 text-xs text-white/20">
-                        <ShieldCheck className="h-3 w-3 text-turquoise-400/40" />
+                      <span className="flex items-center gap-1.5 text-xs text-white/40">
+                        <ShieldCheck className="h-3 w-3 text-turquoise-400/50" />
                         No payment required now
                       </span>
-                      <span className="hidden h-3 w-px bg-white/10 sm:block" />
-                      <span className="flex items-center gap-1.5 text-xs text-white/20">
-                        <Clock className="h-3 w-3 text-turquoise-400/40" />
+                      <span className="hidden h-3 w-px bg-white/15 sm:block" />
+                      <span className="flex items-center gap-1.5 text-xs text-white/40">
+                        <Clock className="h-3 w-3 text-turquoise-400/50" />
                         Free cancellation up to 24h
                       </span>
-                      <span className="hidden h-3 w-px bg-white/10 sm:block" />
-                      <span className="flex items-center gap-1.5 text-xs text-white/20">
-                        <MessageCircle className="h-3 w-3 text-turquoise-400/40" />
+                      <span className="hidden h-3 w-px bg-white/15 sm:block" />
+                      <span className="flex items-center gap-1.5 text-xs text-white/40">
+                        <MessageCircle className="h-3 w-3 text-turquoise-400/50" />
                         Reply within hours
                       </span>
                     </div>
                   </form>
-                )}
-              </div>
-            </div>
-          </motion.div>
+            )}
+          </SectionPanel>
         </div>
       </div>
     </section>

@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,21 +41,21 @@ export function Navbar() {
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <a href="#" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-turquoise-400 to-turquoise-600">
-              <span className="text-lg font-bold text-navy-950">A</span>
-            </div>
-            <span className="text-xl font-bold tracking-tight text-white">
+          <a href="#" className="group flex items-center gap-1.5">
+            <span className="font-serif text-[22px] font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-turquoise-300">
               A-Navi
+            </span>
+            <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.2em] text-white/40">
+              Omi&scaron;
             </span>
           </a>
 
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-[13px] font-medium text-white/50 transition-colors duration-200 hover:text-white"
+                className="relative text-[13px] font-medium text-white/60 transition-colors duration-300 hover:text-white"
               >
                 {link.label}
               </a>
@@ -64,9 +63,12 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <Button href="#contact" size="sm">
-              Book Now
-            </Button>
+            <a
+              href="#contact"
+              className="rounded-full border border-white/20 px-5 py-2 text-[13px] font-semibold text-white/80 transition-all duration-300 hover:border-turquoise-400/40 hover:text-white"
+            >
+              Reserve
+            </a>
           </div>
 
           <button
@@ -89,12 +91,12 @@ export function Navbar() {
             className="fixed inset-0 z-[60] flex flex-col bg-navy-950/98 backdrop-blur-2xl"
           >
             <div className="flex items-center justify-between px-6 py-4">
-              <a href="#" className="flex items-center gap-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-turquoise-400 to-turquoise-600">
-                  <span className="text-lg font-bold text-navy-950">A</span>
-                </div>
-                <span className="text-xl font-bold tracking-tight text-white">
+              <a href="#" className="flex items-center gap-1.5">
+                <span className="font-serif text-[22px] font-bold tracking-tight text-white">
                   A-Navi
+                </span>
+                <span className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.2em] text-white/40">
+                  Omi&scaron;
                 </span>
               </a>
               <button
@@ -120,19 +122,16 @@ export function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <motion.div
+              <motion.a
+                href="#contact"
+                onClick={() => setMobileOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
+                className="mt-4 text-[13px] font-semibold uppercase tracking-[0.15em] text-turquoise-400 transition-colors hover:text-turquoise-300"
               >
-                <Button
-                  href="#contact"
-                  size="lg"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Book Now
-                </Button>
-              </motion.div>
+                Reserve Your Experience
+              </motion.a>
             </div>
           </motion.div>
         )}
