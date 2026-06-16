@@ -1,28 +1,41 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { experiences } from "@/lib/data";
+import { Compass, CalendarCheck } from "lucide-react";
 
-const minPrice = Math.min(...experiences.map((e) => e.priceFrom));
+const actions = [
+  {
+    href: "#experiences",
+    label: "Tours",
+    icon: Compass,
+    className:
+      "bg-white text-turquoise-600 shadow-md ring-1 ring-slate-200 hover:bg-teal-50 hover:ring-turquoise-200",
+  },
+  {
+    href: "#contact",
+    label: "Book",
+    icon: CalendarCheck,
+    className:
+      "bg-turquoise-500 text-white shadow-md shadow-turquoise-500/30 hover:bg-turquoise-600",
+  },
+] as const;
 
 export function MobileBookBar() {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-navy-950/95 px-4 py-3 backdrop-blur-xl lg:hidden">
-      <div className="mx-auto flex max-w-lg gap-3">
+    <div
+      className="fixed bottom-0 right-0 z-50 flex flex-col items-center gap-2.5 p-4 pb-[calc(1rem+env(safe-area-inset-bottom))] lg:hidden"
+      aria-label="Quick actions"
+    >
+      {actions.map(({ href, label, icon: Icon, className }) => (
         <a
-          href="#experiences"
-          className="flex flex-1 items-center justify-center rounded-full border border-white/15 px-4 py-3 text-[13px] font-semibold text-white/80 transition-colors hover:border-white/25 hover:text-white"
+          key={href}
+          href={href}
+          aria-label={label}
+          title={label}
+          className={`flex h-11 w-11 items-center justify-center rounded-full transition-all active:scale-95 ${className}`}
         >
-          View Tours
+          <Icon className="h-[18px] w-[18px]" strokeWidth={2.25} />
         </a>
-        <a
-          href="#contact"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-turquoise-500 px-4 py-3 text-[13px] font-semibold text-navy-950 transition-colors hover:bg-turquoise-400"
-        >
-          Book from &euro;{minPrice}
-          <ArrowRight className="h-3.5 w-3.5" />
-        </a>
-      </div>
+      ))}
     </div>
   );
 }

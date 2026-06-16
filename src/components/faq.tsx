@@ -6,51 +6,43 @@ import { Plus, Minus } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionShell } from "@/components/ui/section-shell";
-import { SectionPanel } from "@/components/ui/section-panel";
 
-function FaqAccordionItem({
+function FaqItem({
   item,
   isOpen,
   onToggle,
-  index,
 }: {
   item: (typeof faqs)[0];
   isOpen: boolean;
   onToggle: () => void;
-  index: number;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, delay: index * 0.04 }}
-      className={`rounded-xl border transition-colors duration-300 ${
-        isOpen
-          ? "border-turquoise-400/25 bg-white/[0.05]"
-          : "border-white/[0.08] bg-white/[0.02] hover:border-white/12"
+    <div
+      className={`rounded-lg border transition-colors ${
+        isOpen ? "border-slate-200 bg-white" : "border-transparent"
       }`}
     >
       <button
+        type="button"
         onClick={onToggle}
-        className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6"
+        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
       >
-        <span className="text-base font-medium text-white sm:text-lg">
+        <span className="text-[15px] font-medium text-navy-900 sm:text-base">
           {item.question}
         </span>
-        <div
-          className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+        <span
+          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${
             isOpen
-              ? "border-turquoise-400/30 bg-turquoise-500/15"
-              : "border-white/10 bg-white/[0.03]"
+              ? "bg-turquoise-500 text-white"
+              : "bg-slate-100 text-slate-500"
           }`}
         >
           {isOpen ? (
-            <Minus className="h-4 w-4 text-turquoise-400" />
+            <Minus className="h-3.5 w-3.5" />
           ) : (
-            <Plus className="h-4 w-4 text-white/50" />
+            <Plus className="h-3.5 w-3.5" />
           )}
-        </div>
+        </span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -59,18 +51,16 @@ function FaqAccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="px-5 pb-5 sm:px-6">
-              <p className="text-sm leading-relaxed text-white/60 sm:text-base">
-                {item.answer}
-              </p>
-            </div>
+            <p className="px-5 pb-4 text-sm leading-relaxed text-slate-600">
+              {item.answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
@@ -78,53 +68,33 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <SectionShell id="faq" bg="950">
-      <div className="grid w-full gap-10 lg:grid-cols-5 lg:gap-12">
-        <div className="lg:col-span-2">
-          <SectionHeader
-            label="Common Questions"
-            title="Before You Book"
-            subtitle="Quick answers so you can reserve your Omiš tour with confidence."
-          />
-          <div className="mt-8 hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 lg:block">
-            <p className="font-serif text-xl italic leading-relaxed text-white/50">
-              No payment upfront. Free cancellation. Reply within hours.
-            </p>
-            <a
-              href="#contact"
-              className="mt-6 inline-flex text-[13px] font-semibold uppercase tracking-[0.12em] text-turquoise-400 transition-colors hover:text-turquoise-300"
-            >
-              Reserve your experience &rarr;
-            </a>
-          </div>
-        </div>
+    <SectionShell id="faq" bg="mid">
+      <SectionHeader
+        label="FAQ"
+        title="Before you book"
+        subtitle="No payment upfront. Free cancellation up to 24 hours."
+      />
 
-        <SectionPanel className="lg:col-span-3" accent={false}>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <FaqAccordionItem
-                key={i}
-                item={faq}
-                index={i}
-                isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-              />
-            ))}
-          </div>
-        </SectionPanel>
+      <div className="section-body mx-auto max-w-2xl space-y-2">
+        {faqs.map((faq, i) => (
+          <FaqItem
+            key={i}
+            item={faq}
+            isOpen={openIndex === i}
+            onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+          />
+        ))}
       </div>
 
-      <div className="mt-10 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center lg:hidden">
-        <p className="font-serif text-lg italic text-white/50">
-          No payment upfront. Free cancellation. Reply within hours.
-        </p>
+      <p className="mt-8 text-center text-sm text-slate-500">
+        Still have questions?{" "}
         <a
           href="#contact"
-          className="mt-4 inline-flex text-[13px] font-semibold uppercase tracking-[0.12em] text-turquoise-400"
+          className="font-medium text-turquoise-600 hover:text-turquoise-700"
         >
-          Reserve your experience &rarr;
+          Get in touch
         </a>
-      </div>
+      </p>
     </SectionShell>
   );
 }

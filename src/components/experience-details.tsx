@@ -482,7 +482,7 @@ const layoutMap: Record<string, React.ComponentType<{ experience: Exp }>> = {
 
 export function ExperienceDetails() {
   return (
-    <SectionShell bg="950">
+    <SectionShell bg="deep">
       <SectionHeader
         label="Tour Details"
         title="Everything About Each Tour"

@@ -245,10 +245,8 @@ export const experiences: Experience[] = [
       "Rated the #1 outdoor activity in Omi\u0161. Over 2,000 rafters this season alone.",
     icon: Waves,
     gradient: "from-emerald-500/30 to-teal-600/30",
-    image:
-      "https://images.unsplash.com/photo-1530866495561-507c83be0e81?w=800&q=80",
-    detailImage:
-      "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&q=80",
+    image: "/images/hero-rafting.png",
+    detailImage: "/images/hero-rafting.png",
     tag: "Adventure",
     highlights: [
       "12 km canyon descent",
@@ -258,6 +256,14 @@ export const experiences: Experience[] = [
     ],
   },
 ];
+
+export function getExperienceBySlug(slug: string) {
+  return experiences.find((exp) => exp.id === slug);
+}
+
+export function getExperienceSlugs() {
+  return experiences.map((exp) => exp.id);
+}
 
 export const gallery: GalleryItem[] = [
   {

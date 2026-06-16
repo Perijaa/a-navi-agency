@@ -1,79 +1,95 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Anchor, Mountain, Waves } from "lucide-react";
+import { MapPin, Mountain, Waves, Anchor } from "lucide-react";
+import { Counter } from "@/components/ui/counter";
+import { SectionHeader } from "@/components/ui/section-header";
 import { SectionShell } from "@/components/ui/section-shell";
-import { SectionPanel } from "@/components/ui/section-panel";
+
+const stats = [
+  { value: 15, suffix: "", decimals: 0, label: "Seasons" },
+  { value: 50, suffix: "k+", decimals: 0, label: "Guests" },
+  { value: 4.9, suffix: "", decimals: 1, label: "Rating" },
+  { value: 40, suffix: "+", decimals: 0, label: "Countries" },
+];
 
 const highlights = [
   {
     icon: MapPin,
-    title: "Departure point",
-    text: "Cetina promenade, Omi\u0161 harbour — easy to find, no transfers needed.",
+    title: "One departure point",
+    text: "Cetina promenade — find us at the harbour.",
   },
   {
     icon: Mountain,
     title: "Cetina canyon",
-    text: "Limestone gorge, Radmanove Mlinice, and river adventures minutes from town.",
+    text: "River gorge and Radmanove Mlinice minutes from town.",
   },
   {
     icon: Waves,
     title: "Adriatic coast",
-    text: "Open sea, hidden beaches, and Dalmatian coastline right off Omi\u0161.",
+    text: "Open sea and hidden beaches off Omiš.",
   },
   {
     icon: Anchor,
     title: "One local crew",
-    text: "Five experiences, one harbour — glass boat, submarine, rental, taxi & rafting.",
+    text: "Five tours, one team at the harbour.",
   },
 ];
 
 export function OmisDestination() {
   return (
-    <SectionShell id="omis" bg="900">
-      <div className="grid w-full gap-10 lg:grid-cols-2 lg:gap-12">
-        <SectionPanel>
-          <span className="text-[13px] font-semibold uppercase tracking-[0.15em] text-turquoise-400">
-            The Destination
-          </span>
-          <h2 className="mt-4 font-serif text-3xl font-bold leading-[1.1] text-white sm:text-4xl lg:text-5xl">
-            Omi&scaron;, where the river
-            <br />
-            <span className="italic font-normal text-white/70">meets the sea</span>
-          </h2>
-          <p className="mt-6 text-base leading-relaxed text-white/60 sm:text-lg">
-            A small Dalmatian town at the mouth of the Cetina canyon — pirate
-            heritage, white cliffs, and one of Croatia&apos;s most dramatic
-            river gorges. Every A-Navi tour starts on the promenade where
-            canyon water flows into the Adriatic.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-flex items-center gap-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-turquoise-400 transition-colors hover:text-turquoise-300"
-          >
-            Book from the Omi&scaron; harbour
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </SectionPanel>
+    <SectionShell id="omis" bg="mid">
+      <SectionHeader
+        label="Omiš"
+        title="Where the river meets the sea"
+        subtitle="A Dalmatian town at the mouth of the Cetina canyon — pirate heritage, white cliffs, and river gorges."
+      />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="section-content section-body">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="text-center"
+            >
+              <div className="font-serif text-3xl font-bold text-navy-900 sm:text-4xl">
+                <Counter
+                  target={stat.value}
+                  suffix={stat.suffix}
+                  decimals={stat.decimals}
+                  duration={2}
+                />
+              </div>
+              <p className="mt-2 text-xs font-medium uppercase tracking-wider text-slate-500">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 sm:gap-6 lg:mt-16">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04 }}
+              className="card flex items-start gap-4 p-5 sm:p-6"
             >
-              <SectionPanel accent={false} className="h-full">
-                <item.icon className="h-5 w-5 text-turquoise-400" />
-                <h3 className="mt-3 text-[15px] font-semibold text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-teal-50">
+                <item.icon className="h-5 w-5 text-turquoise-600" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-navy-900">{item.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-slate-600">
                   {item.text}
                 </p>
-              </SectionPanel>
+              </div>
             </motion.div>
           ))}
         </div>

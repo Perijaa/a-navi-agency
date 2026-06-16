@@ -1,12 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-navy-950: #0a0e1a;
-  --color-navy-925: #0d1322;
-  --color-navy-900: #0f1628;
-  --color-navy-800: #1a2240;
-  --color-navy-700: #253059;
-  --color-navy-600: #334180;
+  --color-navy-950: #0b1220;
+  --color-navy-925: #0e1a2e;
+  --color-navy-900: #122038;
+  --color-navy-850: #152845;
+  --color-navy-800: #1c3358;
+  --color-navy-700: #264070;
+  --color-navy-600: #334d8a;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
   --color-turquoise-300: #5eead4;
   --color-turquoise-400: #2dd4bf;
   --color-turquoise-500: #14b8a6;
@@ -32,16 +42,18 @@ html {
 }
 
 body {
-  background: var(--color-navy-950);
-  color: #f8fafc;
+  background: #ffffff;
+  color: var(--color-slate-700);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
   overflow-x: hidden;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--color-turquoise-500);
-  color: var(--color-navy-950);
+  background: var(--color-turquoise-400);
+  color: var(--color-navy-900);
 }
 
 ::-webkit-scrollbar {
@@ -49,11 +61,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-navy-700);
+  background: #cbd5e1;
   border-radius: 3px;
 }
 
@@ -70,15 +82,216 @@ body {
   scrollbar-width: none;
 }
 
+/* ── Layout ── */
+
+.page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .page-container {
+    padding-inline: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 2.5rem;
+  }
+}
+
+.section-content {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 64rem;
+}
+
+.section-body {
+  margin-top: 3rem;
+}
+
+@media (min-width: 1024px) {
+  .section-body {
+    margin-top: 3.5rem;
+  }
+}
+
+.section-panel {
+  border-radius: 1rem;
+  border: 1px solid var(--color-slate-200);
+  background: white;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.04);
+}
+
+@media (min-width: 1024px) {
+  .section-panel {
+    border-radius: 1.25rem;
+  }
+}
+
+/* ── Surfaces ── */
+
+.surface-deep {
+  background-color: #ffffff;
+}
+
+.surface-mid {
+  background-color: #f8fafc;
+}
+
+.surface-accent,
+.surface-teal {
+  background-color: #ffffff;
+}
+
+/* ── Typography helpers ── */
+
+.text-heading {
+  color: var(--color-navy-900);
+}
+
+.text-body {
+  color: var(--color-slate-600);
+}
+
+.text-muted {
+  color: var(--color-slate-500);
+}
+
+/* ── Buttons ── */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-turquoise-500);
+  padding: 0.8125rem 1.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 2px 8px -2px rgb(20 184 166 / 0.4);
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--color-turquoise-600);
+  box-shadow: 0 4px 12px -2px rgb(20 184 166 / 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-slate-300);
+  background: white;
+  padding: 0.8125rem 1.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-navy-900);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-turquoise-400);
+  background: #f0fdfa;
+}
+
+.btn-on-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgb(255 255 255 / 0.45);
+  background: rgb(255 255 255 / 0.08);
+  padding: 0.8125rem 1.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  backdrop-filter: blur(8px);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-on-dark:hover {
+  border-color: rgb(255 255 255 / 0.7);
+  background: rgb(255 255 255 / 0.15);
+}
+
+/* ── Cards ── */
+
+.card {
+  border-radius: 0.875rem;
+  border: 1px solid var(--color-slate-200);
+  background: white;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: rgb(20 184 166 / 0.2);
+  box-shadow: 0 4px 16px -4px rgb(15 23 42 / 0.08);
+}
+
+@media (min-width: 1024px) {
+  .card {
+    border-radius: 1rem;
+  }
+}
+
+/* ── Safe areas ── */
+
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.pt-safe-nav {
+  padding-top: max(4.5rem, calc(env(safe-area-inset-top) + 4rem));
+}
+
+@media (min-width: 1024px) {
+  .pt-safe-nav {
+    padding-top: max(5rem, calc(env(safe-area-inset-top) + 4.5rem));
+  }
+}
+
+/* ── Form fields ── */
+
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
   cursor: pointer;
 }
 
 select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 12px center;
   padding-right: 36px;
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1px solid var(--color-slate-200);
+  background: white;
+  padding: 0.75rem 0.875rem;
+  font-size: 0.9375rem;
+  color: var(--color-navy-900);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field::placeholder {
+  color: var(--color-slate-400);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-turquoise-400);
+  box-shadow: 0 0 0 3px rgb(20 184 166 / 0.1);
 }

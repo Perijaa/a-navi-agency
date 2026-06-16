@@ -13,13 +13,13 @@ const stats = [
 
 export function TrustBar() {
   return (
-    <SectionShell bg="950" bordered className="py-16 sm:py-20 lg:py-24">
+    <SectionShell bg="mid">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-40px" }}
         transition={{ duration: 0.8 }}
-        className="grid w-full grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4 md:gap-y-0"
+        className="grid w-full grid-cols-2 gap-x-8 gap-y-14 md:grid-cols-4 md:gap-x-10 md:gap-y-0 lg:gap-x-12"
       >
         {stats.map((stat, i) => (
           <motion.div

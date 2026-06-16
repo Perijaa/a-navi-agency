@@ -1,164 +1,71 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { gallery } from "@/lib/data";
-import type { GalleryItem } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionShell } from "@/components/ui/section-shell";
-import { SectionPanel } from "@/components/ui/section-panel";
-
-function GalleryHero({ item }: { item: GalleryItem }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-      className="col-span-full"
-    >
-      <div className="group relative overflow-hidden rounded-2xl">
-        <div className="relative h-[45vh] min-h-[320px] lg:h-[55vh]">
-          <Image
-            src={item.image}
-            alt={item.alt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover transition-transform duration-[2s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-navy-950/10 to-navy-950/20" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 lg:p-12">
-            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-              <MapPin className="h-3 w-3" />
-              {item.location}
-            </div>
-            <p className="mt-3 max-w-2xl font-serif text-xl leading-[1.4] text-white/90 sm:text-2xl lg:text-3xl">
-              {item.caption}
-            </p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function GalleryTall({ item, delay }: { item: GalleryItem; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="row-span-2"
-    >
-      <div className="group relative h-full overflow-hidden rounded-2xl border border-white/[0.08]">
-        <Image
-          src={item.image}
-          alt={item.alt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 33vw"
-          className="object-cover transition-transform duration-[1.6s] group-hover:scale-[1.06]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-          <p className="font-serif text-sm italic text-white/80">{item.caption}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function GalleryWide({ item, delay }: { item: GalleryItem; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="sm:col-span-2"
-    >
-      <div className="group relative overflow-hidden rounded-2xl border border-white/[0.08]">
-        <div className="relative h-[220px] sm:h-[260px] lg:h-[300px]">
-          <Image
-            src={item.image}
-            alt={item.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 66vw"
-            className="object-cover transition-transform duration-[1.6s] group-hover:scale-[1.05]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 to-transparent" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function GalleryNormal({ item, delay }: { item: GalleryItem; delay: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <div className="group relative overflow-hidden rounded-2xl border border-white/[0.08]">
-        <div className="relative h-[220px] sm:h-[240px] lg:h-[260px]">
-          <Image
-            src={item.image}
-            alt={item.alt}
-            fill
-            sizes="(max-width: 640px) 100vw, 33vw"
-            className="object-cover transition-transform duration-[1.4s] group-hover:scale-[1.08]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-function GalleryCard({ item, delay }: { item: GalleryItem; delay: number }) {
-  switch (item.span) {
-    case "hero":
-      return <GalleryHero item={item} />;
-    case "tall":
-      return <GalleryTall item={item} delay={delay} />;
-    case "wide":
-      return <GalleryWide item={item} delay={delay} />;
-    default:
-      return <GalleryNormal item={item} delay={delay} />;
-  }
-}
 
 export function Gallery() {
-  const heroItem = gallery.find((g) => g.span === "hero");
-  const gridItems = gallery.filter((g) => g.span !== "hero");
+  const [featured, ...rest] = gallery;
 
   return (
-    <SectionShell id="gallery" bg="925">
+    <SectionShell id="gallery" bg="mid">
       <SectionHeader
-        label="Dalmatian Moments"
-        title="Scenes from the Cetina and the Coast"
-        subtitle="Every frame captured on our tours — from the Cetina gorge to the open Adriatic off Omiš."
+        label="Gallery"
+        title="Scenes from our tours"
+        subtitle="The Cetina canyon and Adriatic coast off Omiš."
       />
 
-      <SectionPanel className="mt-14 sm:mt-16" accent={false} padded={false}>
-        <div className="space-y-4 p-4 sm:space-y-5 sm:p-5 lg:p-6">
-          {heroItem && <GalleryCard item={heroItem} delay={0} />}
-          <div className="grid auto-rows-[220px] gap-4 sm:auto-rows-[240px] sm:grid-cols-2 lg:auto-rows-[260px] lg:grid-cols-3 lg:gap-5">
-            {gridItems.map((item, i) => (
-              <GalleryCard key={item.id} item={item} delay={i * 0.08} />
-            ))}
-          </div>
-        </div>
-      </SectionPanel>
+      <div className="section-content section-body">
+        {featured && (
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="group relative aspect-[16/10] overflow-hidden rounded-xl sm:aspect-[16/9] lg:rounded-2xl"
+          >
+            <Image
+              src={featured.image}
+              alt={featured.alt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 64rem"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <p className="text-xs font-medium uppercase tracking-wider text-white/60">
+                {featured.location}
+              </p>
+              <p className="mt-2 max-w-xl font-serif text-lg leading-snug text-white sm:text-xl">
+                {featured.caption}
+              </p>
+            </div>
+          </motion.div>
+        )}
 
-      <p className="mt-10 text-sm text-white/45 sm:mt-12">
-        Every photo was taken on our tours along the Omiš coast and Cetina
-        canyon. Your moment is next.
-      </p>
+        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:mt-5">
+          {rest.map((item, i) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.03 }}
+              className="group relative aspect-[4/3] overflow-hidden rounded-lg lg:rounded-xl"
+            >
+              <Image
+                src={item.image}
+                alt={item.alt}
+                fill
+                sizes="(max-width: 1024px) 50vw, 16rem"
+                className="object-cover transition-transform duration-400 group-hover:scale-105"
+              />
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </SectionShell>
   );
 }

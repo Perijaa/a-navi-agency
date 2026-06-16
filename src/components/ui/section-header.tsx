@@ -6,40 +6,34 @@ interface SectionHeaderProps {
   label?: string;
   title: string;
   subtitle?: string;
-  align?: "center" | "left";
 }
 
-export function SectionHeader({
-  label,
-  title,
-  subtitle,
-  align = "left",
-}: SectionHeaderProps) {
+export function SectionHeader({ label, title, subtitle }: SectionHeaderProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
+    <motion.header
+      initial={{ opacity: 0, y: 12 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6 }}
-      className={`w-full ${align === "center" ? "text-center" : "text-left"}`}
+      viewport={{ once: true, margin: "-40px" }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="mx-auto max-w-2xl text-center"
     >
       {label && (
-        <span className="mb-3 block text-[13px] font-semibold uppercase tracking-[0.15em] text-turquoise-400">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-turquoise-600">
           {label}
-        </span>
+        </p>
       )}
-      <h2 className="font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2
+        className={`font-serif text-3xl font-bold leading-tight tracking-tight text-navy-900 sm:text-4xl lg:text-[2.75rem] ${
+          label ? "mt-3" : ""
+        }`}
+      >
         {title}
       </h2>
       {subtitle && (
-        <p
-          className={`mt-4 max-w-3xl text-base leading-relaxed text-white/60 sm:text-lg ${
-            align === "center" ? "mx-auto" : ""
-          }`}
-        >
+        <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-slate-600 lg:mt-5 lg:text-lg">
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </motion.header>
   );
 }

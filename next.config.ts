@@ -4,6 +4,7 @@ const isGithubPages = process.env.GITHUB_PAGES === "true";
 const basePath = isGithubPages ? "/a-navi-agency" : "";
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   ...(isGithubPages
     ? {
         output: "export",
