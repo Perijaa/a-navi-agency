@@ -29,32 +29,38 @@ const reasons: { icon: LucideIcon; title: string; description: string }[] = [
 
 export function WhyChooseUs() {
   return (
-    <SectionShell bg="deep">
-      <SectionHeader
-        label="Why A-Navi"
-        title="Simple booking, local expertise"
-        subtitle="Fifteen seasons on the Cetina — one harbour, five ways to explore."
-      />
+    <SectionShell
+      bg="deep"
+      className="pt-28 pb-28 sm:pt-32 sm:pb-32 lg:pt-40 lg:pb-36"
+    >
+      <div className="flex flex-col gap-14 sm:gap-16 lg:gap-20">
+        <SectionHeader
+          label="Why A-Navi"
+          title="Simple booking, local expertise"
+          subtitle="Fifteen seasons on the Cetina — one harbour, five ways to explore."
+          className="[&_h2]:!mt-6 [&_p]:!mt-7"
+        />
 
-      <div className="section-content section-body grid gap-6 sm:grid-cols-3 sm:gap-8">
-        {reasons.map((point, i) => (
-          <motion.div
-            key={point.title}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.07 }}
-            className="text-center"
-          >
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50">
-              <point.icon className="h-5 w-5 text-turquoise-600" />
-            </div>
-            <h3 className="mt-4 font-semibold text-navy-900">{point.title}</h3>
-            <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-600">
-              {point.description}
-            </p>
-          </motion.div>
-        ))}
+        <div className="section-content grid gap-10 sm:grid-cols-3 sm:gap-8 lg:gap-10">
+          {reasons.map((point, i) => (
+            <motion.div
+              key={point.title}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="text-center"
+            >
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50">
+                <point.icon className="h-5 w-5 text-turquoise-600" />
+              </div>
+              <h3 className="mt-5 font-semibold text-navy-900">{point.title}</h3>
+              <p className="mx-auto mt-3 max-w-xs text-sm leading-relaxed text-slate-600 sm:text-[15px]">
+                {point.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </SectionShell>
   );
