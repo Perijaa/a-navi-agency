@@ -40,11 +40,11 @@ export function Navbar() {
             : "border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-xl"
         )}
       >
-        <div className="page-container flex h-16 items-center justify-between lg:h-[4.5rem]">
-          <Link href="/" className="group flex shrink-0 items-baseline gap-2">
+        <div className="page-container relative flex h-16 w-full items-center justify-between xl:h-[4.5rem]">
+          <Link href="/" className="group relative z-10 flex shrink-0 items-baseline gap-2">
             <span
               className={cn(
-                "font-serif text-xl font-bold transition-colors lg:text-2xl",
+                "font-serif text-xl font-bold transition-colors xl:text-2xl",
                 onHero
                   ? "text-white group-hover:text-turquoise-300"
                   : "text-navy-900 group-hover:text-turquoise-600"
@@ -62,7 +62,8 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden items-center gap-8 lg:flex xl:gap-10">
+          <div className="pointer-events-none absolute inset-x-0 hidden justify-center xl:flex">
+            <div className="pointer-events-auto flex items-center gap-8 2xl:gap-10">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -77,29 +78,32 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            </div>
           </div>
 
-          <a
-            href="#contact"
-            className="btn-primary hidden !px-6 !py-2.5 !text-[15px] lg:inline-flex xl:!px-7 xl:!py-3 xl:!text-base"
-          >
-            Reserve
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          <div className="relative z-10 flex shrink-0 items-center gap-2 sm:gap-2.5">
+            <a
+              href="#contact"
+              className="btn-primary !px-4 !py-2 !text-sm sm:!px-5 sm:!py-2.5 sm:!text-[15px] 2xl:!px-7 2xl:!py-3 2xl:!text-base"
+            >
+              Reserve
+              <ArrowRight className="h-4 w-4" />
+            </a>
 
-          <button
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            className={cn(
-              "flex h-11 w-11 items-center justify-center rounded-full transition-colors lg:hidden",
-              onHero
-                ? "border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
-                : "border border-slate-200 bg-white text-navy-900 shadow-sm"
-            )}
-            aria-label="Open menu"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              className={cn(
+                "flex h-11 w-11 items-center justify-center rounded-full transition-colors xl:hidden",
+                onHero
+                  ? "border border-white/20 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+                  : "border border-slate-200 bg-white text-navy-900 shadow-sm"
+              )}
+              aria-label="Open menu"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -109,7 +113,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-white pt-[env(safe-area-inset-top)]"
+            className="fixed inset-0 z-[60] flex flex-col bg-white/98 backdrop-blur-xl pt-[env(safe-area-inset-top)]"
           >
             <div className="page-container flex h-[4.25rem] shrink-0 items-center justify-between border-b border-slate-200 sm:h-[4.75rem]">
               <Link

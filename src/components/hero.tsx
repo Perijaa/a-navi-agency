@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, MapPin, Star, ChevronDown } from "lucide-react";
+import { ArrowRight, MapPin, Star, ChevronDown, Users } from "lucide-react";
 import { experiences } from "@/lib/data";
 import { SectionWave } from "@/components/ui/section-wave";
 
@@ -45,19 +45,20 @@ export function Hero() {
         />
 
         <div className="absolute inset-0 bg-navy-900/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/10 to-navy-900/90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/50 via-navy-900/15 to-navy-900/92" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(11,18,32,0.35)_100%)]" />
 
         <motion.div
           style={{ opacity: contentOpacity, y: contentY }}
-          className="relative z-10 flex flex-1 flex-col items-center justify-center px-5 pb-24 pt-safe-nav sm:px-8"
+          className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-32 pt-safe-nav sm:px-10 xl:px-12"
         >
-          <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-8 text-center sm:max-w-2xl sm:gap-10 lg:max-w-3xl lg:gap-12">
+          <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-10 text-center sm:max-w-2xl sm:gap-12 xl:max-w-3xl xl:gap-14">
             <motion.div
               custom={0}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-lg shadow-black/10 backdrop-blur-md"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2.5 shadow-lg shadow-black/15 backdrop-blur-md"
             >
               <MapPin className="h-3.5 w-3.5 text-turquoise-300" />
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white">
@@ -66,7 +67,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
-              <h1 className="font-serif text-[clamp(2.35rem,7.5vw,4.25rem)] font-bold leading-[1.12] tracking-tight text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">
+              <h1 className="font-serif text-[clamp(2.35rem,7.5vw,4.5rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.4)]">
                 Where the canyon
                 <br />
                 <span className="bg-gradient-to-r from-white via-teal-200 to-turquoise-300 bg-clip-text text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.5)]">
@@ -80,7 +81,7 @@ export function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="max-w-lg text-base leading-relaxed text-white/80 sm:text-lg lg:max-w-xl lg:text-[1.125rem] lg:leading-[1.8]"
+              className="max-w-lg text-base leading-relaxed text-balance text-white/85 sm:text-lg xl:max-w-xl xl:text-[1.125rem] xl:leading-[1.8]"
             >
               Glass-bottom boats, canyon rafting, hidden Adriatic beaches — five
               ways to explore Omi&scaron;, all starting from the Cetina
@@ -92,16 +93,17 @@ export function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2"
+              className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
             >
-              <span className="inline-flex items-center gap-1.5 text-sm font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-sm font-medium text-white backdrop-blur-sm">
                 <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                4.9 guest rating
+                4.9 rating
               </span>
-              <span className="hidden text-white/30 sm:inline">|</span>
-              <span className="text-sm text-white/75">50k+ happy guests</span>
-              <span className="hidden text-white/30 sm:inline">|</span>
-              <span className="rounded-full bg-turquoise-500/90 px-3.5 py-1 text-sm font-semibold text-white shadow-md shadow-turquoise-900/30">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-2 text-sm text-white/90 backdrop-blur-sm">
+                <Users className="h-4 w-4 text-turquoise-300" />
+                50k+ guests
+              </span>
+              <span className="rounded-full bg-turquoise-500 px-3.5 py-2 text-sm font-semibold text-white shadow-lg shadow-turquoise-900/35">
                 From &euro;{minPrice}
               </span>
             </motion.div>
@@ -111,16 +113,19 @@ export function Hero() {
               variants={fadeUp}
               initial="hidden"
               animate="visible"
-              className="flex w-full max-w-xs flex-col gap-3 pt-1 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4 lg:pt-2"
+              className="flex w-full max-w-sm flex-col gap-4 pt-2 xl:max-w-none xl:flex-row xl:justify-center xl:gap-5 xl:pt-4"
             >
               <a
                 href="#experiences"
-                className="btn-primary w-full shadow-lg shadow-turquoise-900/25 sm:min-w-[11rem] sm:w-auto"
+                className="btn-primary w-full shadow-lg shadow-turquoise-900/30 xl:min-w-[11rem] xl:w-auto"
               >
                 See all tours
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#contact" className="btn-on-dark w-full sm:min-w-[11rem] sm:w-auto">
+              <a
+                href="#contact"
+                className="btn-on-dark w-full xl:min-w-[11rem] xl:w-auto"
+              >
                 Book your spot
               </a>
             </motion.div>
@@ -131,7 +136,7 @@ export function Hero() {
               initial="hidden"
               animate="visible"
               href="#experiences"
-              className="group mt-2 flex flex-col items-center gap-2 text-white/50 transition-colors hover:text-white/90"
+              className="group mt-4 flex flex-col items-center gap-2.5 text-white/50 transition-colors hover:text-white/90"
             >
               <span className="text-xs font-medium tracking-wide text-white/60 transition-colors group-hover:text-white/90">
                 Scroll to discover your adventure

@@ -28,14 +28,14 @@ export function SectionHeader({ label, title, subtitle, className }: SectionHead
         </div>
       )}
       <h2
-        className={`font-serif text-[clamp(2rem,5vw,2.75rem)] font-bold leading-[1.08] tracking-tight text-navy-900 ${
-          label ? "mt-4" : ""
+        className={`font-serif text-[clamp(2rem,5vw,2.875rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-navy-900 ${
+          label ? "mt-7 sm:mt-8" : ""
         }`}
       >
         {title}
       </h2>
       {subtitle && (
-        <p className="mx-auto mt-5 max-w-xl text-base leading-[1.75] text-slate-600 sm:text-lg">
+        <p className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-balance text-slate-600 sm:mt-7 sm:text-lg xl:max-w-2xl">
           {subtitle}
         </p>
       )}

@@ -32,7 +32,7 @@ export function SectionShell({
     <section
       id={id}
       className={cn(
-        "py-20 sm:py-24 lg:py-28",
+        "py-28 sm:py-36 xl:py-44",
         bgClasses[bg],
         className
       )}

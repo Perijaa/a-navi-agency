@@ -61,19 +61,21 @@ export function Contact() {
   };
 
   const labelClasses =
-    "mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-500";
+    "contact-form-label mb-2 block text-xs font-medium uppercase tracking-wider text-slate-500 sm:text-[13px]";
 
   return (
-    <SectionShell id="contact" bg="deep">
+    <SectionShell id="contact" bg="deep" className="!pt-[2cm]">
+      <div className="section-stack">
       <SectionHeader
         label="Contact"
         title="Book your tour"
         subtitle="Tell us which experience you want — we confirm availability within hours."
+        className="[&_h2]:!mt-7 [&_p]:!mt-8"
       />
 
-      <div className="section-content section-body grid gap-8 lg:grid-cols-5">
-        <aside className="lg:col-span-2">
-          <div className="space-y-6">
+        <div className="section-content grid gap-10 xl:grid-cols-5 xl:gap-14">
+        <aside className="window-stack xl:col-span-2">
+          <div className="window-stack">
             {promises.map((p, i) => (
               <motion.div
                 key={p.title}
@@ -81,47 +83,64 @@ export function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="flex gap-4"
+                className="card flex flex-col items-center gap-4 p-5 text-center sm:p-6 xl:flex-row xl:items-start xl:gap-4 xl:p-5 xl:text-left"
               >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-teal-50">
-                  <p.icon className="h-4 w-4 text-turquoise-600" />
+                <div className="icon-badge h-11 w-11 shrink-0 sm:h-12 sm:w-12">
+                  <p.icon className="h-5 w-5 text-turquoise-600 sm:h-[1.125rem] sm:w-[1.125rem]" />
                 </div>
-                <div>
-                  <h4 className="font-medium text-navy-900">{p.title}</h4>
-                  <p className="mt-0.5 text-sm text-slate-600">{p.description}</p>
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold text-navy-900 sm:text-base">
+                    {p.title}
+                  </h4>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:mt-2 sm:text-sm">
+                    {p.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-8 space-y-3 border-t border-slate-200 pt-8">
+          <div className="card space-y-4 p-5 text-center sm:space-y-4 sm:p-6 xl:text-left">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:text-[11px]">
+              Direct contact
+            </p>
             <a
               href="tel:+385991234567"
-              className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-turquoise-700"
+              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
             >
-              <Phone className="h-4 w-4 text-turquoise-600" />
+              <Phone className="h-4 w-4 shrink-0 text-turquoise-600" />
               +385 99 123 4567
             </a>
             <a
               href="mailto:info@a-navi-agency.com"
-              className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-turquoise-700"
+              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
             >
-              <Mail className="h-4 w-4 text-turquoise-600" />
+              <Mail className="h-4 w-4 shrink-0 text-turquoise-600" />
               info@a-navi-agency.com
             </a>
             <a
               href="https://wa.me/385991234567"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 text-sm text-slate-600 transition-colors hover:text-turquoise-700"
+              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
             >
-              <MessageCircle className="h-4 w-4 text-turquoise-600" />
+              <MessageCircle className="h-4 w-4 shrink-0 text-turquoise-600" />
               WhatsApp
             </a>
           </div>
         </aside>
 
-        <div className="card p-6 sm:p-8 lg:col-span-3">
+        <div className="contact-form-card card overflow-hidden p-9 sm:p-11 xl:col-span-3 xl:p-14">
+          {!submitted && (
+            <div className="mb-10 border-b border-slate-100 pb-8 text-center xl:text-left">
+              <h3 className="font-serif text-xl font-semibold text-navy-900 sm:text-2xl">
+                Reservation request
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-500 sm:text-[15px]">
+                Fill in the details — we&apos;ll confirm availability by email or WhatsApp.
+              </p>
+            </div>
+          )}
           {submitted ? (
             <motion.div
               initial={{ opacity: 0 }}
@@ -148,9 +167,9 @@ export function Contact() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit}>
-              <div className="mb-6">
+              <div className="mb-7">
                 <label className={labelClasses}>Which tour?</label>
-                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                <div className="contact-tour-picker-grid grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
                   {experiences.map((exp) => (
                     <button
                       key={exp.id}
@@ -161,14 +180,14 @@ export function Contact() {
                           experience: exp.id,
                         }))
                       }
-                      className={`flex items-center gap-2 rounded-lg border px-3 py-2.5 text-left text-sm transition-colors ${
+                      className={`tour-picker-btn ${
                         formData.experience === exp.id
-                          ? "border-turquoise-400 bg-teal-50 text-turquoise-800"
-                          : "border-slate-200 text-slate-700 hover:border-slate-300"
+                          ? "tour-picker-btn--active"
+                          : ""
                       }`}
                     >
                       <exp.icon
-                        className={`h-3.5 w-3.5 shrink-0 ${
+                        className={`h-4 w-4 shrink-0 sm:h-[1.125rem] sm:w-[1.125rem] ${
                           formData.experience === exp.id
                             ? "text-turquoise-600"
                             : "text-slate-400"
@@ -180,7 +199,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="mb-4 grid gap-4 sm:grid-cols-2">
+              <div className="mb-5 grid gap-5 xl:grid-cols-2">
                 <div>
                   <label className={labelClasses}>Preferred date</label>
                   <input
@@ -208,7 +227,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="mb-4 grid gap-4 sm:grid-cols-2">
+              <div className="mb-5 grid gap-5 xl:grid-cols-2">
                 <div>
                   <label className={labelClasses}>Full name</label>
                   <input
@@ -235,7 +254,7 @@ export function Contact() {
                 </div>
               </div>
 
-              <div className="mb-4">
+              <div className="mb-5">
                 <label className={labelClasses}>
                   Phone / WhatsApp{" "}
                   <span className="normal-case tracking-normal text-slate-400">
@@ -252,7 +271,7 @@ export function Contact() {
                 />
               </div>
 
-              <div className="mb-6">
+              <div className="mb-7">
                 <label className={labelClasses}>
                   Message{" "}
                   <span className="normal-case tracking-normal text-slate-400">
@@ -275,13 +294,14 @@ export function Contact() {
                 <ArrowRight className="h-4 w-4" />
               </button>
 
-              <p className="mt-4 text-center text-xs text-slate-500">
+              <p className="mt-6 text-center text-sm leading-relaxed text-slate-500 sm:text-[15px]">
                 No payment now &middot; Free cancellation 24h &middot; Reply
                 within hours
               </p>
             </form>
           )}
         </div>
+      </div>
       </div>
     </SectionShell>
   );
