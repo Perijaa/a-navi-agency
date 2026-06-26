@@ -10,7 +10,7 @@ export function Gallery() {
   const [featured, ...rest] = gallery;
 
   return (
-    <SectionShell id="gallery" bg="mid">
+    <SectionShell id="gallery" bg="mid" className="!pb-0">
       <div className="section-stack">
         <SectionHeader
           label="Gallery"
@@ -22,10 +22,11 @@ export function Gallery() {
         <div className="section-content flex flex-col gap-12 sm:gap-14 xl:gap-16">
           {featured && (
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="card group relative aspect-[16/10] overflow-hidden sm:aspect-[16/9]"
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="gallery-card card group relative aspect-[16/10] overflow-hidden sm:aspect-[16/9]"
             >
               <Image
                 src={featured.image}
@@ -33,15 +34,15 @@ export function Gallery() {
                 fill
                 priority
                 sizes="(max-width: 1280px) 100vw, 64rem"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                className="gallery-image object-cover"
               />
-              <div className="absolute inset-0 bg-navy-900/35" />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 via-navy-900/25 to-navy-900/50" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center px-8 text-center sm:px-10">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+              <div className="gallery-featured-overlay" />
+              <div className="absolute inset-0 flex flex-col items-end justify-end px-8 pb-10 text-left sm:px-12 sm:pb-12">
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/85 backdrop-blur-md sm:text-[11px]">
+                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-turquoise-300" aria-hidden />
                   {featured.location}
-                </p>
-                <p className="mx-auto mt-3 max-w-xl font-serif text-[clamp(1.125rem,2.5vw,1.625rem)] leading-snug text-balance text-white sm:mt-4">
+                </span>
+                <p className="mt-3 max-w-2xl font-serif text-[clamp(1.25rem,2.6vw,1.875rem)] font-medium leading-[1.2] text-balance text-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)] sm:mt-4">
                   {featured.caption}
                 </p>
               </div>
@@ -52,20 +53,26 @@ export function Gallery() {
             {rest.map((item, i) => (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.04 }}
-                className="card group relative aspect-[4/3] overflow-hidden"
+                transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
+                className="gallery-card card group relative aspect-[4/3] overflow-hidden"
               >
                 <Image
                   src={item.image}
                   alt={item.alt}
                   fill
+                  loading="lazy"
                   sizes="(max-width: 1280px) 50vw, 16rem"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  className="gallery-image object-cover"
                 />
-                <div className="absolute inset-0 bg-navy-900/0 transition-colors duration-300 group-hover:bg-navy-900/15" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
+                <div className="gallery-caption">
+                  <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white/80">
+                    {item.location}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

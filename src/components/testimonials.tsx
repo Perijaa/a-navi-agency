@@ -2,28 +2,41 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, MapPin, Quote } from "lucide-react";
+import { Star, MapPin, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionShell } from "@/components/ui/section-shell";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 export function Testimonials() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reducedMotion = useReducedMotion();
 
-  const next = useCallback(
-    () => setActive((prev) => (prev + 1) % testimonials.length),
-    []
-  );
+  const count = testimonials.length;
+
+  const goTo = useCallback((index: number) => {
+    setActive((index + count) % count);
+  }, [count]);
+
+  const next = useCallback(() => {
+    goTo(active + 1);
+  }, [active, goTo]);
+
+  const prev = useCallback(() => {
+    goTo(active - 1);
+  }, [active, goTo]);
 
   useEffect(() => {
+    if (paused || reducedMotion) return;
     const timer = setInterval(next, 7000);
     return () => clearInterval(timer);
-  }, [next]);
+  }, [next, paused, reducedMotion]);
 
   const t = testimonials[active];
 
   return (
-    <SectionShell id="reviews" bg="deep">
+    <SectionShell id="reviews" bg="deep" className="!pt-[2cm] !pb-0">
       <div className="section-stack">
         <SectionHeader
           label="Reviews"
@@ -33,23 +46,30 @@ export function Testimonials() {
         />
 
         <div className="section-content flex justify-center">
-          <div className="section-panel reviews-panel relative mx-auto flex min-h-[17rem] w-full max-w-3xl flex-col overflow-hidden bg-gradient-to-b from-white to-slate-50/50 sm:min-h-[19rem]">
-            <Quote
-              className="pointer-events-none absolute left-1/2 top-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 text-teal-100/90 sm:h-16 sm:w-16"
-              aria-hidden
-            />
+          <div
+            className="reviews-panel"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocusCapture={() => setPaused(true)}
+            onBlurCapture={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget)) {
+                setPaused(false);
+              }
+            }}
+          >
+            <div className="reviews-panel-stage" aria-live="polite">
+              <Quote className="reviews-panel-quote" aria-hidden />
 
-            <div className="relative flex flex-1 flex-col items-center justify-center px-8 py-10 text-center sm:px-12 sm:py-12 xl:px-14 xl:py-14">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex w-full flex-col items-center justify-center"
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+                  className="reviews-panel-slide"
                 >
-                  <div className="mb-6 flex justify-center gap-1.5 sm:mb-7">
+                  <div className="reviews-panel-stars">
                     {Array.from({ length: t.rating }).map((_, j) => (
                       <Star
                         key={j}
@@ -58,36 +78,61 @@ export function Testimonials() {
                     ))}
                   </div>
 
-                  <blockquote className="mx-auto max-w-2xl font-serif text-[clamp(1.125rem,2.4vw,1.5rem)] font-medium leading-[1.75] text-balance text-navy-900">
+                  <blockquote className="reviews-panel-quote-text">
                     &ldquo;{t.quote}&rdquo;
                   </blockquote>
 
-                  <div className="mt-8 flex w-full max-w-2xl flex-col items-center gap-2.5 border-t border-slate-200/80 pt-7 sm:mt-9 sm:gap-3 sm:pt-8">
-                    <span className="text-base font-semibold text-navy-900">
-                      {t.name}
-                    </span>
-                    <span className="flex items-center justify-center gap-1.5 text-[15px] text-slate-500 sm:text-base">
-                      <MapPin className="h-4 w-4 text-turquoise-600" />
-                      {t.country} &middot; {t.experience}
-                    </span>
+                  <div className="reviews-panel-author">
+                    <div className="flex items-center gap-3">
+                      <span className="reviews-author-avatar" aria-hidden>
+                        {t.name.charAt(0)}
+                      </span>
+                      <span className="flex flex-col items-start">
+                        <span className="reviews-panel-name">{t.name}</span>
+                        <span className="reviews-panel-meta">
+                          <MapPin className="h-3.5 w-3.5 shrink-0 text-turquoise-600" />
+                          {t.country} &middot; {t.experience}
+                        </span>
+                      </span>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <div className="relative flex justify-center gap-3 pb-8 pt-2 sm:pb-9">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === active
-                      ? "w-10 bg-turquoise-500"
-                      : "w-2 bg-slate-200 hover:bg-slate-300"
-                  }`}
-                  aria-label={`Review ${i + 1}`}
-                />
-              ))}
+            <div className="reviews-panel-controls">
+              <button
+                type="button"
+                onClick={prev}
+                className="reviews-panel-nav"
+                aria-label="Previous review"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="reviews-panel-dots">
+                {testimonials.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => goTo(i)}
+                    className={`reviews-panel-dot${
+                      i === active ? " reviews-panel-dot--active" : ""
+                    }`}
+                    aria-label={`Review ${i + 1}`}
+                    aria-current={i === active ? "true" : undefined}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={next}
+                className="reviews-panel-nav"
+                aria-label="Next review"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
           </div>
         </div>

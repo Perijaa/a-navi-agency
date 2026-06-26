@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050614" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="A-Navi Digital — premium digitalna agencija. Strategija, dizajn, development i AI integracije za brendove koji traže rast i premium dojam."
+    />
+
+    <!-- Performance: preconnect + preload critical font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>A-Navi Digital · Premium digitalna agencija</title>
+  </head>
+  <body>
+    <!-- ── Ambient background ─────────────────────────────────── -->
+    <div class="bg-fx" aria-hidden="true"></div>
+    <div class="orb orb--1" aria-hidden="true"></div>
+    <div class="orb orb--2" aria-hidden="true"></div>
+    <div class="orb orb--3" aria-hidden="true"></div>
+
+    <!-- ── Navbar ─────────────────────────────────────────────── -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#hero" class="brand">
+          <span class="brand__mark"><i class="fa-solid fa-bolt"></i></span>
+          A-Navi <small>Digital</small>
+        </a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="#usluge">Usluge</a></li>
+            <li><a href="#rezultati">Rezultati</a></li>
+            <li><a href="#proces">Proces</a></li>
+            <li><a href="#recenzije">Recenzije</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#kontakt" class="btn btn--primary btn--sm">
+            Besplatan poziv
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+          </a>
+          <button
+            type="button"
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Otvori izbornik"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <span class="menu-btn__bars" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Mobile slide-in menu ──────────────────────────────── -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+      <ul>
+        <li><a href="#usluge">Usluge</a></li>
+        <li><a href="#rezultati">Rezultati</a></li>
+        <li><a href="#proces">Proces</a></li>
+        <li><a href="#recenzije">Recenzije</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#kontakt" class="btn btn--primary">
+        Besplatan poziv
+        <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+    </nav>
+
+    <main>
+      <!-- ── Hero ─────────────────────────────────────────────── -->
+      <section class="hero" id="hero">
+        <div class="container hero__inner">
+          <span class="hero__pill">
+            <span class="hero__pill-dot">v3</span>
+            Nova generacija digitalnih studija &nbsp;·&nbsp; 2026
+          </span>
+
+          <h1>
+            <span class="hero__title-line"><span>Premium dizajn,</span></span>
+            <span class="hero__title-line">
+              <span class="gradient-text">measurable growth.</span>
+            </span>
+          </h1>
+
+          <p class="hero__sub">
+            Strategija, dizajn i development za brendove koji ne biraju
+            jeftino — biraju rezultate. Od landing stranica do AI-vođenih
+            platformi koje konvertiraju.
+          </p>
+
+          <div class="hero__cta">
+            <a href="#kontakt" class="btn btn--primary">
+              Započni projekt
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#usluge" class="btn btn--ghost">
+              <i class="fa-solid fa-play" aria-hidden="true"></i>
+              Pogledaj usluge
+            </a>
+          </div>
+
+          <div class="hero__assurances">
+            <span><i class="fa-solid fa-check"></i> 48-satni odgovor</span>
+            <span><i class="fa-solid fa-check"></i> Fiksna cijena</span>
+            <span><i class="fa-solid fa-check"></i> Bez ugovornih obveza</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Trusted-by row ───────────────────────────────────── -->
+      <section class="trusted">
+        <div class="container">
+          <p class="trusted__label">Povjerenje brendova diljem regije</p>
+          <div class="trusted__row">
+            <span><i class="fa-solid fa-mountain"></i>Northpeak</span>
+            <span><i class="fa-solid fa-leaf"></i>Bloom Studio</span>
+            <span><i class="fa-solid fa-anchor"></i>Adriatic Homes</span>
+            <span><i class="fa-solid fa-cube"></i>TechFlow</span>
+            <span><i class="fa-solid fa-fire"></i>Forge Labs</span>
+            <span><i class="fa-solid fa-compass"></i>Atlas Travel</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Services ─────────────────────────────────────────── -->
+      <section class="section" id="usluge">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">
+              <i class="fa-solid fa-grid-2"></i> Usluge
+            </span>
+            <h2 class="section-title">
+              Sve što vam treba —
+              <span class="brand-text">pod jednim krovom.</span>
+            </h2>
+            <p class="section-desc">
+              End-to-end digitalni partner. Od strategije i brand sustava do
+              razvoja, lansiranja i kontinuiranog rasta.
+            </p>
+          </header>
+
+          <div class="services">
+            <article class="service glass glass-card-shine reveal">
+              <div class="service__icon"><i class="fa-solid fa-palette"></i></div>
+              <h3>Brand &amp; UI dizajn</h3>
+              <p>
+                Vizualni identitet, design system i sučelja koja izgledaju
+                kao proizvod milijunske kompanije — ne template.
+              </p>
+              <div class="service__tags">
+                <span>Identity</span><span>Design system</span><span>UX</span>
+              </div>
+            </article>
+
+            <article class="service glass glass-card-shine reveal reveal--d1">
+              <div class="service__icon"><i class="fa-solid fa-code"></i></div>
+              <h3>Web &amp; app development</h3>
+              <p>
+                Next.js, React i čisti HTML — brze, responzivne i SEO-spremne
+                stranice koje se učitavaju ispod 1 sekunde.
+              </p>
+              <div class="service__tags">
+                <span>Next.js</span><span>React</span><span>API</span>
+              </div>
+            </article>
+
+            <article class="service glass glass-card-shine reveal reveal--d2">
+              <div class="service__icon"><i class="fa-solid fa-chart-line"></i></div>
+              <h3>Growth &amp; SEO</h3>
+              <p>
+                Analitika, A/B testovi i organski rast. Pretvaramo posjete u
+                kvalificirane upite i mjerimo svaki korak.
+              </p>
+              <div class="service__tags">
+                <span>SEO</span><span>A/B testing</span><span>Analytics</span>
+              </div>
+            </article>
+
+            <article class="service glass glass-card-shine reveal">
+              <div class="service__icon"><i class="fa-solid fa-bullhorn"></i></div>
+              <h3>Digital marketing</h3>
+              <p>
+                Meta, Google i email kampanje s jasnim ROI-jem. Kreativa koja
+                odgovara vašem premium pozicioniranju.
+              </p>
+              <div class="service__tags">
+                <span>Meta Ads</span><span>Google</span><span>Email</span>
+              </div>
+            </article>
+
+            <article class="service glass glass-card-shine reveal reveal--d1">
+              <div class="service__icon"><i class="fa-solid fa-robot"></i></div>
+              <h3>AI integracije</h3>
+              <p>
+                Chatboti, automatizacija i AI alati ugrađeni u vaš workflow —
+                bez hypea, s realnom vrijednošću od prvog tjedna.
+              </p>
+              <div class="service__tags">
+                <span>OpenAI</span><span>Automation</span><span>RAG</span>
+              </div>
+            </article>
+
+            <article class="service glass glass-card-shine reveal reveal--d2">
+              <div class="service__icon"><i class="fa-solid fa-headset"></i></div>
+              <h3>Retainer &amp; podrška</h3>
+              <p>
+                Mjesečno održavanje, ažuriranja i kontinuirano poboljšavanje
+                — vaš digitalni tim na zahtjev, bez režije.
+              </p>
+              <div class="service__tags">
+                <span>SLA 24h</span><span>Updates</span><span>Monitoring</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Stats (animated counters) ────────────────────────── -->
+      <section class="section" id="rezultati">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">
+              <i class="fa-solid fa-chart-simple"></i> Rezultati
+            </span>
+            <h2 class="section-title">
+              Brojke koje
+              <span class="brand-text">govore same za sebe.</span>
+            </h2>
+            <p class="section-desc">
+              Klijenti koji rade s nama vide mjerljiv rast — ne samo lijep
+              dizajn. Tri godine i 120+ projekata kasnije.
+            </p>
+          </header>
+
+          <div class="stats">
+            <div class="stat glass reveal">
+              <div
+                class="stat__value"
+                data-counter
+                data-target="120"
+                data-prefix="+"
+              >0</div>
+              <div class="stat__label">Klijenata</div>
+            </div>
+            <div class="stat glass reveal reveal--d1">
+              <div
+                class="stat__value"
+                data-counter
+                data-target="300"
+                data-prefix="+"
+                data-suffix="%"
+              >0</div>
+              <div class="stat__label">Rast konverzija</div>
+            </div>
+            <div class="stat glass reveal reveal--d2">
+              <div
+                class="stat__value"
+                data-counter
+                data-target="48"
+                data-suffix="h"
+              >0</div>
+              <div class="stat__label">Vrijeme odgovora</div>
+            </div>
+            <div class="stat glass reveal reveal--d3">
+              <div
+                class="stat__value"
+                data-counter
+                data-target="4.9"
+                data-decimals="1"
+                data-suffix="/5"
+              >0</div>
+              <div class="stat__label">Ocjena klijenata</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Process (3 steps) ────────────────────────────────── -->
+      <section class="section" id="proces">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">
+              <i class="fa-solid fa-route"></i> Proces
+            </span>
+            <h2 class="section-title">
+              Tri koraka do
+              <span class="brand-text">lansiranja.</span>
+            </h2>
+            <p class="section-desc">
+              Transparentno, bez iznenađenja. Znate točno što dobivate i
+              kada — od prvog poziva do produkcije.
+            </p>
+          </header>
+
+          <div class="process">
+            <article class="step glass glass-card-shine reveal">
+              <span class="step__num">Discovery</span>
+              <h3>Strategija &amp; plan</h3>
+              <p>
+                Pozivamo se, analiziramo tržište i konkurenciju, definiramo
+                ciljeve i KPI-jeve. Dobivate jasan roadmap prije dizajna.
+              </p>
+              <span class="step__meta">
+                <i class="fa-solid fa-clock"></i> 1 tjedan
+              </span>
+            </article>
+
+            <article class="step glass glass-card-shine reveal reveal--d1">
+              <span class="step__num">Build</span>
+              <h3>Dizajn &amp; development</h3>
+              <p>
+                Wireframe → high-fidelity → development s tjednim
+                updateima. Vi odobravate svaku fazu prije sljedeće.
+              </p>
+              <span class="step__meta">
+                <i class="fa-solid fa-clock"></i> 3–6 tjedana
+              </span>
+            </article>
+
+            <article class="step glass glass-card-shine reveal reveal--d2">
+              <span class="step__num">Launch</span>
+              <h3>Lansiranje &amp; rast</h3>
+              <p>
+                QA, optimizacija brzine, SEO setup i analitika. Nakon
+                lansiranja pratimo performanse i kontinuirano iteriramo.
+              </p>
+              <span class="step__meta">
+                <i class="fa-solid fa-clock"></i> Stalno
+              </span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Reviews ──────────────────────────────────────────── -->
+      <section class="section" id="recenzije">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">
+              <i class="fa-solid fa-star"></i> Recenzije
+            </span>
+            <h2 class="section-title">
+              Što kažu
+              <span class="brand-text">naši klijenti.</span>
+            </h2>
+            <p class="section-desc">
+              Od startupova do etabliranih brendova — isti standard
+              kvalitete, isti fokus na rezultate.
+            </p>
+          </header>
+
+          <div class="reviews">
+            <article class="review glass reveal">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Konverzija porasla 280% u tri mjeseca. Dizajn izgleda kao
+                da smo angažirali agenciju iz Silicijske doline."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">MK</div>
+                <div>
+                  <div class="review__name">Marko Kovač</div>
+                  <div class="review__role">CEO · TechFlow</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--d1">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Profesionalci od prvog dana. Jasna komunikacija, rokovi
+                poštovani, rezultat nadmašio očekivanja."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">AP</div>
+                <div>
+                  <div class="review__name">Ana Petrović</div>
+                  <div class="review__role">Founder · Bloom Studio</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--d2">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Investicija od 8.000€ vratila se u 4 mjeseca. Web sada radi
+                za nas 24/7 — generira kvalificirane upite."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">IH</div>
+                <div>
+                  <div class="review__name">Ivan Horvat</div>
+                  <div class="review__role">Direktor · Adriatic Homes</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Tim koji razumije i biznis i estetiku. Naša brand percepcija
+                potpuno se promijenila nakon redizajna."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">LV</div>
+                <div>
+                  <div class="review__name">Lana Vidović</div>
+                  <div class="review__role">CMO · Northpeak</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--d1">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Brzo, precizno, premium. Nismo dobili samo dizajn — dobili
+                smo growth partnera koji misli šire od pixela."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">TB</div>
+                <div>
+                  <div class="review__name">Tomislav Babić</div>
+                  <div class="review__role">Co-founder · Forge Labs</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--d2">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Naša prva agencija koja je dosegla brief iz prvog kruga.
+                Nakon launcha bookings su porasli za 4x."
+              </p>
+              <div class="review__author">
+                <div class="review__avatar">EM</div>
+                <div>
+                  <div class="review__name">Ela Marić</div>
+                  <div class="review__role">Founder · Atlas Travel</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA strip ────────────────────────────────────────── -->
+      <section class="section">
+        <div class="container">
+          <div class="cta-strip glass reveal">
+            <h2>
+              Spremni za projekt
+              <span class="brand-text">vrijedan rasta?</span>
+            </h2>
+            <p>
+              Ograničen broj klijenata mjesečno. Prvi poziv je besplatan i
+              ne obvezuje — vidjet ćemo odgovaramo li jedni drugima.
+            </p>
+            <div class="cta-strip__actions">
+              <a href="#kontakt" class="btn btn--primary">
+                Rezerviraj besplatan poziv
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a
+                href="https://wa.me/385991234567?text=Pozdrav%2C%20interesira%20me%20suradnja%20s%20A-Navi%20Digital."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn--whatsapp"
+              >
+                <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Contact ──────────────────────────────────────────── -->
+      <section class="section" id="kontakt">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">
+              <i class="fa-solid fa-paper-plane"></i> Kontakt
+            </span>
+            <h2 class="section-title">
+              Pošaljite
+              <span class="brand-text">upit.</span>
+            </h2>
+            <p class="section-desc">
+              Odgovaramo u roku od 48 sati radnim danom. Bez prodajnih
+              skripti — direktno do osobe koja vodi projekte.
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <form class="contact-form glass reveal" id="contactForm" novalidate>
+              <div class="field--row">
+                <div class="field">
+                  <label for="name">Ime i prezime</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Vaše ime"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="vi@tvrtka.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field--row">
+                <div class="field">
+                  <label for="service">Usluga</label>
+                  <select id="service" name="service" required>
+                    <option value="">Odaberite uslugu</option>
+                    <option>Brand &amp; UI dizajn</option>
+                    <option>Web development</option>
+                    <option>Growth &amp; SEO</option>
+                    <option>Digital marketing</option>
+                    <option>AI integracije</option>
+                    <option>Retainer &amp; podrška</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="budget">Budžet</label>
+                  <select id="budget" name="budget">
+                    <option value="">Odaberite raspon</option>
+                    <option>3.000 – 5.000 €</option>
+                    <option>5.000 – 10.000 €</option>
+                    <option>10.000 – 25.000 €</option>
+                    <option>25.000 €+</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Poruka</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Opišite projekt, rokove i ciljeve..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary" style="width: 100%">
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                Pošalji upit
+              </button>
+
+              <p class="form-ok" id="formOk" role="status">
+                Hvala! Primili smo vaš upit — javit ćemo vam se uskoro.
+              </p>
+            </form>
+
+            <aside class="contact-aside glass reveal reveal--d1">
+              <h3>Preferirate brži kontakt?</h3>
+              <p>
+                Najbrža reakcija je putem WhatsAppa. Radimo s klijentima
+                diljem regije — sastanci online ili uživo u Zagrebu.
+              </p>
+
+              <ul class="contact-list">
+                <li>
+                  <a
+                    href="https://wa.me/385991234567?text=Pozdrav%2C%20interesira%20me%20suradnja."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i>
+                    +385 99 123 4567
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+385991234567">
+                    <i class="fa-solid fa-phone"></i>
+                    Direktan poziv
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:hello@a-navi.digital">
+                    <i class="fa-solid fa-envelope"></i>
+                    hello@a-navi.digital
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://cal.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-solid fa-calendar"></i>
+                    Rezerviraj poziv
+                  </a>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Footer ─────────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container">
+        <a href="#hero" class="footer__brand">
+          <span class="brand__mark"><i class="fa-solid fa-bolt"></i></span>
+          A-Navi Digital
+        </a>
+        <div class="footer__links">
+          <a href="#usluge">Usluge</a>
+          <a href="#rezultati">Rezultati</a>
+          <a href="#proces">Proces</a>
+          <a href="#recenzije">Recenzije</a>
+          <a href="#kontakt">Kontakt</a>
+          <a
+            href="https://wa.me/385991234567"
+            target="_blank"
+            rel="noopener noreferrer"
+          >WhatsApp</a>
+        </div>
+        <p class="footer__copy">
+          &copy; <span id="year"></span> A-Navi Digital · Sva prava pridržana
+        </p>
+      </div>
+    </footer>
+
+    <!-- ── Floating WhatsApp ──────────────────────────────────── -->
+    <a
+      href="https://wa.me/385991234567?text=Pozdrav%2C%20interesira%20me%20suradnja."
+      class="fab"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Pošaljite poruku na WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

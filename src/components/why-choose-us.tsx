@@ -29,7 +29,7 @@ const reasons: { icon: LucideIcon; title: string; description: string }[] = [
 
 export function WhyChooseUs() {
   return (
-    <SectionShell bg="deep" className="pt-32 pb-32 sm:pt-36 sm:pb-36 xl:pt-44 xl:pb-40">
+    <SectionShell bg="deep" className="!pt-[4rem] sm:!pt-[5rem] xl:!pt-[6rem]">
       <div className="section-stack">
         <SectionHeader
           label="Why A-Navi"
@@ -46,15 +46,15 @@ export function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="card flex min-h-[12rem] flex-col items-center border-t-4 border-t-teal-400/80 p-9 text-center sm:min-h-[13rem] sm:p-10 xl:p-12"
+              className="card flex min-h-[12rem] flex-col items-center p-9 text-center sm:min-h-[13rem] sm:p-10 xl:p-12"
             >
-              <div className="icon-badge h-16 w-16 sm:h-[4.5rem] sm:w-[4.5rem]">
+              <div className="icon-badge h-14 w-14 sm:h-16 sm:w-16">
                 <point.icon className="h-7 w-7 text-turquoise-600" />
               </div>
-              <h3 className="mt-7 text-lg font-semibold leading-snug text-navy-900 sm:mt-8 sm:text-xl">
+              <h3 className="mt-7 text-lg font-semibold leading-snug text-stone-800 sm:mt-8 sm:text-xl">
                 {point.title}
               </h3>
-              <p className="mt-4 max-w-[30ch] text-[15px] leading-[1.8] text-balance text-slate-600 sm:mt-5 sm:text-base">
+              <p className="mt-4 max-w-[30ch] text-[15px] leading-[1.8] text-balance text-stone-500 sm:mt-5 sm:text-base">
                 {point.description}
               </p>
             </motion.div>

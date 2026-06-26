@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <meta
+      name="description"
+      content="A-Navi Agency — premium boat tours from Omiš, Croatia. Glass-bottom rides through the Cetina canyon, taxi boats, rentals, semi-submarine and rafting on the Adriatic."
+    />
+
+    <!-- Preconnects for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+
+    <!-- Manrope (body) + Space Grotesk (headings) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>A-Navi Agency — Boat Tours from Omiš, Croatia</title>
+  </head>
+  <body>
+    <!-- ── Ambient background (orbs + grid) ─────────────────── -->
+    <div class="bg-fx" aria-hidden="true"></div>
+
+    <!-- ── Sticky transparent navbar ────────────────────────── -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="#hero" class="brand">
+          A-Navi <small>Omiš</small>
+        </a>
+
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#omis">Omiš</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#contact" class="btn btn--gold">
+            <i class="fa-solid fa-anchor" aria-hidden="true"></i>
+            Reserve
+          </a>
+          <button
+            type="button"
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="Open menu"
+            aria-controls="mobileMenu"
+            aria-expanded="false"
+          >
+            <span class="menu-btn__bars" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Mobile slide-in menu ─────────────────────────────── -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+      <ul>
+        <li><a href="#tours">Tours</a></li>
+        <li><a href="#omis">Omiš</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn--gold">
+        <i class="fa-solid fa-anchor"></i> Reserve
+      </a>
+    </nav>
+
+    <main>
+      <!-- ── Hero: full-screen with image, floating badges, dual CTA ── -->
+      <section class="hero" id="hero">
+        <div class="hero__media">
+          <img
+            src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1920&q=80"
+            alt="Cetina canyon at golden hour, Omiš, Croatia"
+            fetchpriority="high"
+          />
+        </div>
+
+        <div class="container hero__content">
+          <span class="hero__location reveal">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            Omiš · Dalmatia · Croatia
+          </span>
+
+          <h1 class="reveal reveal--delay-1">
+            Where the canyon
+            <span class="accent">meets the sea</span>
+          </h1>
+
+          <p class="hero__lead reveal reveal--delay-2">
+            Glass-bottom boats through the Cetina gorge, taxi boats to
+            Radmanove Mlinice, hidden Adriatic beaches, semi-submarine dives
+            and canyon rafting — all from one harbour.
+          </p>
+
+          <div class="hero__cta reveal reveal--delay-3">
+            <a href="#tours" class="btn btn--gold">
+              Explore tours
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <a href="#contact" class="btn btn--ghost">
+              Book your spot
+            </a>
+          </div>
+
+          <div class="hero__badges reveal reveal--delay-4">
+            <span class="badge">
+              <i class="fa-solid fa-star" aria-hidden="true"></i> 4.9 rating
+            </span>
+            <span class="badge">
+              <i class="fa-solid fa-users" aria-hidden="true"></i> 50k+ guests
+            </span>
+            <span class="badge badge--price">From €15</span>
+          </div>
+        </div>
+
+        <a href="#tours" class="hero__scroll" aria-label="Scroll to tours">
+          Scroll
+          <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </a>
+      </section>
+
+      <!-- ── Tours: cards with image overlay + price badge ─── -->
+      <section class="section" id="tours">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">Experiences</span>
+            <h2 class="section-title">Five ways to discover Omiš</h2>
+            <p class="section-lead">
+              Hand-picked tours — from gentle family rides through the Cetina
+              canyon to adrenaline-fuelled rafting and underwater adventures
+              off the Dalmatian coast.
+            </p>
+          </header>
+
+          <div class="tours-grid">
+            <!-- 1. Glass Boat -->
+            <article class="tour-card reveal">
+              <div class="tour-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80"
+                  alt="Glass-bottom boat on the Cetina"
+                  loading="lazy"
+                />
+                <span class="tour-card__tag">Most Popular</span>
+                <span class="tour-card__price">€20</span>
+              </div>
+              <div class="tour-card__body">
+                <h3 class="tour-card__title">Glass Boat</h3>
+                <p class="tour-card__tagline">
+                  Where the Cetina reveals its secrets
+                </p>
+                <p class="tour-card__desc">
+                  Glide into the Cetina canyon and watch the ancient riverbed
+                  come alive beneath your feet — fish, limestone, and the
+                  hidden estate of Radmanove Mlinice.
+                </p>
+                <div class="tour-card__meta">
+                  <span><i class="fa-regular fa-clock"></i> 30–35 min</span>
+                  <span><i class="fa-solid fa-user-group"></i> All ages</span>
+                  <span><i class="fa-solid fa-paw"></i> Pet-friendly</span>
+                </div>
+                <div class="tour-card__cta">
+                  <a href="#contact" class="tour-card__link">
+                    Reserve <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2. Taxi Boat -->
+            <article class="tour-card reveal reveal--delay-1">
+              <div class="tour-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=900&q=80"
+                  alt="Cruise through the Cetina gorge"
+                  loading="lazy"
+                />
+                <span class="tour-card__tag">Scenic</span>
+                <span class="tour-card__price">€15</span>
+              </div>
+              <div class="tour-card__body">
+                <h3 class="tour-card__title">Taxi Boat</h3>
+                <p class="tour-card__tagline">
+                  The old Dalmatian way upriver
+                </p>
+                <p class="tour-card__desc">
+                  A 30-minute cruise through the towering Cetina canyon, then
+                  a 1.5-hour break at the 17th-century mill estate of
+                  Radmanove Mlinice.
+                </p>
+                <div class="tour-card__meta">
+                  <span><i class="fa-regular fa-clock"></i> 2 hours</span>
+                  <span><i class="fa-solid fa-mountain"></i> Canyon stop</span>
+                  <span><i class="fa-solid fa-water"></i> Swim spots</span>
+                </div>
+                <div class="tour-card__cta">
+                  <a href="#contact" class="tour-card__link">
+                    Reserve <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 3. Rent a Boat -->
+            <article class="tour-card reveal reveal--delay-2">
+              <div class="tour-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=900&q=80"
+                  alt="Open-deck rental boat on the Adriatic"
+                  loading="lazy"
+                />
+                <span class="tour-card__tag">Freedom</span>
+                <span class="tour-card__price">€70</span>
+              </div>
+              <div class="tour-card__body">
+                <h3 class="tour-card__title">Rent a Boat</h3>
+                <p class="tour-card__tagline">
+                  Your own course, river to open sea
+                </p>
+                <p class="tour-card__desc">
+                  Take the helm and explore — upriver to the canyon or along
+                  the Dalmatian coast to hidden beaches only reachable by
+                  water. No licence needed.
+                </p>
+                <div class="tour-card__meta">
+                  <span><i class="fa-regular fa-clock"></i> 3h – full day</span>
+                  <span><i class="fa-solid fa-id-card"></i> No licence</span>
+                  <span><i class="fa-solid fa-gas-pump"></i> Fuel included</span>
+                </div>
+                <div class="tour-card__cta">
+                  <a href="#contact" class="tour-card__link">
+                    Reserve <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 4. Semi Submarine -->
+            <article class="tour-card reveal reveal--delay-3">
+              <div class="tour-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=900&q=80"
+                  alt="Underwater view from semi-submarine"
+                  loading="lazy"
+                />
+                <span class="tour-card__tag">Underwater</span>
+                <span class="tour-card__price">€20</span>
+              </div>
+              <div class="tour-card__body">
+                <h3 class="tour-card__title">Semi Submarine</h3>
+                <p class="tour-card__tagline">
+                  Below the Adriatic, off the Omiš coast
+                </p>
+                <p class="tour-card__desc">
+                  Step below the waterline and meet the marine life of the
+                  Dalmatian sea — plus the silent silhouette of a WWII
+                  shipwreck on the seabed.
+                </p>
+                <div class="tour-card__meta">
+                  <span><i class="fa-regular fa-clock"></i> 1 hour</span>
+                  <span><i class="fa-solid fa-eye"></i> Panoramic windows</span>
+                  <span><i class="fa-solid fa-microphone"></i> Marine guide</span>
+                </div>
+                <div class="tour-card__cta">
+                  <a href="#contact" class="tour-card__link">
+                    Reserve <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 5. Rafting -->
+            <article class="tour-card reveal reveal--delay-4">
+              <div class="tour-card__media">
+                <img
+                  src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=900&q=80"
+                  alt="Rafting through the Cetina canyon"
+                  loading="lazy"
+                />
+                <span class="tour-card__tag">Adventure</span>
+                <span class="tour-card__price">€45</span>
+              </div>
+              <div class="tour-card__body">
+                <h3 class="tour-card__title">Cetina River Rafting</h3>
+                <p class="tour-card__tagline">
+                  12 km through Dalmatia's wildest canyon
+                </p>
+                <p class="tour-card__desc">
+                  A 2.5-hour descent through one of Croatia's most dramatic
+                  gorges — rapids, cliff jumps and two wild swimming stops
+                  in turquoise pools.
+                </p>
+                <div class="tour-card__meta">
+                  <span><i class="fa-regular fa-clock"></i> ~2.5 hours</span>
+                  <span><i class="fa-solid fa-helmet-safety"></i> Gear included</span>
+                  <span><i class="fa-solid fa-child-reaching"></i> Ages 3+</span>
+                </div>
+                <div class="tour-card__cta">
+                  <a href="#contact" class="tour-card__link">
+                    Reserve <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 6. CTA card -->
+            <article class="tour-card glass reveal">
+              <div
+                class="tour-card__body"
+                style="
+                  align-items: center;
+                  justify-content: center;
+                  text-align: center;
+                  min-height: 18rem;
+                "
+              >
+                <h3 class="tour-card__title">Still deciding?</h3>
+                <p class="tour-card__desc">
+                  We'll match you to the right tour based on your group, time
+                  in Omiš, and what you want to see.
+                </p>
+                <div class="tour-card__cta" style="justify-content: center">
+                  <a href="#contact" class="btn btn--primary">
+                    Get a recommendation
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Omiš: animated stats ─────────────────────────── -->
+      <section class="section omis" id="omis">
+        <div class="container">
+          <div class="omis-grid">
+            <div class="omis-copy reveal">
+              <span class="eyebrow">About Omiš</span>
+              <h2 class="section-title">
+                Where the Cetina meets the&nbsp;Adriatic.
+              </h2>
+              <p>
+                Tucked between the towering canyon walls and the open sea,
+                Omiš is one of Dalmatia's best-kept secrets — a medieval
+                pirate town turned premium gateway to the Croatian coast.
+                Our family has been on this promenade for more than fifteen
+                seasons.
+              </p>
+              <p style="margin-top: 1rem">
+                Every tour starts within a five-minute walk of the old town.
+                No coaches, no commute — just step from the cobblestones onto
+                the boat.
+              </p>
+            </div>
+
+            <div class="stats reveal reveal--delay-1">
+              <div class="stat">
+                <div
+                  class="stat__value"
+                  data-counter
+                  data-target="1000"
+                  data-suffix="+"
+                >0</div>
+                <div class="stat__label">Tours completed</div>
+              </div>
+              <div class="stat">
+                <div
+                  class="stat__value"
+                  data-counter
+                  data-target="15"
+                  data-suffix="+"
+                >0</div>
+                <div class="stat__label">Years in Omiš</div>
+              </div>
+              <div class="stat">
+                <div
+                  class="stat__value"
+                  data-counter
+                  data-target="4.9"
+                  data-decimals="1"
+                >0</div>
+                <div class="stat__label">Guest rating</div>
+              </div>
+              <div class="stat">
+                <div
+                  class="stat__value"
+                  data-counter
+                  data-target="50000"
+                  data-suffix="+"
+                >0</div>
+                <div class="stat__label">Happy guests</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Gallery: responsive masonry grid ─────────────── -->
+      <section class="section" id="gallery">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">Gallery</span>
+            <h2 class="section-title">Scenes from our tours</h2>
+            <p class="section-lead">
+              The Cetina canyon, the Dalmatian coastline, and everything in
+              between — straight from this season's guests.
+            </p>
+          </header>
+
+          <div class="gallery-grid">
+            <figure class="gallery-item gallery-item--hero reveal">
+              <img
+                src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1200&q=80"
+                alt="Cetina canyon from above"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Cetina Canyon, Omiš</span>
+                <strong>Golden hour over the gorge</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item gallery-item--tall reveal reveal--delay-1">
+              <img
+                src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80"
+                alt="Crystal clear Cetina waters"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Glass Boat Route</span>
+                <strong>Crystal-clear riverbed</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal reveal--delay-2">
+              <img
+                src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80"
+                alt="Rafting in the canyon"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Cetina Rafting</span>
+                <strong>12 km of canyon</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item gallery-item--wide reveal reveal--delay-3">
+              <img
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80"
+                alt="Adriatic coast off Omiš"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Omiš Riviera</span>
+                <strong>Past the river mouth</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item gallery-item--tall reveal">
+              <img
+                src="https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=800&q=80"
+                alt="Sunset over the Dalmatian coast"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Omiš Harbour</span>
+                <strong>Sunset from the fortress</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal reveal--delay-1">
+              <img
+                src="https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800&q=80"
+                alt="Underwater marine life"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Semi Submarine</span>
+                <strong>Below the surface</strong>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item reveal reveal--delay-2">
+              <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
+                alt="Hidden Dalmatian beach"
+                loading="lazy"
+              />
+              <figcaption class="gallery-item__caption">
+                <span>Hidden Cove</span>
+                <strong>Reachable only by boat</strong>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Reviews ──────────────────────────────────────── -->
+      <section class="section" id="reviews">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">Reviews</span>
+            <h2 class="section-title">What guests say</h2>
+            <p class="section-lead">
+              Real experiences from this season on the Cetina and the
+              Adriatic — verified guests, unfiltered words.
+            </p>
+          </header>
+
+          <div class="reviews-grid">
+            <article class="review glass reveal">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Absolutely magical experience. The glass boat ride through
+                the Cetina canyon revealed an underwater world I never knew
+                existed. Omiš is a gem."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇩🇪</span>
+                <div>
+                  <div class="review__name">Sophie Mueller</div>
+                  <div class="review__meta">Glass Boat · August 2025</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--delay-1">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "We rented a boat for the day and found hidden Dalmatian
+                beaches along the coast. Freedom to go anywhere made it the
+                highlight of our Croatian holiday."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇬🇧</span>
+                <div>
+                  <div class="review__name">James &amp; Emily Carter</div>
+                  <div class="review__meta">Rent a Boat · July 2025</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--delay-2">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "The Cetina rafting was an incredible adventure through one
+                of the most beautiful canyons we've ever seen. Perfect
+                balance of thrills and scenery."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇮🇹</span>
+                <div>
+                  <div class="review__name">Marco Rossi</div>
+                  <div class="review__meta">Rafting · September 2025</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--delay-3">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Taxi boat to Radmanove Mlinice felt like stepping back in
+                time. The canyon ride alone was worth the trip to Omiš.
+                We'll return next summer."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇸🇪</span>
+                <div>
+                  <div class="review__name">Anna Johansson</div>
+                  <div class="review__meta">Taxi Boat · June 2025</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal reveal--delay-4">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "The semi-submarine was perfect for our family. The kids were
+                mesmerised by the fish and the shipwreck. A must-do if
+                you're visiting Dalmatia."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇫🇷</span>
+                <div>
+                  <div class="review__name">Pierre Dubois</div>
+                  <div class="review__meta">Semi Submarine · August 2025</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="review glass reveal">
+              <div class="review__stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="review__quote">
+                "Five-star service from booking to disembark. The crew knows
+                every metre of the Cetina. Will recommend to everyone heading
+                to Croatia."
+              </p>
+              <div class="review__author">
+                <span class="review__flag">🇺🇸</span>
+                <div>
+                  <div class="review__name">Rebecca &amp; Chris Hall</div>
+                  <div class="review__meta">Glass Boat · September 2025</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── FAQ: native <details> with smooth glass styling ── -->
+      <section class="section" id="faq">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">FAQ</span>
+            <h2 class="section-title">Before you book</h2>
+            <p class="section-lead">
+              No payment upfront. Free cancellation up to 24 hours before
+              departure.
+            </p>
+          </header>
+
+          <div class="faq">
+            <details class="faq-item reveal" open>
+              <summary>Is the Glass Boat suitable for children?</summary>
+              <p>
+                Yes — it's one of the most popular family tours in Omiš.
+                There are no age restrictions, the ride through the Cetina
+                canyon is smooth and calm, and children love watching fish
+                through the glass bottom. Life jackets in all sizes are on
+                board.
+              </p>
+            </details>
+
+            <details class="faq-item reveal reveal--delay-1">
+              <summary>Are pets allowed on board?</summary>
+              <p>
+                Absolutely. The Glass Boat through the Cetina canyon is fully
+                pet-friendly — your dog is welcome aboard at no extra
+                charge. We just ask that they stay calm around other guests.
+              </p>
+            </details>
+
+            <details class="faq-item reveal reveal--delay-2">
+              <summary>How long does each tour last?</summary>
+              <p>
+                Glass Boat ~35 min through the canyon + Radmanove Mlinice
+                stop. Taxi Boat 30 min each way + 1.5 h break. Rent a Boat
+                3 hours or full day. Semi Submarine 1 hour. Rafting ~2.5
+                hours including two swimming stops.
+              </p>
+            </details>
+
+            <details class="faq-item reveal reveal--delay-3">
+              <summary>What's included in the price?</summary>
+              <p>
+                Boat tours include the ride and all scheduled stops. Boat
+                rentals include fuel, safety gear and a map of the riviera.
+                Rafting includes a professional guide, helmet, life jacket
+                and waterproof bag. No hidden fees.
+              </p>
+            </details>
+
+            <details class="faq-item reveal reveal--delay-4">
+              <summary>Is rafting safe for beginners and young children?</summary>
+              <p>
+                Yes. The Cetina canyon rafting route is graded for beginners
+                and families. Professional guides who know every metre of
+                the gorge are with you the entire way. Children aged 3 and
+                above can join.
+              </p>
+            </details>
+
+            <details class="faq-item reveal">
+              <summary>Where do the tours depart from?</summary>
+              <p>
+                Most tours leave from our information desk on the Cetina
+                promenade in Omiš — right where the river meets the old
+                town. Rafting departs from Slime village, a short drive
+                upriver. Exact directions arrive with your booking.
+              </p>
+            </details>
+
+            <details class="faq-item reveal reveal--delay-1">
+              <summary>How do I book, and can I cancel?</summary>
+              <p>
+                Book via the form below, by phone, or on WhatsApp — we
+                respond within hours. No payment upfront. Free cancellation
+                or rescheduling up to 24 h before departure. During July and
+                August, book at least one day ahead.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Contact: glass form + direct WhatsApp ────────── -->
+      <section class="section" id="contact">
+        <div class="container">
+          <header class="section-head reveal">
+            <span class="eyebrow">Contact</span>
+            <h2 class="section-title">Book your tour</h2>
+            <p class="section-lead">
+              Tell us which experience you want — we confirm availability
+              within hours. No payment required upfront.
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <form class="contact-form glass reveal" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Full name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    autocomplete="name"
+                    required
+                  />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="tour">Which tour?</label>
+                  <select id="tour" name="tour" required>
+                    <option value="">Choose an experience</option>
+                    <option>Glass Boat</option>
+                    <option>Taxi Boat</option>
+                    <option>Rent a Boat</option>
+                    <option>Semi Submarine</option>
+                    <option>Cetina Rafting</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="date">Preferred date</label>
+                  <input id="date" name="date" type="date" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="guests">Guests</label>
+                  <select id="guests" name="guests">
+                    <option value="2">2 guests</option>
+                    <option>1</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7+</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone / WhatsApp</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+385 ..."
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Group size, children, special requests..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--gold" style="width: 100%">
+                <i class="fa-solid fa-paper-plane"></i>
+                Send reservation request
+              </button>
+
+              <p class="form-success" id="formSuccess" role="status">
+                Hvala! Request received — we'll confirm availability within
+                hours.
+              </p>
+            </form>
+
+            <aside class="contact-aside glass reveal reveal--delay-1">
+              <h3>Prefer to talk to a human?</h3>
+              <p>
+                We're on the Cetina promenade in Omiš every day during
+                season. Reach us directly — we usually reply within minutes
+                on WhatsApp.
+              </p>
+
+              <ul class="contact-list">
+                <li>
+                  <a
+                    href="https://wa.me/385991234567?text=Hello%2C%20I%27d%20like%20to%20book%20a%20tour%20in%20Omi%C5%A1."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i> +385 99 123 4567
+                  </a>
+                </li>
+                <li>
+                  <a href="tel:+385991234567">
+                    <i class="fa-solid fa-phone"></i> Call the harbour desk
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:info@a-navi-agency.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    info@a-navi-agency.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://maps.google.com/?q=Omi%C5%A1%20Cetina%20promenade"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-solid fa-location-dot"></i> Cetina promenade,
+                    21310 Omiš
+                  </a>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Footer ───────────────────────────────────────────── -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> A-Navi Agency · Omiš, Croatia</p>
+        <div class="footer__links">
+          <a href="#tours">Tours</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a
+            href="https://wa.me/385991234567"
+            target="_blank"
+            rel="noopener noreferrer"
+          >WhatsApp</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ── Floating WhatsApp button (always visible) ────────── -->
+    <a
+      href="https://wa.me/385991234567?text=Hello%2C%20I%27d%20like%20to%20book%20a%20tour%20in%20Omi%C5%A1."
+      class="fab-whatsapp"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Message us on WhatsApp"
+    >
+      <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

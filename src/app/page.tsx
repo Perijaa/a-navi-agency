@@ -9,10 +9,12 @@ import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { MobileBookBar } from "@/components/mobile-book-bar";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main className="pb-safe-book-bar">
         <Hero />

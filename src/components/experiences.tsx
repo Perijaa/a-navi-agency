@@ -10,13 +10,13 @@ import { SectionShell } from "@/components/ui/section-shell";
 import type { Experience } from "@/lib/data";
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.65,
-      delay: i * 0.06,
+      duration: 0.6,
+      delay: i * 0.05,
       ease: [0.22, 1, 0.36, 1] as const,
     },
   }),
@@ -48,18 +48,18 @@ function ExperienceShowcase({
           reversed ? " tour-showcase--reverse" : ""
         }`}
       >
-        <div className="tour-showcase-media">
+        <div className="tour-showcase-media min-h-[10rem] sm:min-h-0">
           <Image
             src={exp.image}
             alt={exp.title}
             fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            sizes="(max-width: 640px) 100vw, 44vw"
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
           <div className="tour-showcase-media-overlay" aria-hidden />
 
           <span className="tour-card-tag">
-            <Icon className="h-4 w-4 shrink-0 sm:h-[1.125rem] sm:w-[1.125rem]" />
+            <Icon className="h-3.5 w-3.5 shrink-0" />
             {exp.tag}
           </span>
 
@@ -72,7 +72,7 @@ function ExperienceShowcase({
               <span className="tour-card-meta">Tour {num}</span>
               {isPopular && (
                 <span className="tour-showcase-favourite">
-                  <Star className="h-3.5 w-3.5 fill-teal-500 text-teal-500" />
+                  <Star className="h-3 w-3 fill-teal-500 text-teal-500" />
                   Guest favourite
                 </span>
               )}
@@ -80,65 +80,42 @@ function ExperienceShowcase({
 
             <header className="tour-showcase-header">
               <h3 className="tour-showcase-title">{exp.title}</h3>
-              <p className="tour-showcase-headline">{exp.headline}</p>
               <p className="tour-showcase-tagline">{exp.tagline}</p>
             </header>
 
             <ul className="tour-showcase-highlights">
               {exp.highlights.slice(0, 3).map((item) => (
                 <li key={item} className="tour-showcase-highlight">
-                  <span className="tour-showcase-highlight-icon">
-                    <Check
-                      className="h-3.5 w-3.5 text-teal-600"
-                      strokeWidth={2.5}
-                    />
-                  </span>
+                  <Check
+                    className="h-3 w-3 shrink-0 text-teal-600"
+                    strokeWidth={2.5}
+                  />
                   <span className="text-balance">{item}</span>
                 </li>
               ))}
             </ul>
-
-            <p className="tour-showcase-trust">
-              <Star
-                className="mt-0.5 h-4 w-4 shrink-0 fill-amber-400 text-amber-400"
-                aria-hidden
-              />
-              {exp.trustLine}
-            </p>
           </div>
 
           <div className="tour-showcase-footer">
-            <div className="tour-card-booking">
-              <div className="tour-card-booking-inner">
-                <p className="tour-card-booking-eyebrow">Starting from</p>
-
-                <div className="tour-card-booking-meta">
-                  <p className="tour-card-booking-price">
-                    <span className="tour-card-booking-price-currency">
-                      &euro;
-                    </span>
+            <div className="tour-showcase-bar">
+              <div className="tour-showcase-bar-meta">
+                <div className="tour-showcase-bar-price">
+                  <span className="tour-showcase-bar-label">From</span>
+                  <span className="tour-showcase-bar-amount">
+                    <span className="tour-showcase-bar-currency">&euro;</span>
                     {exp.priceFrom}
-                    <span className="tour-card-booking-price-suffix">
-                      / person
-                    </span>
-                  </p>
-                  <span className="tour-card-booking-duration">
-                    <Clock className="h-4 w-4 shrink-0" aria-hidden />
-                    {exp.duration}
+                    <span className="tour-showcase-bar-suffix">/ person</span>
                   </span>
                 </div>
-
-                <div className="tour-card-booking-divider" aria-hidden />
-
-                <div className="tour-card-cta">
-                  <span>{exp.ctaLabel}</span>
-                  <ArrowRight className="tour-card-cta-icon h-4 w-4" aria-hidden />
-                </div>
-
-                <p className="tour-card-booking-note">
-                  Free cancellation &middot; No payment upfront
-                </p>
+                <span className="tour-showcase-bar-duration">
+                  <Clock className="h-3.5 w-3.5 shrink-0" aria-hidden />
+                  {exp.duration}
+                </span>
               </div>
+              <span className="tour-showcase-bar-cta">
+                <span>{exp.ctaLabel}</span>
+                <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden />
+              </span>
             </div>
           </div>
         </div>
@@ -159,7 +136,7 @@ export function Experiences() {
             title={
               <>
                 Pick your{" "}
-                <span className="bg-gradient-to-r from-turquoise-600 via-teal-500 to-cyan-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-turquoise-600 via-teal-500 to-turquoise-500 bg-clip-text text-transparent">
                   adventure
                 </span>
               </>
@@ -172,7 +149,7 @@ export function Experiences() {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-14 flex flex-wrap items-center justify-center gap-4 sm:mt-16 sm:gap-5"
+            className="mt-16 flex flex-wrap items-center justify-center gap-4 sm:mt-20 sm:gap-5"
           >
             {[
               {
@@ -199,7 +176,7 @@ export function Experiences() {
               >
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:h-9 sm:w-9 ${
-                    highlight ? "bg-white shadow-sm" : "bg-teal-50"
+                    highlight ? "bg-[#fffefa]" : "bg-teal-50"
                   }`}
                 >
                   <Icon
@@ -226,19 +203,19 @@ export function Experiences() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="card section-content flex flex-col items-center border-teal-100/60 bg-gradient-to-b from-teal-50/40 to-white p-10 text-center sm:p-12 xl:p-14"
+          className="section-content flex flex-col items-center justify-center rounded-2xl border border-stone-200/50 bg-[#fffefa] p-10 text-center shadow-[0_1px_2px_rgba(44,38,32,0.03),0_12px_36px_-12px_rgba(44,38,32,0.08)] sm:rounded-3xl sm:p-14 xl:p-16"
         >
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-teal-600">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-turquoise-600 sm:text-xs">
             Personal advice
           </p>
-          <p className="mt-4 font-serif text-[clamp(1.625rem,3.5vw,2rem)] font-bold text-navy-900">
+          <p className="mt-5 font-serif text-[clamp(1.75rem,3.5vw,2.25rem)] font-semibold leading-tight text-stone-800">
             Still deciding?
           </p>
-          <p className="mx-auto mt-4 max-w-md text-center text-base leading-relaxed text-balance text-slate-500">
+          <p className="mx-auto mt-4 max-w-md text-center text-[15px] leading-[1.75] text-balance text-stone-500 sm:text-base">
             Tell us who&apos;s coming and we&apos;ll point you to the perfect
             tour — we reply within hours, no payment upfront.
           </p>
-          <Link href="/#contact" className="btn-primary mt-8">
+          <Link href="/#contact" className="btn-primary mt-10 sm:mt-12">
             Get a personal recommendation
             <ArrowRight className="h-4 w-4" />
           </Link>

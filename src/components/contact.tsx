@@ -21,17 +21,17 @@ const promises = [
   {
     icon: Clock,
     title: "Reply within hours",
-    description: "We're on the promenade daily during season.",
+    description: "We're on the promenade daily during the season.",
   },
   {
     icon: ShieldCheck,
     title: "Free cancellation",
-    description: "Up to 24 hours before departure.",
+    description: "Cancel or reschedule up to 24 hours before departure.",
   },
   {
     icon: MapPin,
     title: "Meet at the harbour",
-    description: "Cetina promenade — we walk you to the boat.",
+    description: "Cetina promenade — we'll walk you straight to the boat.",
   },
 ];
 
@@ -61,7 +61,7 @@ export function Contact() {
   };
 
   const labelClasses =
-    "contact-form-label mb-2 block text-xs font-medium uppercase tracking-wider text-slate-500 sm:text-[13px]";
+    "contact-form-label mb-2 block text-xs font-medium uppercase tracking-wider text-stone-400 sm:text-[13px]";
 
   return (
     <SectionShell id="contact" bg="deep" className="!pt-[2cm]">
@@ -73,70 +73,59 @@ export function Contact() {
         className="[&_h2]:!mt-7 [&_p]:!mt-8"
       />
 
-        <div className="section-content grid gap-10 xl:grid-cols-5 xl:gap-14">
-        <aside className="window-stack xl:col-span-2">
-          <div className="window-stack">
-            {promises.map((p, i) => (
-              <motion.div
-                key={p.title}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="card flex flex-col items-center gap-4 p-5 text-center sm:p-6 xl:flex-row xl:items-start xl:gap-4 xl:p-5 xl:text-left"
-              >
-                <div className="icon-badge h-11 w-11 shrink-0 sm:h-12 sm:w-12">
-                  <p.icon className="h-5 w-5 text-turquoise-600 sm:h-[1.125rem] sm:w-[1.125rem]" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="text-sm font-semibold text-navy-900 sm:text-base">
-                    {p.title}
-                  </h4>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-slate-600 sm:mt-2 sm:text-sm">
-                    {p.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="section-content contact-layout">
+        <aside className="contact-sidebar window-stack">
+          {promises.map((p, i) => (
+            <motion.article
+              key={p.title}
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.05 }}
+              className="contact-promise-card"
+            >
+              <div className="contact-promise-icon">
+                <p.icon className="h-5 w-5 text-turquoise-600 sm:h-[1.125rem] sm:w-[1.125rem]" />
+              </div>
+              <h4 className="contact-promise-title">{p.title}</h4>
+              <p className="contact-promise-text">{p.description}</p>
+            </motion.article>
+          ))}
 
-          <div className="card space-y-4 p-5 text-center sm:space-y-4 sm:p-6 xl:text-left">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 sm:text-[11px]">
-              Direct contact
-            </p>
-            <a
-              href="tel:+385991234567"
-              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
-            >
-              <Phone className="h-4 w-4 shrink-0 text-turquoise-600" />
-              +385 99 123 4567
-            </a>
-            <a
-              href="mailto:info@a-navi-agency.com"
-              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
-            >
-              <Mail className="h-4 w-4 shrink-0 text-turquoise-600" />
-              info@a-navi-agency.com
-            </a>
-            <a
-              href="https://wa.me/385991234567"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 text-sm text-slate-700 transition-colors hover:text-turquoise-700 sm:text-[15px] xl:justify-start"
-            >
-              <MessageCircle className="h-4 w-4 shrink-0 text-turquoise-600" />
-              WhatsApp
-            </a>
+          <div className="contact-direct-card">
+            <p className="contact-direct-label">Direct contact</p>
+            <div className="contact-direct-links">
+              <a href="tel:+385991234567" className="contact-direct-link">
+                <Phone className="h-4 w-4 shrink-0 text-turquoise-600" />
+                <span>+385 99 123 4567</span>
+              </a>
+              <a
+                href="mailto:info@a-navi-agency.com"
+                className="contact-direct-link"
+              >
+                <Mail className="h-4 w-4 shrink-0 text-turquoise-600" />
+                <span>info@a-navi-agency.com</span>
+              </a>
+              <a
+                href="https://wa.me/385991234567"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-direct-link"
+              >
+                <MessageCircle className="h-4 w-4 shrink-0 text-turquoise-600" />
+                <span>WhatsApp</span>
+              </a>
+            </div>
           </div>
         </aside>
 
-        <div className="contact-form-card card overflow-hidden p-9 sm:p-11 xl:col-span-3 xl:p-14">
+        <div className="contact-form-card card overflow-hidden p-9 sm:p-11 xl:p-14">
           {!submitted && (
-            <div className="mb-10 border-b border-slate-100 pb-8 text-center xl:text-left">
-              <h3 className="font-serif text-xl font-semibold text-navy-900 sm:text-2xl">
+            <div className="mb-10 border-b border-stone-200/40 pb-8 text-center xl:text-left">
+              <h3 className="font-serif text-xl font-semibold text-stone-800 sm:text-2xl">
                 Reservation request
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate-500 sm:text-[15px]">
+              <p className="mt-3 text-sm leading-relaxed text-stone-500 sm:text-[15px]">
                 Fill in the details — we&apos;ll confirm availability by email or WhatsApp.
               </p>
             </div>
@@ -147,13 +136,13 @@ export function Contact() {
               animate={{ opacity: 1 }}
               className="flex flex-col items-center justify-center py-12 text-center"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-teal-50">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-50">
                 <Check className="h-7 w-7 text-turquoise-600" />
               </div>
-              <h3 className="mt-5 font-serif text-xl font-bold text-navy-900">
+              <h3 className="mt-6 font-serif text-2xl font-semibold text-stone-800 sm:text-[1.625rem]">
                 Request received
               </h3>
-              <p className="mt-2 max-w-sm text-sm text-slate-600">
+              <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-stone-500">
                 We&apos;ll get back to you within a few hours to confirm
                 availability.
               </p>
@@ -190,7 +179,7 @@ export function Contact() {
                         className={`h-4 w-4 shrink-0 sm:h-[1.125rem] sm:w-[1.125rem] ${
                           formData.experience === exp.id
                             ? "text-turquoise-600"
-                            : "text-slate-400"
+                            : "text-stone-400"
                         }`}
                       />
                       <span className="truncate">{exp.title}</span>
@@ -257,7 +246,7 @@ export function Contact() {
               <div className="mb-5">
                 <label className={labelClasses}>
                   Phone / WhatsApp{" "}
-                  <span className="normal-case tracking-normal text-slate-400">
+                  <span className="normal-case tracking-normal text-stone-400">
                     (optional)
                   </span>
                 </label>
@@ -274,7 +263,7 @@ export function Contact() {
               <div className="mb-7">
                 <label className={labelClasses}>
                   Message{" "}
-                  <span className="normal-case tracking-normal text-slate-400">
+                  <span className="normal-case tracking-normal text-stone-400">
                     (optional)
                   </span>
                 </label>
@@ -294,7 +283,7 @@ export function Contact() {
                 <ArrowRight className="h-4 w-4" />
               </button>
 
-              <p className="mt-6 text-center text-sm leading-relaxed text-slate-500 sm:text-[15px]">
+              <p className="mt-6 text-center text-sm leading-relaxed text-stone-500 sm:text-[15px]">
                 No payment now &middot; Free cancellation 24h &middot; Reply
                 within hours
               </p>

@@ -21,7 +21,7 @@ export function Button({
 
   const variants = {
     primary:
-      "bg-turquoise-500 text-navy-950 hover:bg-turquoise-400 shadow-lg shadow-turquoise-500/25 hover:shadow-turquoise-400/40 hover:scale-105",
+      "bg-turquoise-500 text-white hover:bg-turquoise-400 shadow-sm hover:shadow-md",
     ghost:
       "border border-white/20 text-white hover:bg-white/10 hover:border-white/40 backdrop-blur-sm",
     outline:
