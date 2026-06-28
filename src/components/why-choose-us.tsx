@@ -35,7 +35,6 @@ export function WhyChooseUs() {
           label="Why A-Navi"
           title="Simple booking, local expertise"
           subtitle="Fifteen seasons on the Cetina — one harbour, five ways to explore."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
         />
 
         <div className="section-content grid grid-cols-1 window-grid xl:grid-cols-3 xl:gap-10">

@@ -16,7 +16,7 @@ export function SectionHeader({ label, title, subtitle, className }: SectionHead
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={`section-content flex w-full flex-col items-center text-center ${className ?? ""}`}
+      className={`section-content flex w-full flex-col items-center gap-8 text-center sm:gap-10 xl:gap-11 ${className ?? ""}`}
     >
       {label && (
         <div className="flex items-center gap-3">
@@ -27,15 +27,11 @@ export function SectionHeader({ label, title, subtitle, className }: SectionHead
           <span className="h-px w-10 bg-gradient-to-l from-transparent to-turquoise-400 sm:w-14" />
         </div>
       )}
-      <h2
-        className={`font-serif text-[clamp(2rem,5vw,2.875rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-navy-900 ${
-          label ? "mt-7 sm:mt-8" : ""
-        }`}
-      >
+      <h2 className="font-serif text-[clamp(2rem,5vw,2.875rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-navy-900">
         {title}
       </h2>
       {subtitle && (
-        <p className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-balance text-slate-600 sm:mt-7 sm:text-lg xl:max-w-2xl">
+        <p className="mx-auto max-w-xl text-base leading-[1.85] text-balance text-slate-600 sm:max-w-2xl sm:text-lg sm:leading-[1.9] xl:max-w-3xl">
           {subtitle}
         </p>
       )}

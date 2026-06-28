@@ -16,7 +16,6 @@ export function Gallery() {
           label="Gallery"
           title="Scenes from our tours"
           subtitle="The Cetina canyon and Adriatic coast off Omiš."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
         />
 
         <div className="section-content flex flex-col gap-12 sm:gap-14 xl:gap-16">

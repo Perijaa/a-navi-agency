@@ -70,7 +70,6 @@ export function Contact() {
         label="Contact"
         title="Book your tour"
         subtitle="Tell us which experience you want — we confirm availability within hours."
-        className="[&_h2]:!mt-7 [&_p]:!mt-8"
       />
 
         <div className="section-content grid gap-10 xl:grid-cols-5 xl:gap-14">

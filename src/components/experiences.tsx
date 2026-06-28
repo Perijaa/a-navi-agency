@@ -153,7 +153,7 @@ export function Experiences() {
   return (
     <SectionShell id="experiences" bg="mid" className="!pb-0">
       <div className="section-stack">
-        <div>
+        <div className="flex flex-col items-center gap-12 sm:gap-14 xl:gap-16">
           <SectionHeader
             label="Tours"
             title={
@@ -165,14 +165,13 @@ export function Experiences() {
               </>
             }
             subtitle={`River, canyon, or open sea — five unforgettable ways to explore Omiš from the harbour. From €${minPrice}.`}
-            className="[&_h2]:!mt-7 [&_p]:!mt-8"
           />
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-14 flex flex-wrap items-center justify-center gap-4 sm:mt-16 sm:gap-5"
+            className="section-content flex w-full flex-wrap items-center justify-center gap-x-5 gap-y-4 sm:gap-x-6 sm:gap-y-5 xl:gap-x-8 xl:gap-y-6"
           >
             {[
               {
@@ -193,7 +192,7 @@ export function Experiences() {
             ].map(({ icon: Icon, text, highlight }) => (
               <span
                 key={text}
-                className={`trust-pill sm:gap-3 sm:px-6 sm:py-3.5 sm:text-base ${
+                className={`trust-pill sm:gap-3 sm:px-6 sm:py-3.5 sm:text-base xl:px-7 xl:py-4 xl:text-[1.0625rem] ${
                   highlight ? "trust-pill--highlight" : ""
                 }`}
               >

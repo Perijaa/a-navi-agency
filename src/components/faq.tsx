@@ -76,7 +76,6 @@ export function Faq() {
           label="FAQ"
           title="Before you book"
           subtitle="No payment upfront. Free cancellation up to 24 hours."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
         />
 
         <div className="mx-auto w-full max-w-xl window-stack xl:max-w-2xl">

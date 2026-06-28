@@ -29,7 +29,6 @@ export function Testimonials() {
           label="Reviews"
           title="What guests say"
           subtitle="Real experiences on the Cetina and Adriatic."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
         />
 
         <div className="section-content flex justify-center">
