@@ -1,56 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Send, Check } from "lucide-react";
+import { BlurReveal } from "@/components/motion";
+import { scaleIn, transition, reducedVariants } from "@/lib/motion";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
+import { BookingCard } from "@/components/ui/booking-card";
 import {
-  Send,
-  Phone,
-  Mail,
-  MessageCircle,
-  Clock,
-  MapPin,
-  ShieldCheck,
-  ArrowRight,
-  Check,
-} from "lucide-react";
-import { experiences } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SectionShell } from "@/components/ui/section-shell";
-
-const promises = [
-  {
-    icon: Clock,
-    title: "Reply within hours",
-    description: "We're on the promenade daily during the season.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Free cancellation",
-    description: "Cancel or reschedule up to 24 hours before departure.",
-  },
-  {
-    icon: MapPin,
-    title: "Meet at the harbour",
-    description: "Cetina promenade — we'll walk you straight to the boat.",
-  },
-];
+  loadBookingDraft,
+  clearBookingDraft,
+  guestTotal,
+  type BookingDraft,
+} from "@/lib/booking-utils";
 
 export function Contact() {
+  const reduced = useReducedMotion();
+  const [booking, setBooking] = useState<BookingDraft>({
+    experienceId: "",
+    date: "",
+    guests: { adults: 2, children: 0 },
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    experience: "",
-    date: "",
-    guests: "2",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
 
+  useEffect(() => {
+    const draft = loadBookingDraft();
+    if (draft) {
+      setBooking(draft);
+      clearBookingDraft();
+    }
+  }, []);
+
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -60,238 +48,128 @@ export function Contact() {
     setSubmitted(true);
   };
 
-  const labelClasses =
-    "contact-form-label mb-2 block text-xs font-medium uppercase tracking-wider text-stone-400 sm:text-[13px]";
-
   return (
-    <SectionShell id="contact" bg="deep" className="!pt-[2cm]">
-      <div className="section-stack">
-      <SectionHeader
-        label="Contact"
-        title="Book your tour"
-        subtitle="Tell us which experience you want — we confirm availability within hours."
-        className="[&_h2]:!mt-7 [&_p]:!mt-8"
-      />
-
-        <div className="section-content contact-layout">
-        <aside className="contact-sidebar window-stack">
-          {promises.map((p, i) => (
-            <motion.article
-              key={p.title}
-              initial={{ opacity: 0, y: 8 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="contact-promise-card"
-            >
-              <div className="contact-promise-icon">
-                <p.icon className="h-5 w-5 text-turquoise-600 sm:h-[1.125rem] sm:w-[1.125rem]" />
-              </div>
-              <h4 className="contact-promise-title">{p.title}</h4>
-              <p className="contact-promise-text">{p.description}</p>
-            </motion.article>
-          ))}
-
-          <div className="contact-direct-card">
-            <p className="contact-direct-label">Direct contact</p>
-            <div className="contact-direct-links">
-              <a href="tel:+385991234567" className="contact-direct-link">
-                <Phone className="h-4 w-4 shrink-0 text-turquoise-600" />
-                <span>+385 99 123 4567</span>
+    <section id="contact" className="contact-section bg-cream">
+      <div className="aw-container contact-section__wrap">
+        <BlurReveal className="experiences-section__intro">
+          <div className="experiences-section__copy">
+            <p className="aw-kicker">Contact</p>
+            <h2 className="aw-headline mt-4 text-ink">Book your tour.</h2>
+            <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
+              We confirm availability within hours — by email or WhatsApp.
+            </p>
+            <p className="contact-section__meta mt-6 text-[15px] text-stone-500">
+              <a href="tel:+385991234567" className="transition-colors hover:text-ink">
+                +385 99 123 4567
               </a>
-              <a
-                href="mailto:info@a-navi-agency.com"
-                className="contact-direct-link"
-              >
-                <Mail className="h-4 w-4 shrink-0 text-turquoise-600" />
-                <span>info@a-navi-agency.com</span>
+              <span aria-hidden>·</span>
+              <a href="mailto:info@a-navi-agency.com" className="transition-colors hover:text-ink">
+                info@a-navi-agency.com
               </a>
+              <span aria-hidden>·</span>
               <a
                 href="https://wa.me/385991234567"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-direct-link"
+                className="transition-colors hover:text-ink"
               >
-                <MessageCircle className="h-4 w-4 shrink-0 text-turquoise-600" />
-                <span>WhatsApp</span>
+                WhatsApp
               </a>
-            </div>
+            </p>
           </div>
-        </aside>
+        </BlurReveal>
 
-        <div className="contact-form-card card overflow-hidden p-9 sm:p-11 xl:p-14">
-          {!submitted && (
-            <div className="mb-10 border-b border-stone-200/40 pb-8 text-center xl:text-left">
-              <h3 className="font-serif text-xl font-semibold text-stone-800 sm:text-2xl">
-                Reservation request
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-stone-500 sm:text-[15px]">
-                Fill in the details — we&apos;ll confirm availability by email or WhatsApp.
-              </p>
-            </div>
-          )}
-          {submitted ? (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="flex flex-col items-center justify-center py-12 text-center"
-            >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-teal-50">
-                <Check className="h-7 w-7 text-turquoise-600" />
-              </div>
-              <h3 className="mt-6 font-serif text-2xl font-semibold text-stone-800 sm:text-[1.625rem]">
-                Request received
-              </h3>
-              <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-stone-500">
-                We&apos;ll get back to you within a few hours to confirm
-                availability.
-              </p>
-              <button
-                type="button"
-                onClick={() => setSubmitted(false)}
-                className="mt-6 text-sm font-medium text-turquoise-600 hover:text-turquoise-700"
+        <div className="contact-section__form">
+          <BlurReveal delay={0.06} className="contact-section__form-inner">
+            {submitted ? (
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={reducedVariants(scaleIn, reduced)}
+                transition={transition(0.5)}
+                className="py-8 text-center"
               >
-                Send another request
-              </button>
-            </motion.div>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <div className="mb-7">
-                <label className={labelClasses}>Which tour?</label>
-                <div className="contact-tour-picker-grid grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-3">
-                  {experiences.map((exp) => (
-                    <button
-                      key={exp.id}
-                      type="button"
-                      onClick={() =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          experience: exp.id,
-                        }))
-                      }
-                      className={`tour-picker-btn ${
-                        formData.experience === exp.id
-                          ? "tour-picker-btn--active"
-                          : ""
-                      }`}
-                    >
-                      <exp.icon
-                        className={`h-4 w-4 shrink-0 sm:h-[1.125rem] sm:w-[1.125rem] ${
-                          formData.experience === exp.id
-                            ? "text-turquoise-600"
-                            : "text-stone-400"
-                        }`}
-                      />
-                      <span className="truncate">{exp.title}</span>
-                    </button>
-                  ))}
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10">
+                  <Check className="h-6 w-6 text-primary" />
                 </div>
-              </div>
-
-              <div className="mb-5 grid gap-5 xl:grid-cols-2">
-                <div>
-                  <label className={labelClasses}>Preferred date</label>
-                  <input
-                    type="date"
-                    name="date"
-                    value={formData.date}
-                    onChange={handleChange}
-                    className="input-field"
-                  />
+                <h3 className="mt-8 text-2xl font-semibold tracking-tight text-ink">Request received</h3>
+                <p className="mt-3 text-[15px] text-stone-500">We&apos;ll reply within a few hours.</p>
+                <button type="button" onClick={() => setSubmitted(false)} className="pro-link mt-6 !text-[15px]">
+                  Send another
+                </button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="contact-form__header">
+                  <h3 className="text-xl font-semibold tracking-tight text-ink">Reservation</h3>
+                  <p className="mt-1.5 text-[15px] text-stone-500">
+                    Select a tour, date, and party size.
+                  </p>
                 </div>
-                <div>
-                  <label className={labelClasses}>Guests</label>
-                  <select
-                    name="guests"
-                    value={formData.guests}
-                    onChange={handleChange}
-                    className="input-field"
-                  >
-                    {Array.from({ length: 20 }, (_, i) => i + 1).map((n) => (
-                      <option key={n} value={n}>
-                        {n} {n === 1 ? "guest" : "guests"}
-                      </option>
-                    ))}
-                  </select>
+
+                <div className="contact-form__body">
+                  <div className="contact-form__booking">
+                    <BookingCard
+                      variant="solid"
+                      defaultExperienceId={booking.experienceId}
+                      defaultDate={booking.date}
+                      defaultGuests={booking.guests}
+                      showPrice
+                      showCta={false}
+                      onChange={setBooking}
+                    />
+
+                    <input type="hidden" name="experience" value={booking.experienceId} />
+                    <input type="hidden" name="date" value={booking.date} />
+                    <input type="hidden" name="guests" value={String(guestTotal(booking.guests))} />
+                  </div>
+
+                  <div className="contact-form__fields">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label className="field-label">Name</label>
+                        <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} className="field-input" required />
+                      </div>
+                      <div>
+                        <label className="field-label">Email</label>
+                        <input type="email" name="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} className="field-input" required />
+                      </div>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label className="field-label">
+                          Phone <span className="field-label-optional">optional</span>
+                        </label>
+                        <input type="tel" name="phone" placeholder="+385 ..." value={formData.phone} onChange={handleChange} className="field-input" />
+                      </div>
+                      <div>
+                        <label className="field-label">
+                          Message <span className="field-label-optional">optional</span>
+                        </label>
+                        <textarea name="message" rows={2} placeholder="Special requests..." value={formData.message} onChange={handleChange} className="field-input resize-none" />
+                      </div>
+                    </div>
+
+                    <div className="contact-form__submit">
+                      <button
+                        type="submit"
+                        className="flex w-full min-h-11 items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-cream transition-opacity hover:opacity-90"
+                      >
+                        <Send className="h-4 w-4" />
+                        Send request
+                      </button>
+                      <p className="mt-4 text-center text-xs text-stone-400">
+                        No payment now · Free cancellation 24h
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-
-              <div className="mb-5 grid gap-5 xl:grid-cols-2">
-                <div>
-                  <label className={labelClasses}>Full name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="input-field"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className={labelClasses}>Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="input-field"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-5">
-                <label className={labelClasses}>
-                  Phone / WhatsApp{" "}
-                  <span className="normal-case tracking-normal text-stone-400">
-                    (optional)
-                  </span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="+385 ..."
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="input-field"
-                />
-              </div>
-
-              <div className="mb-7">
-                <label className={labelClasses}>
-                  Message{" "}
-                  <span className="normal-case tracking-normal text-stone-400">
-                    (optional)
-                  </span>
-                </label>
-                <textarea
-                  name="message"
-                  rows={3}
-                  placeholder="Group size, children, special requests..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  className="input-field resize-none"
-                />
-              </div>
-
-              <button type="submit" className="btn-primary w-full">
-                <Send className="h-4 w-4" />
-                Send reservation request
-                <ArrowRight className="h-4 w-4" />
-              </button>
-
-              <p className="mt-6 text-center text-sm leading-relaxed text-stone-500 sm:text-[15px]">
-                No payment now &middot; Free cancellation 24h &middot; Reply
-                within hours
-              </p>
-            </form>
-          )}
+              </form>
+            )}
+          </BlurReveal>
         </div>
       </div>
-      </div>
-    </SectionShell>
+    </section>
   );
 }

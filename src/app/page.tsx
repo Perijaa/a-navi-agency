@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
+import { FeaturedIn } from "@/components/featured-in";
 import { Experiences } from "@/components/experiences";
 import { OmisDestination } from "@/components/omis-destination";
 import { WhyChooseUs } from "@/components/why-choose-us";
@@ -9,6 +10,7 @@ import { Faq } from "@/components/faq";
 import { Contact } from "@/components/contact";
 import { Footer } from "@/components/footer";
 import { MobileBookBar } from "@/components/mobile-book-bar";
+import { FloatingBookCta } from "@/components/floating-book-cta";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 export default function Home() {
@@ -16,8 +18,10 @@ export default function Home() {
     <>
       <ScrollProgress />
       <Navbar />
+      <FloatingBookCta />
       <main className="pb-safe-book-bar">
         <Hero />
+        <FeaturedIn />
         <Experiences />
         <OmisDestination />
         <WhyChooseUs />

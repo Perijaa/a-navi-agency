@@ -21,6 +21,7 @@ export interface Experience {
   description: string;
   longDescription: string;
   duration: string;
+  difficulty: "Easy" | "Moderate" | "Active";
   priceFrom: number;
   currency: string;
   pricing: PriceTier[];
@@ -73,6 +74,7 @@ export const experiences: Experience[] = [
     longDescription:
       "There is something quietly extraordinary about watching the Cetina reveal its secrets through glass. As your boat slips past Omi\u0161\u2019s old stone bridge and into the canyon, towering limestone walls \u2014 sculpted by millions of years of Dalmatian weather \u2014 rise around you and the water beneath turns crystalline. Schools of fish trace silver lines across the riverbed. Pebbles shimmer in the shifting light. The 30\u201335 minute ride carries you deep into a gorge that few visitors to Croatia ever see, ending at Radmanove Mlinice \u2014 a centuries-old mill estate hidden where the canyon is narrowest. This is an experience designed for everyone: families with small children, couples seeking a quiet afternoon on the Cetina, and even your four-legged companions. No restrictions, no rush \u2014 just the canyon, the river, and pure, unhurried Dalmatian beauty.",
     duration: "30\u201335 min ride",
+    difficulty: "Easy",
     priceFrom: 20,
     currency: "EUR",
     pricing: [
@@ -89,7 +91,7 @@ export const experiences: Experience[] = [
     trustLine:
       "Over 800 five-star reviews. Omi\u0161\u2019s most beloved family tour, guests from 40+ countries.",
     icon: Ship,
-    gradient: "from-cyan-500/30 to-blue-600/30",
+    gradient: "from-teal-800/25 to-emerald-900/20",
     image:
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
     detailImage:
@@ -114,6 +116,7 @@ export const experiences: Experience[] = [
     longDescription:
       "Some journeys are destinations in themselves. Our taxi boat departs from the Omi\u0161 promenade and carves a gentle path through the Cetina River canyon, where sheer rock faces plunge into emerald water and the air smells of wild sage, rosemary, and Mediterranean pine. After 30 minutes of cinematic Dalmatian scenery, you arrive at Radmanove Mlinice \u2014 a nature-park retreat built around 17th-century stone mills, where the river pools into natural swimming holes beneath ancient trees. You\u2019ll have a full hour and a half to explore the estate, swim in canyon pools, or simply sit with a coffee at the water\u2019s edge while the Cetina slips past. When you\u2019re ready, the boat takes you home the same breathtaking way you came \u2014 back through the gorge to Omi\u0161. Perfect for every age and every pace.",
     duration: "2 hours total",
+    difficulty: "Easy",
     priceFrom: 15,
     currency: "EUR",
     pricing: [
@@ -130,7 +133,7 @@ export const experiences: Experience[] = [
     trustLine:
       "The most relaxing way to reach Radmanove Mlinice from Omi\u0161. Guests return year after year.",
     icon: Navigation,
-    gradient: "from-sky-500/30 to-cyan-600/30",
+    gradient: "from-teal-700/25 to-emerald-800/20",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
     detailImage:
@@ -155,6 +158,7 @@ export const experiences: Experience[] = [
     longDescription:
       "Freedom on the water feels different here. From the Omi\u0161 promenade, where the Cetina River meets the Adriatic Sea, every direction becomes an invitation. Head upstream through the canyon toward the quiet pools near Radmanove Mlinice, where you can tie up and swim in water so clear it barely looks real. Or turn the other way \u2014 out past the river mouth and along the Dalmatian coastline, discovering secluded pebble beaches framed by Mediterranean pine that no road can reach. This is the stretch of coast between Split and Makarska, and from the water, it looks nothing like the postcards. Our boats require no license, and come with everything you need: fuel, safety gear, and a simple map of the best spots along the Omi\u0161 riviera. Whether you choose a 3-hour escape or a full day on the water, the pace is entirely yours.",
     duration: "3 hours \u2013 full day",
+    difficulty: "Moderate",
     priceFrom: 70,
     currency: "EUR",
     pricing: [
@@ -170,7 +174,7 @@ export const experiences: Experience[] = [
     trustLine:
       "Our most popular choice for couples and families exploring the Omi\u0161 riviera on their own.",
     icon: Anchor,
-    gradient: "from-teal-500/30 to-emerald-600/30",
+    gradient: "from-emerald-800/25 to-teal-900/20",
     image:
       "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=800&q=80",
     detailImage:
@@ -195,6 +199,7 @@ export const experiences: Experience[] = [
     longDescription:
       "The moment you descend the stairs and the waterline rises above the windows, everything changes. Suddenly you are inside the Adriatic \u2014 not on it. The waters off the Omi\u0161 coast harbour a rich ecosystem: shoals of bream and mullet drift past the panoramic glass, sea urchins cling to the rocky Dalmatian seabed, and then, emerging from the blue-green haze, the unmistakable outline of a World War II shipwreck appears \u2014 a silent reminder of the history that lies beneath this ancient coastline. Our expert marine guide narrates every moment, turning the voyage into a living documentary of the central Adriatic. The cabin is climate-controlled and perfectly comfortable, making this an experience that captivates children and adults alike. For families visiting Omi\u0161, it\u2019s pure magic \u2014 the kind of wonder that stays with your kids long after the holiday ends.",
     duration: "1 hour",
+    difficulty: "Easy",
     priceFrom: 20,
     currency: "EUR",
     pricing: [{ label: "Per person", price: "From \u20ac20" }],
@@ -207,7 +212,7 @@ export const experiences: Experience[] = [
     trustLine:
       "The experience children talk about for years. Rated unforgettable by 97% of guests in Omi\u0161.",
     icon: Glasses,
-    gradient: "from-indigo-500/30 to-purple-600/30",
+    gradient: "from-stone-700/25 to-teal-900/20",
     image:
       "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=80",
     detailImage:
@@ -232,6 +237,7 @@ export const experiences: Experience[] = [
     longDescription:
       "The Cetina canyon does not ease you in \u2014 it takes your breath away from the first stroke. Departing from the small village of Slime, nestled in the hills above Omi\u0161, you board a professional raft and begin a 12-kilometre descent through one of Croatia\u2019s most dramatic natural corridors. The Dalmatian canyon walls rise hundreds of metres above you, waterfalls thread down the rock face, and the river alternates between thrilling whitewater and mirror-still pools fed by underground springs. Along the way, your guide stops twice at designated spots where you can leap from cliffs into the turquoise Cetina water below, or simply float and take in the silence of a landscape that has looked this way for millennia. The entire adventure takes around two and a half hours, and every piece of equipment \u2014 helmet, life jacket, waterproof bag \u2014 is provided. Safe for children aged 3 and above, and unforgettable for everyone who visits this corner of Dalmatia.",
     duration: "~2.5 hours",
+    difficulty: "Active",
     priceFrom: 45,
     currency: "EUR",
     pricing: [{ label: "Per person", price: "\u20ac45" }],
@@ -244,7 +250,7 @@ export const experiences: Experience[] = [
     trustLine:
       "Rated the #1 outdoor activity in Omi\u0161. Over 2,000 rafters this season alone.",
     icon: Waves,
-    gradient: "from-emerald-500/30 to-teal-600/30",
+    gradient: "from-emerald-700/25 to-teal-800/20",
     image: "/images/hero-rafting.png",
     detailImage: "/images/hero-rafting.png",
     tag: "Adventure",
@@ -440,10 +446,8 @@ export const faqs: FaqItem[] = [
 ];
 
 export const navLinks = [
-  { label: "Tours", href: "#experiences" },
-  { label: "Omi\u0161", href: "#omis" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "About", href: "#omis" },
   { label: "Reviews", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];

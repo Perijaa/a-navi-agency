@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SectionShell } from "@/components/ui/section-shell";
+import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
+import { EASE_OUT } from "@/lib/motion";
 
 function FaqItem({
   item,
@@ -17,33 +17,29 @@ function FaqItem({
   onToggle: () => void;
 }) {
   return (
-    <article className={`faq-item${isOpen ? " faq-item--open" : ""}`}>
+    <article className={`faq-section__item${isOpen ? " faq-section__item--open" : ""}`}>
       <button
         type="button"
         onClick={onToggle}
-        className="faq-trigger"
+        className="faq-section__trigger"
         aria-expanded={isOpen}
       >
-        <span className="faq-question text-balance">{item.question}</span>
-        <span className="faq-toggle" aria-hidden>
-          {isOpen ? (
-            <Minus className="h-3 w-3" strokeWidth={2.5} />
-          ) : (
-            <Plus className="h-3 w-3" strokeWidth={2.5} />
-          )}
-        </span>
+        <span className="faq-section__question">{item.question}</span>
+        <ChevronDown
+          className={`faq-section__chevron${isOpen ? " faq-section__chevron--open" : ""}`}
+          strokeWidth={1.5}
+        />
       </button>
-
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="faq-answer-wrap"
+            transition={{ duration: 0.35, ease: EASE_OUT }}
+            className="overflow-hidden"
           >
-            <p className="faq-answer">{item.answer}</p>
+            <p className="faq-section__answer">{item.answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -55,35 +51,39 @@ export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <SectionShell id="faq" bg="mid" className="!pt-[2cm] !pb-0">
-      <div className="section-stack">
-        <SectionHeader
-          label="FAQ"
-          title="Before you book"
-          subtitle="No payment upfront. Free cancellation up to 24 hours."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
-        />
+    <section id="faq" className="faq-section bg-cream">
+      <div className="aw-container experiences-section__intro">
+        <BlurReveal className="experiences-section__copy">
+          <p className="aw-kicker">FAQ</p>
+          <h2 className="aw-headline mt-4 text-ink">Common questions.</h2>
+          <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
+            No payment upfront. Free cancellation 24 hours before departure.
+          </p>
+        </BlurReveal>
+      </div>
 
-        <div className="section-content faq-body">
-          <div className="faq-list window-stack">
-            {faqs.map((faq, i) => (
+      <div className="aw-container faq-section__list">
+        <Stagger stagger={0.04} className="faq-section__accordion">
+          {faqs.map((faq, i) => (
+            <StaggerItem key={i}>
               <FaqItem
-                key={i}
                 item={faq}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? null : i)}
               />
-            ))}
-          </div>
+            </StaggerItem>
+          ))}
+        </Stagger>
 
-          <p className="faq-footer">
+        <BlurReveal delay={0.08} className="faq-section__footer">
+          <p className="text-[15px] text-stone-500">
             Still have questions?{" "}
-            <a href="#contact" className="faq-footer-link">
-              Get in touch
+            <a href="#contact" className="pro-link !text-[15px]">
+              Contact us
             </a>
           </p>
-        </div>
+        </BlurReveal>
       </div>
-    </SectionShell>
+    </section>
   );
 }

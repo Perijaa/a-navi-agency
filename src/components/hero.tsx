@@ -1,15 +1,38 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, MapPin, Star, ChevronDown, Users } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { experiences } from "@/lib/data";
-import { SectionWave } from "@/components/ui/section-wave";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
-import { fadeUpReduced, fadeUpVariants } from "@/lib/motion";
+import { HeroVideoBg } from "@/components/ui/hero-video-bg";
 
 const minPrice = Math.min(...experiences.map((e) => e.priceFrom));
+
+const TRUST_ITEMS = [
+  "Free cancellation",
+  "Instant booking",
+  "Small groups",
+] as const;
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const STAGGER = {
+  hidden: { opacity: 0, y: 20 },
+  show: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.12 + i * 0.07, duration: 0.7, ease: EASE },
+  }),
+};
+
+function StarRow({ size = "sm" }: { size?: "sm" | "xs" }) {
+  return (
+    <span className={size === "xs" ? "hero-v2__stars hero-v2__stars--xs" : "hero-v2__stars"} aria-hidden>
+      ★★★★★
+    </span>
+  );
+}
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,138 +42,107 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.35], [0, -20]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const videoY = useTransform(scrollYProgress, [0, 1], [0, 72]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const titleY = useTransform(scrollYProgress, [0, 0.5], [0, 24]);
 
-  const fadeUp = reducedMotion ? fadeUpReduced : fadeUpVariants;
+  const motionProps = (i: number) =>
+    reducedMotion
+      ? {}
+      : {
+          initial: "hidden" as const,
+          animate: "show" as const,
+          custom: i,
+          variants: STAGGER,
+        };
 
   return (
-    <section ref={ref} className="relative flex min-h-[100dvh] w-full flex-col">
-      <div className="relative flex min-h-[100dvh] flex-1 flex-col overflow-hidden">
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{
-            y: reducedMotion ? 0 : imageY,
-            scale: reducedMotion ? 1 : imageScale,
-          }}
+    <section
+      ref={ref}
+      className="hero-v2 hero-section relative min-h-[100svh] w-full overflow-hidden bg-ink"
+      data-mobile-bar-surface="dark"
+      aria-label="Hero"
+    >
+      <HeroVideoBg parallaxY={reducedMotion ? 0 : videoY} />
+
+      <div className="hero-media__overlay bg-ink/18" aria-hidden />
+      <div
+        className="hero-media__overlay bg-gradient-to-b from-ink/30 via-transparent to-ink/50"
+        aria-hidden
+      />
+
+      <motion.div
+        style={{ opacity: reducedMotion ? 1 : contentOpacity }}
+        className="hero-media__content hero-v2__content relative flex min-h-[100svh] flex-col items-center px-[var(--container-pad)] pb-6 pt-[calc(env(safe-area-inset-top)+6.5rem)] sm:pb-8"
+      >
+        <div className="hero-v2__column">
+          {/* Rating chip */}
+          <motion.div {...motionProps(0)} className="hero-v2__chip">
+            <StarRow size="xs" />
+            <span>4.9</span>
+            <span className="hero-v2__chip-sep" aria-hidden>·</span>
+            <span className="hero-v2__chip-muted">1,200 reviews</span>
+          </motion.div>
+
+          {/* Dominant headline */}
+          <motion.h1
+            {...motionProps(1)}
+            style={reducedMotion ? undefined : { y: titleY }}
+            className="hero-v2__title"
+          >
+            <span className="hero-v2__title-line">Experience the Wild</span>
+            <span className="hero-v2__title-accent">Cetina River</span>
+          </motion.h1>
+
+          {/* Context chips */}
+          <motion.div {...motionProps(2)} className="hero-v2__chip-row">
+            <span className="hero-v2__chip">Rafting · Canyoning · Boat Tours</span>
+            <span className="hero-v2__chip hero-v2__chip--ghost">Every day from Omi&scaron;</span>
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div {...motionProps(3)} className="hero-v2__actions">
+            <a href="#contact" className="hero-v2__cta-primary">
+              Book now
+            </a>
+            <a href="#experiences" className="hero-v2__cta-link">
+              View all tours
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </a>
+          </motion.div>
+
+          {/* Trust micro-pills */}
+          <motion.ul {...motionProps(4)} className="hero-v2__chip-row hero-v2__chip-row--trust">
+            {TRUST_ITEMS.map((item) => (
+              <li key={item}>
+                <span className="hero-v2__chip hero-v2__chip--mini">{item}</span>
+              </li>
+            ))}
+          </motion.ul>
+
+          {/* Stats micro-pills */}
+          <motion.div {...motionProps(5)} className="hero-v2__chip-row hero-v2__chip-row--stats">
+            <span className="hero-v2__chip hero-v2__chip--mini">
+              From <strong>&euro;{minPrice}</strong> / person
+            </span>
+            <span className="hero-v2__chip hero-v2__chip--mini">
+              {experiences.length} tours
+            </span>
+            <span className="hero-v2__chip hero-v2__chip--mini">Daily departures</span>
+          </motion.div>
+        </div>
+
+        <a
+          href="#experiences"
+          className="hero-scroll-indicator hero-v2__scroll"
+          aria-label="Scroll to explore tours"
         >
-          <Image
-            src="/images/hero-rafting.png"
-            alt="Rafting on the Cetina river near Omiš, Croatia"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </motion.div>
-
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/60" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.35)_100%)]" />
-
-        <motion.div
-          style={{ opacity: contentOpacity, y: contentY }}
-          className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 pb-32 pt-safe-nav sm:px-10 xl:px-12"
-        >
-          <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-10 text-center sm:max-w-2xl sm:gap-12 xl:max-w-4xl xl:gap-14">
-            <motion.div
-              custom={0}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/8 px-5 py-2.5 backdrop-blur-md sm:gap-3 sm:px-6 sm:py-3"
-            >
-              <MapPin className="h-4 w-4 text-turquoise-300 sm:h-[1.125rem] sm:w-[1.125rem]" />
-              <span className="hero-stat-pill text-[13px] font-semibold uppercase text-white/90 sm:text-sm">
-                Omi&scaron;, Dalmatia
-              </span>
-            </motion.div>
-
-            <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
-              <h1 className="hero-title font-serif font-semibold text-white">
-                Where the canyon
-                <br />
-                <span className="bg-gradient-to-r from-white via-teal-200 to-turquoise-300 bg-clip-text text-transparent">
-                  meets the sea
-                </span>
-              </h1>
-            </motion.div>
-
-            <motion.p
-              custom={2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="max-w-lg text-base leading-[1.75] text-balance text-white/85 sm:text-lg xl:max-w-2xl xl:text-[1.1875rem] xl:leading-[1.8]"
-            >
-              Glass-bottom boats, canyon rafting, hidden Adriatic beaches — five
-              ways to explore Omi&scaron;, all starting from the Cetina
-              promenade.
-            </motion.p>
-
-            <motion.div
-              custom={3}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap items-center justify-center gap-3 sm:gap-3.5"
-            >
-              <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2.5 text-[15px] font-medium text-white/95 backdrop-blur-md sm:px-5 sm:py-3">
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400 sm:h-[1.125rem] sm:w-[1.125rem]" />
-                4.9 rating
-              </span>
-              <span className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/12 bg-white/8 px-4 py-2.5 text-[15px] text-white/85 backdrop-blur-md sm:px-5 sm:py-3">
-                <Users className="h-4 w-4 text-turquoise-300 sm:h-[1.125rem] sm:w-[1.125rem]" />
-                50k+ guests
-              </span>
-              <span className="inline-flex min-h-11 items-center rounded-full bg-gradient-to-r from-turquoise-500 to-turquoise-600 px-5 py-2.5 text-[15px] font-semibold text-white shadow-lg shadow-turquoise-900/40 sm:px-6 sm:py-3">
-                From &euro;{minPrice}
-              </span>
-            </motion.div>
-
-            <motion.div
-              custom={4}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="flex w-full max-w-sm flex-col gap-4 pt-2 xl:max-w-none xl:flex-row xl:justify-center xl:gap-5 xl:pt-4"
-            >
-              <a
-                href="#experiences"
-                className="btn-primary min-h-12 w-full text-base shadow-lg shadow-turquoise-900/30 xl:min-w-[12rem] xl:w-auto"
-              >
-                See all tours
-                <ArrowRight className="h-4 w-4" />
-              </a>
-              <a
-                href="#contact"
-                className="btn-on-dark min-h-12 w-full text-base xl:min-w-[12rem] xl:w-auto"
-              >
-                Book your spot
-              </a>
-            </motion.div>
-
-            <motion.a
-              custom={5}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              href="#experiences"
-              className="group mt-4 flex min-h-11 flex-col items-center justify-center gap-2.5 text-white/50 transition-colors hover:text-white/90"
-            >
-              <span className="text-xs font-medium tracking-[0.15em] uppercase text-white/50 transition-colors group-hover:text-white/80">
-                Scroll to discover your adventure
-              </span>
-              <span className={reducedMotion ? undefined : "hero-scroll-chevron"}>
-                <ChevronDown className="h-5 w-5" />
-              </span>
-            </motion.a>
-          </div>
-        </motion.div>
-      </div>
-
-      <SectionWave fill="#faf8f5" />
+          <span className="hero-v2__scroll-label">Explore</span>
+          <span className="hero-scroll-line">
+            <ArrowDown className="hero-scroll-chevron h-4 w-4" strokeWidth={1.5} />
+          </span>
+        </a>
+      </motion.div>
     </section>
   );
 }

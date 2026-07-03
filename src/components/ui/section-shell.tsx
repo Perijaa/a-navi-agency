@@ -1,15 +1,11 @@
 import { cn } from "@/lib/utils";
 
-type SectionBg = "deep" | "mid" | "accent" | "teal" | "950" | "900" | "925" | "transparent";
+type SectionBg = "dark" | "light" | "muted" | "transparent";
 
 const bgClasses: Record<SectionBg, string> = {
-  deep: "surface-deep",
-  mid: "surface-mid",
-  accent: "surface-accent",
-  teal: "surface-teal",
-  "950": "surface-deep",
-  "900": "surface-mid",
-  "925": "surface-accent",
+  dark: "surface-dark",
+  light: "surface-light",
+  muted: "surface-muted",
   transparent: "",
 };
 
@@ -19,25 +15,27 @@ interface SectionShellProps {
   children: React.ReactNode;
   className?: string;
   innerClassName?: string;
+  fullBleed?: boolean;
 }
 
 export function SectionShell({
   id,
-  bg = "deep",
+  bg = "light",
   children,
   className,
   innerClassName,
+  fullBleed = false,
 }: SectionShellProps) {
   return (
     <section
       id={id}
-      className={cn(
-        "section-shell",
-        bgClasses[bg],
-        className
-      )}
+      className={cn("section-shell", bgClasses[bg], className)}
     >
-      <div className={cn("page-container", innerClassName)}>{children}</div>
+      {fullBleed ? (
+        children
+      ) : (
+        <div className={cn("page-container", innerClassName)}>{children}</div>
+      )}
     </section>
   );
 }

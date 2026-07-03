@@ -1,66 +1,48 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin, ShieldCheck, Heart } from "lucide-react";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SectionShell } from "@/components/ui/section-shell";
-import type { LucideIcon } from "lucide-react";
+import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 
-const reasons: { icon: LucideIcon; title: string; description: string }[] = [
+const reasons = [
   {
-    icon: MapPin,
     title: "Local crew on the Cetina",
     description:
-      "We're on the promenade every day — the people on the boat, not a booking platform.",
+      "We're on the promenade every day — not a booking platform. Real people, real boats.",
   },
   {
-    icon: ShieldCheck,
     title: "Clear pricing & equipment",
     description:
-      "Prices on the site, gear included, free cancellation up to 24 hours before.",
+      "Every price on this site. Gear included. Free cancellation 24 hours before departure.",
   },
   {
-    icon: Heart,
     title: "For families & all ages",
     description:
-      "Glass boat, taxi cruise, rafting — pets welcome too.",
+      "Glass boat, taxi cruise, rafting — pets welcome. Something for every pace.",
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <SectionShell bg="deep" className="!pt-[4rem] sm:!pt-[5rem] xl:!pt-[6rem]">
-      <div className="section-stack">
-        <SectionHeader
-          label="Why A-Navi"
-          title="Simple booking, local expertise"
-          subtitle="Fifteen seasons on the Cetina — one harbour, five ways to explore."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
-        />
-
-        <div className="section-content grid grid-cols-1 window-grid xl:grid-cols-3 xl:gap-10">
-          {reasons.map((point, i) => (
-            <motion.div
-              key={point.title}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="card flex min-h-[12rem] flex-col items-center p-9 text-center sm:min-h-[13rem] sm:p-10 xl:p-12"
-            >
-              <div className="icon-badge h-14 w-14 sm:h-16 sm:w-16">
-                <point.icon className="h-7 w-7 text-turquoise-600" />
-              </div>
-              <h3 className="mt-7 text-lg font-semibold leading-snug text-stone-800 sm:mt-8 sm:text-xl">
-                {point.title}
-              </h3>
-              <p className="mt-4 max-w-[30ch] text-[15px] leading-[1.8] text-balance text-stone-500 sm:mt-5 sm:text-base">
-                {point.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+    <section className="why-section bg-cream">
+      <div className="aw-container experiences-section__intro">
+        <BlurReveal className="experiences-section__copy">
+          <p className="aw-kicker">Why A-Navi</p>
+          <h2 className="aw-headline mt-4 text-ink">Built on fifteen seasons of trust.</h2>
+          <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
+            One harbour, five tours, and a crew that knows every bend of the Cetina.
+          </p>
+        </BlurReveal>
       </div>
-    </SectionShell>
+
+      <div className="aw-container why-section__grid">
+        <Stagger className="why-section__reasons">
+          {reasons.map((point) => (
+            <StaggerItem key={point.title} className="why-section__item">
+              <h3 className="why-section__title">{point.title}</h3>
+              <p className="why-section__text">{point.description}</p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </div>
+    </section>
   );
 }

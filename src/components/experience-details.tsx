@@ -240,7 +240,7 @@ function LayoutSplit({ experience }: { experience: Exp }) {
               </div>
               <span className={`text-[13px] font-medium uppercase tracking-[0.15em] ${theme.accentTagline}`}>{experience.tagline}</span>
             </div>
-            <h3 className="mt-6 font-serif text-3xl font-bold leading-[1.1] tracking-tight text-white lg:text-4xl xl:text-[2.75rem]">{experience.headline}</h3>
+            <h3 className="mt-6 font-display text-3xl font-bold leading-[1.1] tracking-tight text-white lg:text-4xl xl:text-[2.75rem]">{experience.headline}</h3>
             <p className="mt-4 text-base leading-relaxed text-white/60 lg:text-[17px]">{experience.subheadline}</p>
             <div className="mt-8"><BenefitsList experience={experience} theme={theme} /></div>
             <div className="mt-8"><CtaRow experience={experience} theme={theme} /></div>
@@ -287,7 +287,7 @@ function LayoutCompact({ experience }: { experience: Exp }) {
                 <experience.icon className={`h-5 w-5 ${theme.accentText}`} />
                 <span className={`text-[13px] font-medium uppercase tracking-[0.15em] ${theme.accentTagline}`}>{experience.tagline}</span>
               </div>
-              <h3 className="mt-4 font-serif text-2xl font-bold leading-[1.1] tracking-tight text-white lg:text-3xl">{experience.headline}</h3>
+              <h3 className="mt-4 font-display text-2xl font-bold leading-[1.1] tracking-tight text-white lg:text-3xl">{experience.headline}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-white/60">{experience.subheadline}</p>
 
               {/* Inline benefits — horizontal on desktop */}
@@ -358,7 +358,7 @@ function LayoutImmersive({ experience }: { experience: Exp }) {
             </span>
           </div>
 
-          <h3 className="mt-6 font-serif text-4xl font-bold leading-[1.05] tracking-tight text-white lg:text-5xl xl:text-6xl">{experience.headline}</h3>
+          <h3 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white lg:text-5xl xl:text-6xl">{experience.headline}</h3>
 
           <p className="mt-5 text-base leading-relaxed text-white/65 lg:text-lg">{experience.subheadline}</p>
 
@@ -418,7 +418,7 @@ function LayoutSplitReversed({ experience }: { experience: Exp }) {
               </div>
               <span className={`text-[13px] font-medium uppercase tracking-[0.15em] ${theme.accentTagline}`}>{experience.tagline}</span>
             </div>
-            <h3 className="mt-6 font-serif text-3xl font-bold leading-[1.1] tracking-tight text-white lg:text-4xl xl:text-[2.75rem]">{experience.headline}</h3>
+            <h3 className="mt-6 font-display text-3xl font-bold leading-[1.1] tracking-tight text-white lg:text-4xl xl:text-[2.75rem]">{experience.headline}</h3>
             <p className="mt-4 text-base leading-relaxed text-white/60 lg:text-[17px]">{experience.subheadline}</p>
             <div className="mt-8"><BenefitsList experience={experience} theme={theme} /></div>
             <div className="mt-8"><CtaRow experience={experience} theme={theme} /></div>
@@ -482,7 +482,7 @@ const layoutMap: Record<string, React.ComponentType<{ experience: Exp }>> = {
 
 export function ExperienceDetails() {
   return (
-    <SectionShell bg="deep">
+    <SectionShell bg="dark">
       <SectionHeader
         label="Tour Details"
         title="Everything About Each Tour"

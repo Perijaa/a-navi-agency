@@ -50,7 +50,7 @@ export function VideoInterlude() {
               <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-turquoise-400">
                 The Omi&scaron; Collection
               </span>
-              <h2 className="mt-4 font-serif text-3xl font-bold leading-[1.1] text-white sm:text-4xl">
+              <h2 className="mt-4 font-display text-3xl font-bold leading-[1.1] text-white sm:text-4xl">
                 Five experiences.
                 <br />
                 <span className="italic font-normal text-white/70">

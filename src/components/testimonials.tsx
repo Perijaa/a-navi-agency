@@ -2,141 +2,185 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, MapPin, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, BadgeCheck } from "lucide-react";
 import { testimonials } from "@/lib/data";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SectionShell } from "@/components/ui/section-shell";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
+import { BlurReveal } from "@/components/motion";
+import { EASE_OUT } from "@/lib/motion";
+
+function getInitials(name: string) {
+  return name
+    .split(/[\s&]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
+function StarRow({ rating }: { rating: number }) {
+  return (
+    <span className="review-bubble__stars" aria-label={`${rating} out of 5 stars`}>
+      {"★".repeat(rating)}
+      <span className="review-bubble__stars-empty">{"☆".repeat(5 - rating)}</span>
+    </span>
+  );
+}
+
+function TypewriterQuote({ text }: { text: string }) {
+  const reducedMotion = useReducedMotion();
+  const [displayed, setDisplayed] = useState(reducedMotion ? text : "");
+  const [done, setDone] = useState(reducedMotion);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setDisplayed(text);
+      setDone(true);
+      return;
+    }
+
+    setDisplayed("");
+    setDone(false);
+    let index = 0;
+
+    const tick = () => {
+      index += 1;
+      setDisplayed(text.slice(0, index));
+      if (index >= text.length) {
+        setDone(true);
+        return;
+      }
+      window.setTimeout(tick, 22);
+    };
+
+    const start = window.setTimeout(tick, 180);
+    return () => window.clearTimeout(start);
+  }, [text, reducedMotion]);
+
+  return (
+    <span className="review-bubble__typed">
+      &ldquo;{displayed}
+      {!done && <span className="review-bubble__cursor" aria-hidden />}
+      {done && <>&rdquo;</>}
+    </span>
+  );
+}
 
 export function Testimonials() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const reducedMotion = useReducedMotion();
-
   const count = testimonials.length;
 
-  const goTo = useCallback((index: number) => {
-    setActive((index + count) % count);
-  }, [count]);
-
-  const next = useCallback(() => {
-    goTo(active + 1);
-  }, [active, goTo]);
-
-  const prev = useCallback(() => {
-    goTo(active - 1);
-  }, [active, goTo]);
+  const goTo = useCallback(
+    (index: number) => setActive((index + count) % count),
+    [count]
+  );
+  const next = useCallback(() => goTo(active + 1), [active, goTo]);
+  const prev = useCallback(() => goTo(active - 1), [active, goTo]);
 
   useEffect(() => {
     if (paused || reducedMotion) return;
-    const timer = setInterval(next, 7000);
+    const timer = setInterval(next, 9000);
     return () => clearInterval(timer);
   }, [next, paused, reducedMotion]);
 
   const t = testimonials[active];
 
   return (
-    <SectionShell id="reviews" bg="deep" className="!pt-[2cm] !pb-0">
-      <div className="section-stack">
-        <SectionHeader
-          label="Reviews"
-          title="What guests say"
-          subtitle="Real experiences on the Cetina and Adriatic."
-          className="[&_h2]:!mt-7 [&_p]:!mt-8"
-        />
+    <section id="reviews" className="reviews-section bg-cream">
+      <div className="aw-container experiences-section__intro">
+        <BlurReveal className="experiences-section__copy">
+          <p className="aw-kicker">Reviews</p>
+          <h2 className="aw-headline mt-4 text-ink">What guests say.</h2>
+        </BlurReveal>
+      </div>
 
-        <div className="section-content flex justify-center">
-          <div
-            className="reviews-panel"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-            onFocusCapture={() => setPaused(true)}
-            onBlurCapture={(e) => {
-              if (!e.currentTarget.contains(e.relatedTarget)) {
-                setPaused(false);
+      <div className="aw-container reviews-section__slider">
+        <div
+          className="reviews-section__carousel"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
+          }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={reducedMotion ? false : { opacity: 0, y: 24, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reducedMotion ? undefined : { opacity: 0, y: -16, scale: 0.98 }}
+              transition={
+                reducedMotion
+                  ? { duration: 0.2 }
+                  : { type: "spring", stiffness: 340, damping: 28, mass: 0.9 }
               }
-            }}
-          >
-            <div className="reviews-panel-stage" aria-live="polite">
-              <Quote className="reviews-panel-quote" aria-hidden />
-
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={active}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                  className="reviews-panel-slide"
-                >
-                  <div className="reviews-panel-stars">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star
-                        key={j}
-                        className="h-5 w-5 fill-amber-400 text-amber-400"
-                      />
-                    ))}
+              aria-live="polite"
+              className="reviews-section__quote"
+            >
+              <article className="review-bubble">
+                <div className="review-bubble__frame">
+                  <div className="review-bubble__badge">
+                    <BadgeCheck className="h-3.5 w-3.5" aria-hidden />
+                    Verified guest review
                   </div>
 
-                  <blockquote className="reviews-panel-quote-text">
-                    &ldquo;{t.quote}&rdquo;
+                  <header className="review-bubble__header">
+                    <div className="review-bubble__avatar" aria-hidden>
+                      {getInitials(t.name)}
+                    </div>
+                    <div className="review-bubble__identity">
+                      <p className="review-bubble__name">{t.name}</p>
+                      <p className="review-bubble__meta">
+                        {t.countryFlag} {t.country} · {t.experience}
+                      </p>
+                    </div>
+                    <StarRow rating={t.rating} />
+                  </header>
+
+                  <blockquote className="review-bubble__text">
+                    <TypewriterQuote text={t.quote} />
                   </blockquote>
 
-                  <div className="reviews-panel-author">
-                    <div className="flex items-center gap-3">
-                      <span className="reviews-author-avatar" aria-hidden>
-                        {t.name.charAt(0)}
-                      </span>
-                      <span className="flex flex-col items-start">
-                        <span className="reviews-panel-name">{t.name}</span>
-                        <span className="reviews-panel-meta">
-                          <MapPin className="h-3.5 w-3.5 shrink-0 text-turquoise-600" />
-                          {t.country} &middot; {t.experience}
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                  {t.date && <p className="review-bubble__date">{t.date}</p>}
+                </div>
+                <span className="review-bubble__tail" aria-hidden />
+              </article>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="reviews-section__controls">
+            <button
+              type="button"
+              onClick={prev}
+              className="reviews-section__nav-btn"
+              aria-label="Previous review"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => goTo(i)}
+                  className={`reviews-section__dot${i === active ? " reviews-section__dot--active" : ""}`}
+                  aria-label={`Review ${i + 1}`}
+                />
+              ))}
             </div>
-
-            <div className="reviews-panel-controls">
-              <button
-                type="button"
-                onClick={prev}
-                className="reviews-panel-nav"
-                aria-label="Previous review"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-
-              <div className="reviews-panel-dots">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    type="button"
-                    onClick={() => goTo(i)}
-                    className={`reviews-panel-dot${
-                      i === active ? " reviews-panel-dot--active" : ""
-                    }`}
-                    aria-label={`Review ${i + 1}`}
-                    aria-current={i === active ? "true" : undefined}
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={next}
-                className="reviews-panel-nav"
-                aria-label="Next review"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={next}
+              className="reviews-section__nav-btn"
+              aria-label="Next review"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }

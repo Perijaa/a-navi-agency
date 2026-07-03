@@ -13,7 +13,7 @@ const stats = [
 
 export function TrustBar() {
   return (
-    <SectionShell bg="mid">
+    <SectionShell bg="muted">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export function TrustBar() {
             transition={{ duration: 0.5, delay: i * 0.08 }}
             className="text-left md:text-center"
           >
-            <div className="font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+            <div className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               <Counter
                 target={stat.value}
                 suffix={stat.suffix}
