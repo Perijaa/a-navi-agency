@@ -6,7 +6,6 @@ import { ChevronLeft, ChevronRight, BadgeCheck } from "lucide-react";
 import { testimonials } from "@/lib/data";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { BlurReveal } from "@/components/motion";
-import { EASE_OUT } from "@/lib/motion";
 
 function getInitials(name: string) {
   return name
@@ -41,19 +40,25 @@ function TypewriterQuote({ text }: { text: string }) {
     setDisplayed("");
     setDone(false);
     let index = 0;
+    let cancelled = false;
+    let timeoutId = 0;
 
     const tick = () => {
+      if (cancelled) return;
       index += 1;
       setDisplayed(text.slice(0, index));
       if (index >= text.length) {
         setDone(true);
         return;
       }
-      window.setTimeout(tick, 22);
+      timeoutId = window.setTimeout(tick, 22);
     };
 
-    const start = window.setTimeout(tick, 180);
-    return () => window.clearTimeout(start);
+    timeoutId = window.setTimeout(tick, 180);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timeoutId);
+    };
   }, [text, reducedMotion]);
 
   return (
