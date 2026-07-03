@@ -125,7 +125,7 @@ export function Contact() {
                   </div>
 
                   <div className="contact-form__fields">
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-4 md:grid-cols-2">
                       <div>
                         <label className="field-label">Name</label>
                         <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} className="field-input" required />
@@ -136,7 +136,7 @@ export function Contact() {
                       </div>
                     </div>
 
-                    <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="grid gap-4 md:grid-cols-2">
                       <div>
                         <label className="field-label">
                           Phone <span className="field-label-optional">optional</span>

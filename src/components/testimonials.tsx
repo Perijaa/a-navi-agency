@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, BadgeCheck } from "lucide-react";
 import { testimonials } from "@/lib/data";
@@ -73,6 +73,7 @@ function TypewriterQuote({ text }: { text: string }) {
 export function Testimonials() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
   const reducedMotion = useReducedMotion();
   const count = testimonials.length;
 
@@ -88,6 +89,20 @@ export function Testimonials() {
     const timer = setInterval(next, 9000);
     return () => clearInterval(timer);
   }, [next, paused, reducedMotion]);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const endX = e.changedTouches[0]?.clientX ?? touchStartX.current;
+    const delta = endX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 48) return;
+    if (delta < 0) next();
+    else prev();
+  };
 
   const t = testimonials[active];
 
@@ -109,6 +124,8 @@ export function Testimonials() {
           onBlurCapture={(e) => {
             if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
           }}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -172,6 +189,7 @@ export function Testimonials() {
                   onClick={() => goTo(i)}
                   className={`reviews-section__dot${i === active ? " reviews-section__dot--active" : ""}`}
                   aria-label={`Review ${i + 1}`}
+                  aria-current={i === active ? "true" : undefined}
                 />
               ))}
             </div>

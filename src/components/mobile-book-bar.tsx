@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { CalendarCheck, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { homeHash } from "@/lib/base-path";
 
 const actions = [
-  { href: "#experiences", label: "Tours", icon: Compass },
-  { href: "#contact", label: "Book", icon: CalendarCheck },
+  { section: "experiences", label: "Tours", icon: Compass },
+  { section: "contact", label: "Book", icon: CalendarCheck },
 ] as const;
 
 type BarSurface = "light" | "dark";
@@ -65,13 +66,13 @@ export function MobileBookBar() {
       aria-label="Quick actions"
     >
       <div className="mobile-book-bar__pill">
-        {actions.map(({ href, label, icon: Icon }) => (
+        {actions.map(({ section, label, icon: Icon }) => (
           <a
-            key={href}
-            href={href}
+            key={section}
+            href={homeHash(section)}
             aria-label={label}
             className={
-              href === "#contact"
+              section === "contact"
                 ? "mobile-book-bar__cta flex h-11 w-11 items-center justify-center rounded-full"
                 : "mobile-book-bar__action flex h-11 w-11 items-center justify-center rounded-full"
             }

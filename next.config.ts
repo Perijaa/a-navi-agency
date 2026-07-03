@@ -5,6 +5,9 @@ const basePath = isGithubPages ? "/a-navi-agency" : "";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   ...(isGithubPages
     ? {
         output: "export",

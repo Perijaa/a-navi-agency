@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { navLinks, experiences } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { homeHash } from "@/lib/base-path";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -130,7 +131,7 @@ export function Navbar() {
                     className="absolute left-0 top-full z-50 mt-3 min-w-[14rem] overflow-hidden rounded-2xl border border-stone-200/80 bg-cream/95 py-2 shadow-xl backdrop-blur-xl"
                   >
                     <a
-                      href="#experiences"
+                      href={homeHash("experiences")}
                       onClick={() => setToursOpen(false)}
                       className="block px-4 py-2.5 text-[13px] font-medium text-ink hover:bg-stone-100"
                     >
@@ -152,19 +153,19 @@ export function Navbar() {
             </div>
 
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className={linkClass(link.href)}>
+              <a key={link.href} href={homeHash(link.href)} className={linkClass(link.href)}>
                 {link.label}
               </a>
             ))}
 
-            <a href="#contact" className="nav-book-cta">
+            <a href={homeHash("contact")} className="nav-book-cta">
               Book now
             </a>
           </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <a
-              href="#contact"
+              href={homeHash("contact")}
               className="nav-book-cta nav-book-cta--sm"
             >
               Book
@@ -173,7 +174,7 @@ export function Navbar() {
               type="button"
               onClick={() => setMobileOpen(true)}
               className={cn(
-                "flex h-9 w-9 items-center justify-center",
+                "flex h-11 w-11 items-center justify-center rounded-full",
                 lightNav ? "text-cream" : "text-ink"
               )}
               aria-label="Open menu"
@@ -194,8 +195,13 @@ export function Navbar() {
           >
             <div className="aw-container flex h-12 items-center justify-between">
               <span className="text-[17px] font-semibold text-ink">A-Navi</span>
-              <button type="button" onClick={() => setMobileOpen(false)} aria-label="Close menu">
-                <X className="h-5 w-5 text-ink" />
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-ink"
+              >
+                <X className="h-5 w-5" />
               </button>
             </div>
             <nav className="mobile-nav aw-container">
@@ -210,7 +216,7 @@ export function Navbar() {
               <div className="mobile-nav__group">
                 <p className="aw-kicker mobile-nav__kicker">Tours</p>
                 <a
-                  href="#experiences"
+                  href={homeHash("experiences")}
                   onClick={() => setMobileOpen(false)}
                   className="mobile-nav__link"
                 >
@@ -237,7 +243,7 @@ export function Navbar() {
                   {navLinks.map((link) => (
                     <li key={link.href}>
                       <a
-                        href={link.href}
+                        href={homeHash(link.href)}
                         onClick={() => setMobileOpen(false)}
                         className="mobile-nav__link"
                       >
@@ -249,7 +255,7 @@ export function Navbar() {
               </div>
 
               <a
-                href="#contact"
+                href={homeHash("contact")}
                 onClick={() => setMobileOpen(false)}
                 className="hero-v2__cta-primary mobile-nav__cta"
               >

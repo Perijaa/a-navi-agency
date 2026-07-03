@@ -23,6 +23,7 @@ import { FloatingBookCta } from "@/components/floating-book-cta";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 import { BookingCard } from "@/components/ui/booking-card";
 import { saveBookingDraft, type BookingDraft } from "@/lib/booking-utils";
+import { basePath, homeHash } from "@/lib/base-path";
 import { useState } from "react";
 
 const OVERVIEW_ICONS = {
@@ -36,9 +37,17 @@ const OVERVIEW_ICONS = {
 
 function scrollToContact(draft: BookingDraft) {
   saveBookingDraft(draft);
-  if (typeof window !== "undefined" && window.location.pathname !== "/") {
-    window.location.href = "/#contact";
-    return;
+  if (typeof window !== "undefined") {
+    const home = basePath ? `${basePath}/` : "/";
+    const onHome =
+      window.location.pathname === "/" ||
+      window.location.pathname === home ||
+      window.location.pathname === home.replace(/\/$/, "");
+
+    if (!onHome) {
+      window.location.href = homeHash("contact");
+      return;
+    }
   }
   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 }
@@ -156,9 +165,9 @@ export function ExperiencePageView({ slug }: { slug: string }) {
                   </span>
                 </p>
                 <p className="exp-hero__lead">{experience.headline}</p>
-                <a href="/#contact" className="hero-v2__cta-primary exp-hero__cta lg:hidden">
+                <Link href="/#contact" className="hero-v2__cta-primary exp-hero__cta lg:hidden">
                   Book now
-                </a>
+                </Link>
               </BlurReveal>
 
               <aside className="exp-hero__booking hidden lg:block">
@@ -350,10 +359,10 @@ export function ExperiencePageView({ slug }: { slug: string }) {
           <div className="exp-cta-banner__overlay" aria-hidden />
           <div className="aw-container exp-cta-banner__content">
             <h2 className="exp-cta-banner__title">Ready for your adventure?</h2>
-            <a href="/#contact" className="hero-v2__cta-primary">
+            <Link href="/#contact" className="hero-v2__cta-primary">
               Book now
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
-            </a>
+            </Link>
           </div>
         </section>
       </main>

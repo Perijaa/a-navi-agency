@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 import { EASE_OUT } from "@/lib/motion";
+import { homeHash } from "@/lib/base-path";
 
 function FaqItem({
   item,
@@ -78,7 +79,7 @@ export function Faq() {
         <BlurReveal delay={0.08} className="faq-section__footer">
           <p className="text-[15px] text-stone-500">
             Still have questions?{" "}
-            <a href="#contact" className="pro-link !text-[15px]">
+            <a href={homeHash("contact")} className="pro-link !text-[15px]">
               Contact us
             </a>
           </p>

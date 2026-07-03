@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { homeHash } from "@/lib/base-path";
 
 export function FloatingBookCta() {
   const [visible, setVisible] = useState(false);
@@ -17,7 +18,7 @@ export function FloatingBookCta() {
     <AnimatePresence>
       {visible && (
         <motion.a
-          href="#contact"
+          href={homeHash("contact")}
           initial={{ opacity: 0, y: -12, scale: 0.92 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -12, scale: 0.92 }}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { experiences, navLinks } from "@/lib/data";
 import { BlurReveal } from "@/components/motion";
 import { SectionHeroContent } from "@/components/ui/section-hero-content";
+import { homeHash } from "@/lib/base-path";
 
 export function Footer({
   className = "",
@@ -51,7 +52,7 @@ export function Footer({
             <ul className="footer__nav-list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="footer__link">
+                  <a href={homeHash(link.href)} className="footer__link">
                     {link.label}
                   </a>
                 </li>
@@ -84,7 +85,7 @@ export function Footer({
                 </a>
               </li>
               <li>
-                <a href="#contact" className="footer__link">
+                <a href={homeHash("contact")} className="footer__link">
                   Book a tour
                 </a>
               </li>
