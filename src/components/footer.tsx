@@ -94,7 +94,7 @@ export function Footer({
             &copy; {currentYear} A-Navi Agency
           </p>
           <p className="footer-v2__made">
-            Made with care in Croatia
+            Made with care in Omiš
           </p>
         </BlurReveal>
       </div>

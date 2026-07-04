@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowRight, BadgeCheck, Zap, Users2 } from "lucide-react";
 import { experiences } from "@/lib/data";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { HeroVideoBg } from "@/components/ui/hero-video-bg";
@@ -10,9 +10,9 @@ import { HeroVideoBg } from "@/components/ui/hero-video-bg";
 const minPrice = Math.min(...experiences.map((e) => e.priceFrom));
 
 const TRUST_ITEMS = [
-  "Free cancellation",
-  "Instant booking",
-  "Small groups",
+  { label: "Free cancellation", icon: BadgeCheck },
+  { label: "Instant booking", icon: Zap },
+  { label: "Small groups", icon: Users2 },
 ] as const;
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -111,25 +111,30 @@ export function Hero() {
             </a>
           </motion.div>
 
-          {/* Trust micro-pills */}
-          <motion.ul {...motionProps(4)} className="hero-v2__chip-row hero-v2__chip-row--trust">
-            {TRUST_ITEMS.map((item) => (
-              <li key={item}>
-                <span className="hero-v2__chip hero-v2__chip--mini">{item}</span>
+          {/* Trust + stats — aligned meta grid */}
+          <motion.ul {...motionProps(4)} className="hero-v2__meta">
+            {TRUST_ITEMS.map(({ label, icon: Icon }) => (
+              <li key={label} className="hero-v2__meta-item">
+                <span className="hero-v2__chip hero-v2__chip--mini">
+                  <Icon className="hero-v2__chip-icon" aria-hidden />
+                  {label}
+                </span>
               </li>
             ))}
+            <li className="hero-v2__meta-item hero-v2__meta-item--price">
+              <span className="hero-v2__chip hero-v2__chip--mini hero-v2__chip--price">
+                From <strong>&euro;{minPrice}</strong> / person
+              </span>
+            </li>
+            <li className="hero-v2__meta-item hero-v2__meta-item--stat">
+              <span className="hero-v2__chip hero-v2__chip--mini">
+                {experiences.length} tours
+              </span>
+            </li>
+            <li className="hero-v2__meta-item hero-v2__meta-item--stat">
+              <span className="hero-v2__chip hero-v2__chip--mini">Daily departures</span>
+            </li>
           </motion.ul>
-
-          {/* Stats micro-pills */}
-          <motion.div {...motionProps(5)} className="hero-v2__chip-row hero-v2__chip-row--stats">
-            <span className="hero-v2__chip hero-v2__chip--mini">
-              From <strong>&euro;{minPrice}</strong> / person
-            </span>
-            <span className="hero-v2__chip hero-v2__chip--mini">
-              {experiences.length} tours
-            </span>
-            <span className="hero-v2__chip hero-v2__chip--mini">Daily departures</span>
-          </motion.div>
         </div>
 
         <a

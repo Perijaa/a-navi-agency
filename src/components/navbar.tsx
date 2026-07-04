@@ -98,12 +98,12 @@ export function Navbar() {
 
           <div className="hidden items-center gap-7 lg:flex">
             {/* Tours dropdown */}
-            <div ref={toursRef} className="relative">
+            <div ref={toursRef} className="nav-tours-wrap relative w-fit shrink-0">
               <button
                 type="button"
                 onClick={() => setToursOpen((o) => !o)}
                 className={cn(
-                  "inline-flex items-center gap-1 text-[13px] font-medium transition-colors",
+                  "nav-tours-trigger inline-flex items-center gap-1 text-[13px] font-medium transition-colors",
                   lightNav
                     ? activeHash === "#experiences"
                       ? "text-cream"
@@ -124,16 +124,16 @@ export function Navbar() {
               <AnimatePresence>
                 {toursOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 8, x: "-50%" }}
+                    animate={{ opacity: 1, y: 0, x: "-50%" }}
+                    exit={{ opacity: 0, y: 8, x: "-50%" }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 top-full z-50 mt-3 min-w-[14rem] overflow-hidden rounded-2xl border border-stone-200/80 bg-cream/95 py-2 shadow-xl backdrop-blur-xl"
+                    className="nav-tours-menu"
                   >
                     <a
                       href={homeHash("experiences")}
                       onClick={() => setToursOpen(false)}
-                      className="block px-4 py-2.5 text-[13px] font-medium text-ink hover:bg-stone-100"
+                      className="nav-tours-menu__link nav-tours-menu__link--primary"
                     >
                       All tours
                     </a>
@@ -142,7 +142,7 @@ export function Navbar() {
                         key={exp.id}
                         href={`/experiences/${exp.id}`}
                         onClick={() => setToursOpen(false)}
-                        className="block px-4 py-2.5 text-[13px] text-stone-600 hover:bg-stone-100 hover:text-ink"
+                        className="nav-tours-menu__link"
                       >
                         {exp.title}
                       </Link>
