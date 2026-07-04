@@ -54,8 +54,7 @@ export function ExperienceCard({
           <p className="tour-card__summary">{summary}</p>
 
           <p className="tour-card__meta">
-            <span>{experience.duration}</span>
-            <span aria-hidden>·</span>
+            <span className="tour-card__duration">{experience.duration}</span>
             <span className="tour-card__price">From &euro;{experience.priceFrom}</span>
           </p>
 

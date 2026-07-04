@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import { Calendar, Users, Star, Globe } from "lucide-react";
 import { Counter } from "@/components/ui/counter";
-import { BlurReveal, Stagger, StaggerItem, Parallax } from "@/components/motion";
-import { EditorialPhoto } from "@/components/ui/editorial-photo";
-import { SectionHeroContent } from "@/components/ui/section-hero-content";
+import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 
 const stats = [
-  { value: 15, suffix: "", decimals: 0, label: "Seasons" },
-  { value: 50, suffix: "k+", decimals: 0, label: "Guests" },
-  { value: 4.9, suffix: "", decimals: 1, label: "Rating" },
-  { value: 40, suffix: "+", decimals: 0, label: "Countries" },
+  { icon: Calendar, value: 15, suffix: "", decimals: 0, label: "Seasons", color: "cetina" },
+  { icon: Users, value: 50, suffix: "k+", decimals: 0, label: "Guests", color: "primary" },
+  { icon: Star, value: 4.9, suffix: "", decimals: 1, label: "Rating", color: "cta" },
+  { icon: Globe, value: 40, suffix: "+", decimals: 0, label: "Countries", color: "ink" },
 ];
 
 const highlights = [
@@ -46,75 +45,7 @@ const highlights = [
 
 export function OmisDestination() {
   return (
-    <section id="omis" className="bg-ink">
-      <div className="hero-section relative min-h-[85svh] w-full overflow-hidden">
-        <Parallax offset={40} className="hero-media">
-          <Image
-            src="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1800&q=85"
-            alt="Cetina River canyon from above"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-            style={{ objectPosition: "50% 30%" }}
-          />
-        </Parallax>
-        <div className="hero-media__overlay bg-ink/55" aria-hidden />
-        <div
-          className="hero-media__overlay bg-gradient-to-b from-ink/60 via-ink/25 to-ink/75"
-          aria-hidden
-        />
-
-        <div className="hero-media__content hero-media__content--centered">
-          <BlurReveal>
-            <SectionHeroContent
-              eyebrow="Omiš"
-              title={
-                <>
-                  Dalmatia&apos;s
-                  <br />
-                  hidden gorge
-                </>
-              }
-              lead="Limestone cliffs and emerald water — every tour starts on the promenade."
-              meta={
-                <>
-                  <span>15 seasons</span>
-                  <span aria-hidden>·</span>
-                  <span>50k+ guests</span>
-                  <span aria-hidden>·</span>
-                  <span>4.9 rating</span>
-                </>
-              }
-            />
-          </BlurReveal>
-        </div>
-      </div>
-
-      <div className="aw-container omis-gallery">
-        <div className="omis-gallery__grid">
-          <EditorialPhoto
-            src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=85"
-            alt="Crystal clear Cetina waters"
-            sizes="(max-width: 768px) 92vw, 20rem"
-            objectPosition="50% 40%"
-            aspectClass="aspect-[3/2]"
-            parallax
-            parallaxOffset={16}
-          />
-          <EditorialPhoto
-            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=85"
-            alt="Boat on the Adriatic near Omiš"
-            sizes="(max-width: 768px) 92vw, 20rem"
-            objectPosition="55% 42%"
-            aspectClass="aspect-[3/2] omis-gallery__photo--offset"
-            parallax
-            parallaxOffset={12}
-          />
-        </div>
-      </div>
-
-      <div className="omis-body bg-cream">
+    <section id="omis" className="bg-cream">
         <div className="aw-container experiences-section__intro">
           <BlurReveal className="experiences-section__copy">
             <p className="aw-kicker">By the numbers</p>
@@ -127,14 +58,20 @@ export function OmisDestination() {
 
         <div className="aw-container omis-stats">
           <Stagger className="omis-stats__grid">
-            {stats.map((stat) => (
-              <StaggerItem key={stat.label} className="omis-stat">
-                <p className="omis-stat__value">
-                  <Counter target={stat.value} suffix={stat.suffix} decimals={stat.decimals} duration={2} />
-                </p>
-                <p className="omis-stat__label">{stat.label}</p>
-              </StaggerItem>
-            ))}
+            {stats.map((stat) => {
+              const Icon = stat.icon;
+              return (
+                <StaggerItem key={stat.label} className={`stat-card stat-card--${stat.color}`}>
+                  <div className="stat-card__icon-wrap">
+                    <Icon className="stat-card__icon" strokeWidth={1.5} />
+                  </div>
+                  <p className="stat-card__value">
+                    <Counter target={stat.value} suffix={stat.suffix} decimals={stat.decimals} duration={2} />
+                  </p>
+                  <p className="stat-card__label">{stat.label}</p>
+                </StaggerItem>
+              );
+            })}
           </Stagger>
         </div>
 
@@ -172,7 +109,6 @@ export function OmisDestination() {
             ))}
           </Stagger>
         </div>
-      </div>
     </section>
   );
 }

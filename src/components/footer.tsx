@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { Phone, Mail, MapPin, MessageCircle, Anchor } from "lucide-react";
 import { experiences, navLinks } from "@/lib/data";
 import { BlurReveal } from "@/components/motion";
-import { SectionHeroContent } from "@/components/ui/section-hero-content";
 import { homeHash } from "@/lib/base-path";
 
 export function Footer({
@@ -17,42 +17,44 @@ export function Footer({
 
   return (
     <footer
-      className={`footer border-t border-white/8 bg-ink ${className}`}
-      data-mobile-bar-surface="dark"
+      className={`footer-v2 ${className}`}
+      data-mobile-bar-surface="light"
     >
-      <div className={`aw-container footer__wrap ${containerClassName}`}>
-        <BlurReveal className="footer__intro">
-          <SectionHeroContent
-            eyebrow="A-Navi"
-            title={
-              <>
-                Boat tours from
-                <br />
-                the Cetina
-              </>
-            }
-            lead="Five tours from one harbour on the Omi&scaron; promenade."
-            meta={
-              <>
-                <a href="tel:+385991234567" className="transition-colors hover:text-cream/80">
-                  +385 99 123 4567
-                </a>
-                <span aria-hidden>·</span>
-                <a href="mailto:info@a-navi-agency.com" className="transition-colors hover:text-cream/80">
-                  info@a-navi-agency.com
-                </a>
-              </>
-            }
-          />
+      <div className={`aw-container footer-v2__wrap ${containerClassName}`}>
+        {/* Brand + Contact */}
+        <BlurReveal className="footer-v2__brand">
+          <div className="footer-v2__logo">
+            <Anchor className="footer-v2__logo-icon" strokeWidth={1.5} />
+            <span className="footer-v2__logo-text">A-Navi</span>
+          </div>
+          <p className="footer-v2__tagline">
+            Boat tours on the Cetina River.<br />
+            Discover Omiš from the water.
+          </p>
+          <div className="footer-v2__contact">
+            <a href="tel:+385991234567" className="footer-v2__contact-item">
+              <Phone className="h-4 w-4" />
+              <span>+385 99 123 4567</span>
+            </a>
+            <a href="mailto:info@a-navi-agency.com" className="footer-v2__contact-item">
+              <Mail className="h-4 w-4" />
+              <span>info@a-navi-agency.com</span>
+            </a>
+            <a href="https://wa.me/385991234567" target="_blank" rel="noopener noreferrer" className="footer-v2__contact-item footer-v2__contact-item--whatsapp">
+              <MessageCircle className="h-4 w-4" />
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </BlurReveal>
 
-        <BlurReveal delay={0.06} className="footer__nav">
-          <div className="footer__nav-group">
-            <p className="footer__nav-label">Explore</p>
-            <ul className="footer__nav-list">
+        {/* Navigation columns */}
+        <BlurReveal delay={0.04} className="footer-v2__nav">
+          <div className="footer-v2__nav-group">
+            <p className="footer-v2__nav-label">Explore</p>
+            <ul className="footer-v2__nav-list">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={homeHash(link.href)} className="footer__link">
+                  <a href={homeHash(link.href)} className="footer-v2__link">
                     {link.label}
                   </a>
                 </li>
@@ -60,41 +62,40 @@ export function Footer({
             </ul>
           </div>
 
-          <div className="footer__nav-group">
-            <p className="footer__nav-label">Tours</p>
-            <ul className="footer__nav-list">
+          <div className="footer-v2__nav-group">
+            <p className="footer-v2__nav-label">Tours</p>
+            <ul className="footer-v2__nav-list">
               {experiences.map((exp) => (
                 <li key={exp.id}>
-                  <Link href={`/experiences/${exp.id}`} className="footer__link">
+                  <Link href={`/experiences/${exp.id}`} className="footer-v2__link">
                     {exp.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+        </BlurReveal>
 
-          <div className="footer__nav-group">
-            <p className="footer__nav-label">Contact</p>
-            <ul className="footer__nav-list">
-              <li>
-                <span className="footer__link footer__link--muted">Cetina promenade, Omi&scaron;</span>
-              </li>
-              <li>
-                <a href="https://wa.me/385991234567" target="_blank" rel="noopener noreferrer" className="footer__link">
-                  WhatsApp
-                </a>
-              </li>
-              <li>
-                <a href={homeHash("contact")} className="footer__link">
-                  Book a tour
-                </a>
-              </li>
-            </ul>
+        {/* Location card */}
+        <BlurReveal delay={0.08} className="footer-v2__location">
+          <div className="footer-v2__location-card">
+            <MapPin className="h-5 w-5 text-cetina" />
+            <div>
+              <p className="footer-v2__location-title">Meeting point</p>
+              <p className="footer-v2__location-address">Cetina promenade, Omiš</p>
+              <p className="footer-v2__location-note">Next to the old bridge</p>
+            </div>
           </div>
         </BlurReveal>
 
-        <BlurReveal delay={0.1} className="footer__bottom">
-          <p>&copy; {currentYear} A-Navi Agency. All rights reserved.</p>
+        {/* Bottom bar */}
+        <BlurReveal delay={0.1} className="footer-v2__bottom">
+          <p className="footer-v2__copyright">
+            &copy; {currentYear} A-Navi Agency
+          </p>
+          <p className="footer-v2__made">
+            Made with care in Croatia
+          </p>
         </BlurReveal>
       </div>
     </footer>
