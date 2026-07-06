@@ -1,11 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowRight, BadgeCheck, Zap, Users2 } from "lucide-react";
 import { experiences } from "@/lib/data";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 import { HeroVideoBg } from "@/components/ui/hero-video-bg";
+
+const ACCENT_TITLE = "Cetina River";
 
 const minPrice = Math.min(...experiences.map((e) => e.priceFrom));
 
@@ -26,11 +28,211 @@ const STAGGER = {
   }),
 };
 
-function StarRow({ size = "sm" }: { size?: "sm" | "xs" }) {
+const TRIPADVISOR_URL =
+  "https://www.tripadvisor.co.uk/Attraction_Review-g644074-d34202004-Reviews-A_navi-Omis_Split_Dalmatia_County_Dalmatia.html";
+
+const STAR_DELAY_MS = 280;
+const DETAILS_DELAY_MS = STAR_DELAY_MS * 5 + 180;
+const HOLD_MS = 2400;
+const CYCLE_MS = DETAILS_DELAY_MS + 400 + HOLD_MS;
+
+const CTA_LABEL = "BOOK NOW";
+const CTA_LETTER_COUNT = CTA_LABEL.length;
+const CTA_LETTER_DELAY_MS = 130;
+const CTA_COMPLETE_MS = CTA_LETTER_COUNT * CTA_LETTER_DELAY_MS + 220;
+const CTA_HOLD_MS = 2000;
+const CTA_CYCLE_MS = CTA_COMPLETE_MS + CTA_HOLD_MS;
+
+function HeroBookCta({ reducedMotion }: { reducedMotion: boolean }) {
+  const [activeLetters, setActiveLetters] = useState(reducedMotion ? CTA_LETTER_COUNT : 0);
+  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setActiveLetters(CTA_LETTER_COUNT);
+      return;
+    }
+
+    let cancelled = false;
+
+    const schedule = (fn: () => void, ms: number) => {
+      const id = setTimeout(() => {
+        if (!cancelled) fn();
+      }, ms);
+      timeoutsRef.current.push(id);
+    };
+
+    const clearTimers = () => {
+      timeoutsRef.current.forEach(clearTimeout);
+      timeoutsRef.current = [];
+    };
+
+    const runCycle = () => {
+      clearTimers();
+      setActiveLetters(0);
+
+      for (let i = 1; i <= CTA_LETTER_COUNT; i++) {
+        schedule(() => setActiveLetters(i), i * CTA_LETTER_DELAY_MS);
+      }
+
+      schedule(runCycle, CTA_CYCLE_MS);
+    };
+
+    runCycle();
+
+    return () => {
+      cancelled = true;
+      clearTimers();
+    };
+  }, [reducedMotion]);
+
   return (
-    <span className={size === "xs" ? "hero-v2__stars hero-v2__stars--xs" : "hero-v2__stars"} aria-hidden>
-      ★★★★★
-    </span>
+    <a
+      href="#contact"
+      className="hero-v2__cta-primary hero-v2__cta-primary--animated"
+      aria-label="Book now"
+    >
+      <span className="hero-v2__cta-text" aria-hidden>
+        {CTA_LABEL.split("").map((char, index) => {
+          const isActive = index < activeLetters;
+          const isLatest = index === activeLetters - 1;
+
+          return (
+            <motion.span
+              key={`${char}-${index}`}
+              className={
+                char === " "
+                  ? "hero-v2__cta-letter hero-v2__cta-letter--space"
+                  : "hero-v2__cta-letter"
+              }
+              initial={false}
+              animate={
+                isActive
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      scale: isLatest ? [0.45, 1.28, 1] : 1,
+                    }
+                  : { opacity: 0.08, y: 8, scale: 0.72 }
+              }
+              transition={
+                isLatest
+                  ? {
+                      scale: { duration: 0.36, times: [0, 0.55, 1], ease: EASE },
+                      opacity: { duration: 0.14 },
+                      y: { duration: 0.28, ease: EASE },
+                    }
+                  : { duration: 0.22, ease: "easeOut" }
+              }
+            >
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          );
+        })}
+      </span>
+    </a>
+  );
+}
+
+function HeroRatingBadge({ reducedMotion }: { reducedMotion: boolean }) {
+  const [activeStars, setActiveStars] = useState(reducedMotion ? 5 : 0);
+  const [showDetails, setShowDetails] = useState(reducedMotion);
+  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setActiveStars(5);
+      setShowDetails(true);
+      return;
+    }
+
+    let cancelled = false;
+
+    const schedule = (fn: () => void, ms: number) => {
+      const id = setTimeout(() => {
+        if (!cancelled) fn();
+      }, ms);
+      timeoutsRef.current.push(id);
+    };
+
+    const clearTimers = () => {
+      timeoutsRef.current.forEach(clearTimeout);
+      timeoutsRef.current = [];
+    };
+
+    const runCycle = () => {
+      clearTimers();
+      setActiveStars(0);
+      setShowDetails(false);
+
+      for (let i = 1; i <= 5; i++) {
+        schedule(() => setActiveStars(i), i * STAR_DELAY_MS);
+      }
+
+      schedule(() => setShowDetails(true), DETAILS_DELAY_MS);
+      schedule(runCycle, CYCLE_MS);
+    };
+
+    runCycle();
+
+    return () => {
+      cancelled = true;
+      clearTimers();
+    };
+  }, [reducedMotion]);
+
+  return (
+    <a
+      href={TRIPADVISOR_URL}
+      className="hero-v2__chip hero-v2__chip--rating hero-v2__chip--rating-animated"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="4.9 out of 5 from 1,200 reviews on Tripadvisor (opens in new tab)"
+    >
+      <span className="hero-v2__rating-stars" aria-hidden>
+        {Array.from({ length: 5 }, (_, index) => {
+          const isActive = index < activeStars;
+          const isLatest = index === activeStars - 1;
+
+          return (
+            <motion.span
+              key={index}
+              className="hero-v2__rating-star"
+              initial={false}
+              animate={
+                isActive
+                  ? { opacity: 1, scale: isLatest ? [0.25, 1.85, 1.1] : 1.1 }
+                  : { opacity: 0.12, scale: 0.35 }
+              }
+              transition={
+                isLatest
+                  ? {
+                      scale: { duration: 0.42, times: [0, 0.58, 1], ease: EASE },
+                      opacity: { duration: 0.16 },
+                    }
+                  : { duration: 0.2, ease: "easeOut" }
+              }
+            >
+              ★
+            </motion.span>
+          );
+        })}
+      </span>
+
+      <motion.span
+        className="hero-v2__rating-details"
+        aria-hidden={!showDetails}
+        initial={false}
+        animate={{ opacity: showDetails ? 1 : 0 }}
+        transition={{ duration: 0.32, ease: EASE }}
+      >
+        <span className="hero-v2__rating-score">4.9</span>
+        <span className="hero-v2__chip-sep" aria-hidden>
+          ·
+        </span>
+        <span className="hero-v2__chip-muted">1,200 reviews</span>
+      </motion.span>
+    </a>
   );
 }
 
@@ -59,7 +261,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="hero-v2 hero-section relative min-h-[100svh] w-full overflow-hidden bg-ink"
+      className="hero-v2 hero-section relative min-h-[105svh] w-full overflow-hidden bg-ink"
       data-mobile-bar-surface="dark"
       aria-label="Hero"
     >
@@ -73,38 +275,45 @@ export function Hero() {
 
       <motion.div
         style={{ opacity: reducedMotion ? 1 : contentOpacity }}
-        className="hero-media__content hero-v2__content relative flex min-h-[100svh] flex-col items-center px-[var(--container-pad)] pb-6 pt-[calc(env(safe-area-inset-top)+6.5rem)] sm:pb-8"
+        className="hero-media__content hero-v2__content relative flex min-h-[105svh] flex-col items-center px-[var(--container-pad)] pb-8 pt-[calc(env(safe-area-inset-top)+9.25rem)] sm:pb-10 lg:pt-[calc(env(safe-area-inset-top)+10rem)]"
       >
         <div className="hero-v2__column">
-          {/* Rating chip */}
-          <motion.div {...motionProps(0)} className="hero-v2__chip">
-            <StarRow size="xs" />
-            <span>4.9</span>
-            <span className="hero-v2__chip-sep" aria-hidden>·</span>
-            <span className="hero-v2__chip-muted">1,200 reviews</span>
-          </motion.div>
-
           {/* Dominant headline */}
           <motion.h1
-            {...motionProps(1)}
+            {...motionProps(0)}
             style={reducedMotion ? undefined : { y: titleY }}
             className="hero-v2__title"
           >
             <span className="hero-v2__title-line">Experience the Wild</span>
-            <span className="hero-v2__title-accent">Cetina River</span>
+            <span
+              className={`hero-v2__title-accent${reducedMotion ? " hero-v2__title-accent--static" : ""}`}
+            >
+              {ACCENT_TITLE.split("").map((char, index) => (
+                <span
+                  key={`${char}-${index}`}
+                  className="hero-v2__title-accent-char"
+                  style={{ "--wave-i": index } as React.CSSProperties}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </span>
           </motion.h1>
 
+          {/* Rating — below headline, clears navbar */}
+          <motion.div {...motionProps(1)} className="hero-v2__rating">
+            <HeroRatingBadge reducedMotion={reducedMotion} />
+          </motion.div>
+
           {/* Context chips */}
-          <motion.div {...motionProps(2)} className="hero-v2__chip-row">
+          <motion.div {...motionProps(2)} className="hero-v2__chip-row hero-v2__chip-row--context">
             <span className="hero-v2__chip">Rafting · Canyoning · Boat Tours</span>
             <span className="hero-v2__chip hero-v2__chip--ghost">Every day from Omi&scaron;</span>
           </motion.div>
 
           {/* CTA */}
           <motion.div {...motionProps(3)} className="hero-v2__actions">
-            <a href="#contact" className="hero-v2__cta-primary">
-              Book now
-            </a>
+            <HeroBookCta reducedMotion={reducedMotion} />
             <a href="#experiences" className="hero-v2__cta-link">
               View all tours
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
@@ -112,26 +321,42 @@ export function Hero() {
           </motion.div>
 
           {/* Trust + stats — aligned meta grid */}
-          <motion.ul {...motionProps(4)} className="hero-v2__meta">
-            {TRUST_ITEMS.map(({ label, icon: Icon }) => (
-              <li key={label} className="hero-v2__meta-item">
+          <motion.ul
+            {...motionProps(4)}
+            className={`hero-v2__meta${reducedMotion ? " hero-v2__meta--static" : ""}`}
+          >
+            {TRUST_ITEMS.map(({ label, icon: Icon }, index) => (
+              <li
+                key={label}
+                className="hero-v2__meta-item"
+                style={{ "--wave-i": index } as React.CSSProperties}
+              >
                 <span className="hero-v2__chip hero-v2__chip--mini">
                   <Icon className="hero-v2__chip-icon" aria-hidden />
                   {label}
                 </span>
               </li>
             ))}
-            <li className="hero-v2__meta-item hero-v2__meta-item--price">
+            <li
+              className="hero-v2__meta-item hero-v2__meta-item--price"
+              style={{ "--wave-i": 3 } as React.CSSProperties}
+            >
               <span className="hero-v2__chip hero-v2__chip--mini hero-v2__chip--price">
                 From <strong>&euro;{minPrice}</strong> / person
               </span>
             </li>
-            <li className="hero-v2__meta-item hero-v2__meta-item--stat">
+            <li
+              className="hero-v2__meta-item hero-v2__meta-item--stat"
+              style={{ "--wave-i": 4 } as React.CSSProperties}
+            >
               <span className="hero-v2__chip hero-v2__chip--mini">
                 {experiences.length} tours
               </span>
             </li>
-            <li className="hero-v2__meta-item hero-v2__meta-item--stat">
+            <li
+              className="hero-v2__meta-item hero-v2__meta-item--stat"
+              style={{ "--wave-i": 5 } as React.CSSProperties}
+            >
               <span className="hero-v2__chip hero-v2__chip--mini">Daily departures</span>
             </li>
           </motion.ul>

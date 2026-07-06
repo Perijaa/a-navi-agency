@@ -1,5 +1,9 @@
 const platforms = [
-  { name: "Tripadvisor", abbr: "TA" },
+  {
+    name: "Tripadvisor",
+    abbr: "TA",
+    href: "https://www.tripadvisor.co.uk/Attraction_Review-g644074-d34202004-Reviews-A_navi-Omis_Split_Dalmatia_County_Dalmatia.html",
+  },
   { name: "Google", abbr: "G" },
   { name: "GetYourGuide", abbr: "GYG" },
   { name: "Viator", abbr: "V" },
@@ -20,9 +24,21 @@ export function FeaturedIn() {
         <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 sm:gap-x-10">
           {platforms.map((p) => (
             <li key={p.name}>
-              <span className="featured-in__logo" aria-label={p.name}>
-                {p.name}
-              </span>
+              {"href" in p && p.href ? (
+                <a
+                  href={p.href}
+                  className="featured-in__logo featured-in__logo--link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${p.name} (opens in new tab)`}
+                >
+                  {p.name}
+                </a>
+              ) : (
+                <span className="featured-in__logo" aria-label={p.name}>
+                  {p.name}
+                </span>
+              )}
             </li>
           ))}
         </ul>

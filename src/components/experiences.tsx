@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { experiences } from "@/lib/data";
 import { ExperienceCard } from "@/components/ui/experience-card";
 import { BlurReveal } from "@/components/motion";
@@ -12,10 +11,14 @@ export function Experiences() {
     <section id="experiences" className="experiences-section">
       <div className="aw-container experiences-section__intro">
         <BlurReveal className="experiences-section__copy">
-          <p className="aw-kicker">Experiences</p>
-          <h2 className="aw-headline mt-4 text-ink">Five ways into the canyon.</h2>
-          <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
-            Same harbour, five distinct journeys on the Cetina. Tours from &euro;{minPrice} per person.
+          <p className="experiences-section__eyebrow">Experiences</p>
+          <h2 className="experiences-section__headline">
+            <span className="experiences-section__headline-line">Five ways into the</span>
+            <span className="experiences-section__headline-accent">canyon.</span>
+          </h2>
+          <p className="experiences-section__lead">
+            Same harbour, five distinct journeys on the Cetina. Tours from{" "}
+            <span className="experiences-section__price-hint">&euro;{minPrice}</span> per person.
           </p>
         </BlurReveal>
       </div>
@@ -26,19 +29,6 @@ export function Experiences() {
             <ExperienceCard key={exp.id} experience={exp} index={i} />
           ))}
         </div>
-      </div>
-
-      <div className="aw-container experiences-section__outro">
-        <BlurReveal className="experiences-section__copy">
-          <p className="aw-kicker">Need help choosing?</p>
-          <h2 className="aw-headline mt-4 text-ink">We&apos;ll find the right tour.</h2>
-          <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
-            Tell us who&apos;s travelling. We reply within hours — no payment upfront.
-          </p>
-          <Link href="/#contact" className="pro-link experiences-section__link">
-            Contact our crew
-          </Link>
-        </BlurReveal>
       </div>
     </section>
   );

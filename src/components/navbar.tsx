@@ -2,11 +2,29 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { navLinks, experiences } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import { homeHash } from "@/lib/base-path";
+import { homeHash, withBasePath } from "@/lib/base-path";
+
+const LOGO_SRC = withBasePath("/images/logo.png");
+
+function NavLogo({ onHero = false }: { onHero?: boolean }) {
+  return (
+    <span className={cn("nav-logo-frame", onHero && "nav-logo-frame--hero")}>
+      <Image
+        src={LOGO_SRC}
+        alt="A-Navi"
+        fill
+        sizes="(max-width: 1023px) 112px, 192px"
+        className="nav-logo"
+        priority
+      />
+    </span>
+  );
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -67,15 +85,16 @@ export function Navbar() {
 
   const linkClass = (href: string) =>
     cn(
-      "text-[13px] font-medium transition-colors",
-      lightNav
-        ? activeHash === href
-          ? "text-cream"
-          : "text-cream/60 hover:text-cream"
-        : activeHash === href
-          ? "text-ink"
-          : "text-stone-500 hover:text-ink"
+      "nav-desktop-link",
+      activeHash === href && "nav-desktop-link--active",
+      lightNav ? "nav-desktop-link--hero" : "nav-desktop-link--solid"
     );
+
+  const toursTriggerClass = cn(
+    "nav-tours-trigger nav-desktop-link",
+    activeHash === "#experiences" && "nav-desktop-link--active",
+    lightNav ? "nav-desktop-link--hero" : "nav-desktop-link--solid"
+  );
 
   return (
     <>
@@ -85,39 +104,29 @@ export function Navbar() {
         transition={{ duration: 0.5 }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-colors duration-300",
-          scrolled ? "border-b border-stone-200/60 bg-cream/85 backdrop-blur-xl" : "bg-transparent"
+          scrolled
+            ? "border-b border-stone-200/60 bg-cream/85 backdrop-blur-xl"
+            : "bg-ink/30 backdrop-blur-md"
         )}
       >
-        <div className="aw-container flex h-14 items-center justify-between py-3 lg:h-[4.25rem] lg:py-4">
-          <Link
-            href="/"
-            className="text-[17px] font-semibold tracking-tight transition-colors"
-          >
-            <span className={lightNav ? "text-cream" : "text-ink"}>A-Navi</span>
+        <div className="aw-container flex min-h-14 items-center justify-between gap-4 py-3 lg:min-h-[4.75rem] lg:py-3">
+          <Link href="/" className="nav-logo-link shrink-0" aria-label="A-Navi home">
+            <NavLogo onHero={lightNav} />
           </Link>
 
-          <div className="hidden items-center gap-7 lg:flex">
+          <div className="nav-desktop hidden lg:flex">
             {/* Tours dropdown */}
             <div ref={toursRef} className="nav-tours-wrap relative w-fit shrink-0">
               <button
                 type="button"
                 onClick={() => setToursOpen((o) => !o)}
-                className={cn(
-                  "nav-tours-trigger inline-flex items-center gap-1 text-[13px] font-medium transition-colors",
-                  lightNav
-                    ? activeHash === "#experiences"
-                      ? "text-cream"
-                      : "text-cream/60 hover:text-cream"
-                    : activeHash === "#experiences"
-                      ? "text-ink"
-                      : "text-stone-500 hover:text-ink"
-                )}
+                className={toursTriggerClass}
                 aria-expanded={toursOpen}
                 aria-haspopup="true"
               >
                 Tours
                 <ChevronDown
-                  className={cn("h-3.5 w-3.5 transition-transform", toursOpen && "rotate-180")}
+                  className={cn("nav-desktop-link__chevron", toursOpen && "rotate-180")}
                 />
               </button>
 
@@ -163,7 +172,7 @@ export function Navbar() {
             </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-2.5 lg:hidden">
             <a
               href={homeHash("contact")}
               className="nav-book-cta nav-book-cta--sm"
@@ -194,7 +203,7 @@ export function Navbar() {
             className="fixed inset-0 z-[60] bg-cream pt-[env(safe-area-inset-top)]"
           >
             <div className="aw-container flex h-12 items-center justify-between">
-              <span className="text-[17px] font-semibold text-ink">A-Navi</span>
+              <NavLogo />
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
