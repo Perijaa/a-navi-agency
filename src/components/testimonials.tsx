@@ -108,11 +108,29 @@ export function Testimonials() {
 
   return (
     <section id="reviews" className="reviews-section bg-cream">
-      <div className="aw-container experiences-section__intro">
-        <BlurReveal className="experiences-section__copy">
-          <p className="aw-kicker">Reviews</p>
-          <h2 className="aw-headline mt-4 text-ink">What guests say.</h2>
-        </BlurReveal>
+      <div className="aw-container reviews-section__intro">
+        <div className="reviews-section__intro-inner experiences-section__copy">
+          <BlurReveal>
+            <p className="experiences-section__eyebrow">Reviews</p>
+          </BlurReveal>
+          <BlurReveal variant="fadeUp" delay={0.05}>
+            <h2 className="experiences-section__headline">
+              <span className="experiences-section__headline-line">What guests</span>
+              <span className="experiences-section__headline-accent">say</span>
+            </h2>
+          </BlurReveal>
+          <BlurReveal delay={0.1}>
+            <p className="experiences-section__lead reviews-section__lead">
+              Real stories from travellers who explored the Cetina canyon and the Adriatic coast with us.
+            </p>
+            <div className="reviews-section__meta">
+              <span className="reviews-section__meta-chip">★ 4.9 average rating</span>
+              <span className="reviews-section__meta-chip reviews-section__meta-chip--ghost">
+                {testimonials.length} verified reviews
+              </span>
+            </div>
+          </BlurReveal>
+        </div>
       </div>
 
       <div className="aw-container reviews-section__slider">

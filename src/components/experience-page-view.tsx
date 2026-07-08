@@ -22,6 +22,8 @@ import { MobileBookBar } from "@/components/mobile-book-bar";
 import { FloatingBookCta } from "@/components/floating-book-cta";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 import { BookingCard } from "@/components/ui/booking-card";
+import { MeetingPointMap } from "@/components/ui/meeting-point-map";
+import { MEETING_POINT } from "@/lib/meeting-point";
 import { saveBookingDraft, type BookingDraft } from "@/lib/booking-utils";
 import { basePath, homeHash } from "@/lib/base-path";
 import { useState } from "react";
@@ -195,29 +197,6 @@ export function ExperiencePageView({ slug }: { slug: string }) {
               </div>
             </BlurReveal>
 
-            {/* Gallery */}
-            <BlurReveal className="exp-section">
-              <h2 className="exp-section__title">Gallery</h2>
-              <div className="exp-gallery">
-                {detail.galleryImages.map((img, i) => (
-                  <div
-                    key={img.src}
-                    className={`exp-gallery__item exp-gallery__item--${img.span ?? (i === 0 ? "wide" : "normal")}`}
-                  >
-                    <div className="relative h-full min-h-[12rem] overflow-hidden rounded-[20px]">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </BlurReveal>
-
             {/* Timeline */}
             <BlurReveal className="exp-section">
               <h2 className="exp-section__title">What to expect</h2>
@@ -290,31 +269,41 @@ export function ExperiencePageView({ slug }: { slug: string }) {
               </Stagger>
             </BlurReveal>
 
+            {/* Gallery */}
+            <BlurReveal className="exp-section">
+              <h2 className="exp-section__title">Gallery</h2>
+              <div className="exp-gallery">
+                {detail.galleryImages.map((img, i) => (
+                  <div
+                    key={img.src}
+                    className={`exp-gallery__item exp-gallery__item--${img.span ?? (i === 0 ? "wide" : "normal")}`}
+                  >
+                    <div className="relative h-full min-h-[12rem] overflow-hidden rounded-[20px]">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </BlurReveal>
+
             {/* Location */}
             <BlurReveal className="exp-section">
               <h2 className="exp-section__title">Location</h2>
               <div className="exp-location">
-                <div className="exp-location__map" aria-hidden>
-                  <div className="exp-location__pin exp-location__pin--start">
-                    <MapPin className="h-4 w-4" />
-                    Start
-                  </div>
-                  {detail.location.finish !== detail.location.meeting && (
-                    <div className="exp-location__route" />
-                  )}
-                  {detail.location.finish !== detail.location.meeting && (
-                    <div className="exp-location__pin exp-location__pin--finish">
-                      <MapPin className="h-4 w-4" />
-                      Finish
-                    </div>
-                  )}
-                </div>
+                <MeetingPointMap className="exp-location__map" showCta />
                 <div className="exp-location__details">
                   <p>
                     <strong>Meeting point</strong>
                     <br />
-                    {detail.location.meeting}
+                    {MEETING_POINT.address}
                   </p>
+                  <p className="mt-4 text-stone-500">{MEETING_POINT.note}</p>
                   {detail.location.finish !== detail.location.meeting && (
                     <p className="mt-4">
                       <strong>Finish</strong>
@@ -322,7 +311,9 @@ export function ExperiencePageView({ slug }: { slug: string }) {
                       {detail.location.finish}
                     </p>
                   )}
-                  <p className="mt-4 text-stone-500">{detail.location.note}</p>
+                  {detail.location.note !== MEETING_POINT.note && (
+                    <p className="mt-4 text-stone-500">{detail.location.note}</p>
+                  )}
                 </div>
               </div>
             </BlurReveal>

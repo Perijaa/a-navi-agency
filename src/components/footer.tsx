@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, MessageCircle, Anchor } from "lucide-react";
+import { Phone, Mail, MessageCircle, Anchor } from "lucide-react";
 import { experiences, navLinks } from "@/lib/data";
 import { BlurReveal } from "@/components/motion";
 import { homeHash } from "@/lib/base-path";
+import { MeetingPointCard } from "@/components/ui/meeting-point-map";
 
 export function Footer({
   className = "",
@@ -78,14 +79,7 @@ export function Footer({
 
         {/* Location card */}
         <BlurReveal delay={0.08} className="footer-v2__location">
-          <div className="footer-v2__location-card">
-            <MapPin className="h-5 w-5 text-cetina" />
-            <div>
-              <p className="footer-v2__location-title">Meeting point</p>
-              <p className="footer-v2__location-address">Cetina promenade, Omiš</p>
-              <p className="footer-v2__location-note">Next to the old bridge</p>
-            </div>
-          </div>
+          <MeetingPointCard />
         </BlurReveal>
 
         {/* Bottom bar */}

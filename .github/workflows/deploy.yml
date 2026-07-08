@@ -36,6 +36,11 @@ jobs:
       - name: Ensure Jekyll is disabled
         run: touch ./out/.nojekyll
 
+      - name: Verify hero assets in export
+        run: |
+          test -f ./out/videos/hero-cetina.mp4
+          test -f ./out/images/hero-poster.jpg
+
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:

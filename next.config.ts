@@ -18,6 +18,7 @@ const nextConfig: NextConfig = {
   assetPrefix: basePath,
   images: {
     unoptimized: isGithubPages,
+    qualities: [100, 90, 75],
     remotePatterns: [
       {
         protocol: "https",
