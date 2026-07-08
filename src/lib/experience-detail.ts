@@ -37,10 +37,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Glass-bottom boat ride", "Stop at Radmanove Mlinice", "Life jackets", "Pet-friendly welcome"],
     bring: ["Sunscreen", "Camera", "Light jacket", "Comfortable shoes"],
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=85", alt: "Crystal Cetina waters", span: "wide" },
-      { src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85", alt: "Glass boat on the river", span: "normal" },
-      { src: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&q=85", alt: "Cetina canyon from above", span: "tall" },
-      { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85", alt: "Hidden Dalmatian cove", span: "normal" },
+      { src: "/images/zvone/glass-boat-dock.jpg", alt: "Glass boat at Omi\u0161 harbour", span: "wide" },
+      { src: "/images/zvone/canyon-from-boat.jpg", alt: "Cruising through the Cetina canyon", span: "normal" },
+      { src: "/images/zvone/glass-boat-night-canyon.jpg", alt: "Glass boat in the canyon at night", span: "tall" },
+      { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina canyon and Omi\u0161 bridge", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is the Glass Boat suitable for children?", answer: "Yes — no age restrictions. The ride is calm and children love watching fish through the glass." },
@@ -78,10 +78,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Round-trip boat transfer", "1.5 h at Radmanove Mlinice", "Life jackets", "Scenic canyon route"],
     bring: ["Swimwear", "Towel", "Sunscreen", "Water bottle"],
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=85", alt: "Boat on the Adriatic", span: "wide" },
-      { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85", alt: "Hidden beach", span: "normal" },
-      { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=85", alt: "Emerald Cetina water", span: "tall" },
-      { src: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&q=85", alt: "Canyon walls", span: "normal" },
+      { src: "/images/zvone/taxi-boat-guests-1.jpg", alt: "Taxi boat guests on the Cetina", span: "wide" },
+      { src: "/images/zvone/taxi-boat-guests-2.jpg", alt: "Radmanove Mlinice taxi boat tour", span: "normal" },
+      { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina canyon and Omi\u0161 bridge", span: "tall" },
+      { src: "/images/zvone/taxi-boat-guests-6.jpg", alt: "Taxi boat on the Cetina River", span: "normal" },
     ],
     detailFaqs: [
       { question: "How long is the stop at Radmanove Mlinice?", answer: "You have 1.5 hours to swim, explore the mill estate, or relax by the river." },
@@ -119,10 +119,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Boat rental", "Fuel", "Safety equipment", "Coastal & river map", "Brief orientation"],
     bring: ["Sunscreen", "Swimwear", "Towel", "ID document", "Water & snacks"],
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=1200&q=85", alt: "Boat on open water", span: "wide" },
-      { src: "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=800&q=85", alt: "Rent a boat", span: "normal" },
-      { src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=85", alt: "Adriatic coastline", span: "tall" },
-      { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85", alt: "Secluded beach", span: "normal" },
+      { src: "/images/zvone/rent-boat-harbour.jpg", alt: "A-Navi boats at Omi\u0161 harbour", span: "wide" },
+      { src: "/images/zvone/rent-boat-interior.jpg", alt: "Rent a boat interior", span: "normal" },
+      { src: "/images/gallery/taxi-boat-coast.jpg", alt: "Adriatic coastline", span: "tall" },
+      { src: "/images/gallery/canyon-aerial.jpg", alt: "Aerial view of the coast", span: "normal" },
     ],
     detailFaqs: [
       { question: "Do I need a boat license?", answer: "No license required. We provide a full briefing and coastal map before you depart." },
@@ -160,10 +160,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["1-hour semi-submarine ride", "Expert marine guide", "Climate-controlled cabin", "Panoramic windows"],
     bring: ["Camera", "Light layer", "Comfortable shoes", "Sea-sickness remedy if needed"],
     galleryImages: [
-      { src: "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=1200&q=85", alt: "Underwater marine life", span: "wide" },
-      { src: "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=85", alt: "Semi submarine", span: "normal" },
-      { src: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=800&q=85", alt: "Adriatic sea", span: "tall" },
-      { src: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=85", alt: "Coastal waters", span: "normal" },
+      { src: "/images/semi-submarine/semi-submarine-1.jpg", alt: "Semi submarine at the harbour", span: "wide" },
+      { src: "/images/semi-submarine/semi-submarine-3.jpg", alt: "Underwater viewing cabin", span: "normal" },
+      { src: "/images/semi-submarine/semi-submarine-5.jpg", alt: "Marine life through the windows", span: "tall" },
+      { src: "/images/semi-submarine/semi-submarine-7.jpg", alt: "Adriatic underwater views", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is it safe for young children?", answer: "Yes — the cabin is climate-controlled and captivates children of all ages." },
@@ -202,10 +202,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Professional guide", "Raft & paddles", "Helmet & life jacket", "Waterproof bag", "Insurance"],
     bring: ["Swimwear", "Towel", "Water shoes", "Change of clothes", "Water"],
     galleryImages: [
-      { src: "/images/hero-rafting.png", alt: "Rafting the Cetina", span: "wide" },
-      { src: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=85", alt: "Rafting through canyon", span: "normal" },
-      { src: "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=800&q=85", alt: "Cetina canyon", span: "tall" },
-      { src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=85", alt: "Turquoise river pools", span: "normal" },
+      { src: "/images/experiences/rafting-detail.jpg", alt: "Rafting the Cetina", span: "wide" },
+      { src: "/images/gallery/rafting-action.jpg", alt: "Rafting through canyon", span: "normal" },
+      { src: "/images/omis/canyon.jpg", alt: "Cetina canyon", span: "tall" },
+      { src: "/images/omis/crew-rafting.jpg", alt: "Rafting crew on the river", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is rafting safe for beginners?", answer: "Yes — the route is graded for beginners and families with professional guides throughout." },
@@ -220,6 +220,47 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "12 km descent through the Cetina canyon with two swimming stops.",
     },
     whyChoose: ["#1 outdoor activity in Omiš", "12 km of dramatic canyon", "Cliff jumps & wild swimming"],
+  },
+  "night-ride": {
+    cardSummary: "An illuminated evening cruise through the Cetina canyon after dark.",
+    rating: 4.9,
+    reviewCount: 165,
+    overview: [
+      { icon: "clock", label: "30–35 min" },
+      { icon: "map-pin", label: "Omiš promenade" },
+      { icon: "users", label: "Couples & families" },
+      { icon: "euro", label: "From €25" },
+      { icon: "waves", label: "Evening cruise" },
+      { icon: "life-buoy", label: "Life jackets included" },
+    ],
+    timeline: [
+      { title: "Meet at the harbour" },
+      { title: "Board the glass boat" },
+      { title: "Enter the canyon at dusk" },
+      { title: "Illuminated riverbed viewing" },
+      { title: "Return to Omiš" },
+    ],
+    included: ["Glass-bottom night ride", "Illuminated viewing deck", "Life jackets", "Local crew"],
+    bring: ["Light jacket", "Camera", "Comfortable shoes"],
+    galleryImages: [
+      { src: "/images/zvone/glass-boat-night-canyon.jpg", alt: "Night ride through the Cetina canyon", span: "wide" },
+      { src: "/images/zvone/glass-boat-dock.jpg", alt: "Glass boat at Omiš harbour", span: "normal" },
+      { src: "/images/zvone/canyon-from-boat.jpg", alt: "Cetina canyon by day", span: "tall" },
+      { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina gorge", span: "normal" },
+    ],
+    detailFaqs: [
+      { question: "When does the Night Ride depart?", answer: "On select evenings from the Cetina promenade — contact us for the current schedule." },
+      { question: "Is it suitable for children?", answer: "Yes — the ride is calm and the illuminated glass floor fascinates guests of all ages." },
+      { question: "How is it different from the Glass Boat?", answer: "Same route through the canyon, but after dark with underwater lighting and a quieter, more atmospheric experience." },
+      { question: "What should I wear?", answer: "Evenings can be cooler on the water — bring a light layer. Comfortable shoes recommended." },
+      { question: "Can I cancel my booking?", answer: "Free cancellation up to 24 hours before departure." },
+    ],
+    location: {
+      meeting: "Cetina promenade, Omiš harbour",
+      finish: "Same departure point",
+      note: "Evening departures — exact time confirmed when you book.",
+    },
+    whyChoose: ["See the canyon in a different light", "Perfect for couples", "Unique illuminated glass-bottom views"],
   },
 };
 

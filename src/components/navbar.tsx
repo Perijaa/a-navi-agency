@@ -13,15 +13,18 @@ const LOGO_SRC = withBasePath("/images/logo.png");
 
 function NavLogo({ onHero = false }: { onHero?: boolean }) {
   return (
-    <span className={cn("nav-logo-frame", onHero && "nav-logo-frame--hero")}>
-      <Image
-        src={LOGO_SRC}
-        alt="A-Navi"
-        fill
-        sizes="(max-width: 1023px) 112px, 192px"
-        className="nav-logo"
-        priority
-      />
+    <span className={cn("nav-brand", onHero && "nav-brand--hero")}>
+      <span className="nav-brand__mark">
+        <Image
+          src={LOGO_SRC}
+          alt=""
+          fill
+          sizes="(max-width: 1023px) 48px, 56px"
+          className="nav-brand__mark-img"
+          priority
+        />
+      </span>
+      <span className="nav-brand__name">A NAVI</span>
     </span>
   );
 }

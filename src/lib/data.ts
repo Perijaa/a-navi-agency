@@ -4,6 +4,7 @@ import {
   Glasses,
   Navigation,
   Waves,
+  Moon,
   type LucideIcon,
 } from "lucide-react";
 
@@ -92,10 +93,8 @@ export const experiences: Experience[] = [
       "Over 800 five-star reviews. Omi\u0161\u2019s most beloved family tour, guests from 40+ countries.",
     icon: Ship,
     gradient: "from-teal-800/25 to-emerald-900/20",
-    image:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
-    detailImage:
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&q=80",
+    image: "/images/zvone/glass-boat-dock.jpg",
+    detailImage: "/images/zvone/canyon-from-boat.jpg",
     tag: "Most Popular",
     highlights: [
       "Crystal-clear glass bottom viewing",
@@ -134,10 +133,8 @@ export const experiences: Experience[] = [
       "The most relaxing way to reach Radmanove Mlinice from Omi\u0161. Guests return year after year.",
     icon: Navigation,
     gradient: "from-teal-700/25 to-emerald-800/20",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-    detailImage:
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80",
+    image: "/images/zvone/taxi-boat-guests-1.jpg",
+    detailImage: "/images/zvone/canyon-bridge.jpg",
     tag: "Scenic",
     highlights: [
       "30-minute scenic canyon cruise",
@@ -175,10 +172,8 @@ export const experiences: Experience[] = [
       "Our most popular choice for couples and families exploring the Omi\u0161 riviera on their own.",
     icon: Anchor,
     gradient: "from-emerald-800/25 to-teal-900/20",
-    image:
-      "https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=800&q=80",
-    detailImage:
-      "https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=1200&q=80",
+    image: "/images/zvone/rent-boat-harbour.jpg",
+    detailImage: "/images/zvone/rent-boat-interior.jpg",
     tag: "Freedom",
     highlights: [
       "No boat license required",
@@ -213,10 +208,8 @@ export const experiences: Experience[] = [
       "The experience children talk about for years. Rated unforgettable by 97% of guests in Omi\u0161.",
     icon: Glasses,
     gradient: "from-stone-700/25 to-teal-900/20",
-    image:
-      "https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=800&q=80",
-    detailImage:
-      "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=1200&q=80",
+    image: "/images/experiences/semi-submarine.jpg",
+    detailImage: "/images/experiences/semi-submarine-detail.jpg",
     tag: "Underwater",
     highlights: [
       "Panoramic underwater viewing windows",
@@ -251,14 +244,54 @@ export const experiences: Experience[] = [
       "Rated the #1 outdoor activity in Omi\u0161. Over 2,000 rafters this season alone.",
     icon: Waves,
     gradient: "from-emerald-700/25 to-teal-800/20",
-    image: "/images/hero-rafting.png",
-    detailImage: "/images/hero-rafting.png",
+    image: "/images/experiences/rafting.jpg",
+    detailImage: "/images/experiences/rafting-detail.jpg",
     tag: "Adventure",
     highlights: [
       "12 km canyon descent",
       "Cliff jumping and swimming stops",
       "Professional guides, full equipment",
       "Safe for children 3+",
+    ],
+  },
+  {
+    id: "night-ride",
+    title: "Night Ride",
+    tagline: "The Cetina canyon after dark",
+    headline: "When the Canyon Glows at Night",
+    subheadline:
+      "An evening glass-bottom cruise through the Cetina gorge — illuminated waters, towering cliffs in silhouette, and a side of the canyon most visitors never see.",
+    description:
+      "As daylight fades over Omi\u0161, board our glass boat and slip into the Cetina canyon under the stars. The riverbed glows beneath the glass as limestone walls close in around you — a quiet, cinematic journey through Dalmatia after dark.",
+    longDescription:
+      "There is a different Cetina after sunset. The crowds fade, the canyon narrows, and the only light comes from the boat itself — casting the ancient riverbed in gold through the glass floor. Our Night Ride departs from the Omi\u0161 promenade on select evenings and follows the same magical corridor as our daytime glass boat tours, but the atmosphere is entirely its own: starlight above, illuminated water below, and the deep silence of a gorge that has watched over this river for millennia. Perfect for couples, photographers, and anyone who wants to see the Cetina in its most intimate hour. Life jackets provided, calm water throughout, and the same warm welcome from our local crew.",
+    duration: "30\u201335 min ride",
+    difficulty: "Easy",
+    priceFrom: 25,
+    currency: "EUR",
+    pricing: [
+      { label: "Adults", price: "\u20ac25" },
+      { label: "Children 5\u201313", price: "\u20ac15" },
+      { label: "Under 5", price: "Free" },
+    ],
+    benefits: [
+      "Illuminated glass-bottom views of the Cetina after dark",
+      "Evening cruise through the canyon in calm, starlit conditions",
+      "A unique perspective on the gorge most day visitors miss",
+    ],
+    ctaLabel: "Book the Night Ride",
+    trustLine:
+      "Our most romantic tour on the Cetina. Guests call it the highlight of their stay in Omi\u0161.",
+    icon: Moon,
+    gradient: "from-indigo-900/25 to-teal-900/20",
+    image: "/images/zvone/glass-boat-night-canyon.jpg",
+    detailImage: "/images/zvone/glass-boat-night-canyon.jpg",
+    tag: "Evening",
+    highlights: [
+      "Illuminated glass-bottom viewing",
+      "Evening canyon atmosphere",
+      "Calm water, all ages welcome",
+      "30\u201335 minute scenic ride",
     ],
   },
 ];
@@ -274,26 +307,23 @@ export function getExperienceSlugs() {
 export const gallery: GalleryItem[] = [
   {
     id: "g1",
-    image:
-      "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?w=1200&q=85",
-    alt: "Cetina River canyon from above",
+    image: "/images/zvone/canyon-bridge.jpg",
+    alt: "Cetina canyon with the Omi\u0161 bridge",
     caption: "The Cetina gorge near Omi\u0161, carved over millennia of Dalmatian weather, seen from the canyon rim at golden hour.",
     location: "Cetina Canyon, Omi\u0161",
     span: "hero",
   },
   {
     id: "g2",
-    image:
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=85",
-    alt: "Crystal clear waters of the Cetina",
+    image: "/images/zvone/canyon-from-boat.jpg",
+    alt: "View from the boat through the Cetina canyon",
     caption: "Waters so clear the Cetina riverbed feels close enough to touch.",
     location: "Cetina River, Glass Boat Route",
     span: "tall",
   },
   {
     id: "g3",
-    image:
-      "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=85",
+    image: "/images/gallery/rafting-action.jpg",
     alt: "Rafting through Cetina canyon",
     caption: "Twelve kilometres of Dalmatian canyon, two cliff jumps, and one unforgettable descent.",
     location: "Cetina Canyon Rafting",
@@ -301,38 +331,34 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g4",
-    image:
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=85",
-    alt: "Boat on the Adriatic sea near Omi\u0161",
+    image: "/images/zvone/taxi-boat-guests-2.jpg",
+    alt: "Taxi boat guests on the Cetina",
     caption: "Past the Cetina river mouth, the Dalmatian coastline opens up into endless Adriatic blue.",
-    location: "Adriatic Coast, Omi\u0161 Riviera",
+    location: "Cetina River, Taxi Boat",
     span: "wide",
   },
   {
     id: "g5",
-    image:
-      "https://images.unsplash.com/photo-1500514966906-fe245eea9344?w=800&q=85",
-    alt: "Sunset over Dalmatian coast",
+    image: "/images/zvone/taxi-boat-guests-4.jpg",
+    alt: "Radmanove Mlinice taxi boat tour",
     caption: "When the sun drops behind Omi\u0161\u2019s medieval fortress, every boat ride becomes a private screening.",
-    location: "Omi\u0161 Harbour",
+    location: "Radmanove Mlinice, Cetina Canyon",
     span: "tall",
   },
   {
     id: "g6",
-    image:
-      "https://images.unsplash.com/photo-1551244072-5d12893278ab?w=800&q=85",
-    alt: "Underwater marine life off Omi\u0161",
-    caption: "Below the waterline off Omi\u0161, the Adriatic reveals its quiet, living world.",
-    location: "Adriatic Sea, Semi Submarine",
+    image: "/images/zvone/glass-boat-night-canyon.jpg",
+    alt: "Glass boat in the Cetina canyon at night",
+    caption: "The glass bottom glows as the Cetina canyon closes in around you after dark.",
+    location: "Cetina Canyon, Glass Boat",
     span: "normal",
   },
   {
     id: "g7",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=85",
-    alt: "Hidden beach along the Dalmatian coast",
+    image: "/images/zvone/taxi-boat-guests-6.jpg",
+    alt: "Taxi boat to Radmanove Mlinice",
     caption: "Some Dalmatian beaches have no road. The only way in is by water from Omi\u0161.",
-    location: "Hidden Beach, Omi\u0161 Riviera",
+    location: "Cetina River, Taxi Boat",
     span: "normal",
   },
 ];

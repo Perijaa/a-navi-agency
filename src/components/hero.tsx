@@ -261,7 +261,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="hero-v2 hero-section relative min-h-[105svh] w-full overflow-hidden bg-ink"
+      className="hero-v2 hero-section relative min-h-[100svh] w-full overflow-hidden bg-ink"
       data-mobile-bar-surface="dark"
       aria-label="Hero"
     >
@@ -275,7 +275,7 @@ export function Hero() {
 
       <motion.div
         style={{ opacity: reducedMotion ? 1 : contentOpacity }}
-        className="hero-media__content hero-v2__content relative flex min-h-[105svh] flex-col items-center px-[var(--container-pad)] pb-8 pt-[calc(env(safe-area-inset-top)+9.25rem)] sm:pb-10 lg:pt-[calc(env(safe-area-inset-top)+10rem)]"
+        className="hero-media__content hero-v2__content relative flex min-h-[100svh] flex-col items-center px-[var(--container-pad)]"
       >
         <div className="hero-v2__column">
           {/* Dominant headline */}
@@ -284,7 +284,8 @@ export function Hero() {
             style={reducedMotion ? undefined : { y: titleY }}
             className="hero-v2__title"
           >
-            <span className="hero-v2__title-line">Experience the Wild</span>
+            <span className="hero-v2__title-line">Experience</span>
+            <span className="hero-v2__title-line">the Wild</span>
             <span
               className={`hero-v2__title-accent${reducedMotion ? " hero-v2__title-accent--static" : ""}`}
             >

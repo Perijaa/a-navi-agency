@@ -4,7 +4,7 @@ import { motion, type MotionValue } from "framer-motion";
 import { withBasePath } from "@/lib/base-path";
 
 const HERO_VIDEO = withBasePath("/videos/hero-cetina.mp4");
-const HERO_POSTER = withBasePath("/images/hero-rafting.png");
+const HERO_POSTER = withBasePath("/images/experiences/rafting-detail.jpg");
 
 export function HeroVideoBg({ parallaxY }: { parallaxY?: number | MotionValue<number> }) {
   return (

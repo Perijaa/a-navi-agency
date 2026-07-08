@@ -13,11 +13,11 @@ export function Experiences() {
         <BlurReveal className="experiences-section__copy">
           <p className="experiences-section__eyebrow">Experiences</p>
           <h2 className="experiences-section__headline">
-            <span className="experiences-section__headline-line">Five ways into the</span>
+            <span className="experiences-section__headline-line">Six ways into the</span>
             <span className="experiences-section__headline-accent">canyon.</span>
           </h2>
           <p className="experiences-section__lead">
-            Same harbour, five distinct journeys on the Cetina. Tours from{" "}
+            Same harbour, six distinct journeys on the Cetina. Tours from{" "}
             <span className="experiences-section__price-hint">&euro;{minPrice}</span> per person.
           </p>
         </BlurReveal>
