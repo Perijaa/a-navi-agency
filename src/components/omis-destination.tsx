@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Calendar, Users, Star, Globe, Waves, Trees, Sun } from "lucide-react";
 import { Counter } from "@/components/ui/counter";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
+import { assetPath } from "@/lib/base-path";
 
 const stats = [
   { icon: Calendar, value: 15, suffix: "", decimals: 0, label: "Seasons", color: "cetina" },
@@ -16,28 +17,28 @@ const highlights = [
   {
     title: "One departure point",
     text: "Cetina promenade, Omiš harbour.",
-    image: "/images/zvone/anavi-kiosk.jpg",
+    image: assetPath("/images/zvone/anavi-kiosk.jpg"),
     alt: "Omiš harbour on the Cetina promenade",
     objectPosition: "50% 45%",
   },
   {
     title: "Cetina canyon",
     text: "River gorge minutes from town.",
-    image: "/images/zvone/canyon-from-boat.jpg",
+    image: assetPath("/images/zvone/canyon-from-boat.jpg"),
     alt: "Cetina River canyon near Omiš",
     objectPosition: "50% 35%",
   },
   {
     title: "Adriatic coast",
     text: "Where the river meets the sea.",
-    image: "/images/zvone/taxi-boat-guests-1.jpg",
+    image: assetPath("/images/zvone/taxi-boat-guests-1.jpg"),
     alt: "Adriatic coast near Omiš",
     objectPosition: "48% 40%",
   },
   {
     title: "One local crew",
     text: "Six tours. One team. Every day.",
-    image: "/images/zvone/rent-boat-harbour.jpg",
+    image: assetPath("/images/zvone/rent-boat-harbour.jpg"),
     alt: "Rafting crew on the Cetina River",
     objectPosition: "50% 40%",
   },
@@ -48,7 +49,7 @@ const destinationPillars = [
     icon: Waves,
     label: "Cetina River",
     text: "Crystal water from the gorge",
-    image: "/images/omis/harbour.jpg",
+    image: assetPath("/images/omis/harbour.jpg"),
     alt: "Cetina River at Omiš harbour",
     objectPosition: "50% 45%",
   },
@@ -56,7 +57,7 @@ const destinationPillars = [
     icon: Trees,
     label: "Canyon",
     text: "Limestone walls minutes away",
-    image: "/images/omis/canyon.jpg",
+    image: assetPath("/images/omis/canyon.jpg"),
     alt: "Cetina canyon near Omiš",
     objectPosition: "50% 35%",
   },
@@ -64,7 +65,7 @@ const destinationPillars = [
     icon: Sun,
     label: "Adriatic",
     text: "Where river meets the sea",
-    image: "/images/omis/coast.jpg",
+    image: assetPath("/images/omis/coast.jpg"),
     alt: "Adriatic coast near Omiš",
     objectPosition: "50% 40%",
   },

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Parallax } from "@/components/motion";
+import { assetPath } from "@/lib/base-path";
 
 type EditorialPhotoProps = {
   src: string;
@@ -31,6 +32,7 @@ export function EditorialPhoto({
   label,
 }: EditorialPhotoProps) {
   const Tag = onClick ? "button" : "div";
+  const resolvedSrc = assetPath(src);
 
   const frame = (
     <Tag
@@ -40,7 +42,7 @@ export function EditorialPhoto({
       aria-label={onClick ? label ?? `View ${alt}` : undefined}
     >
       <Image
-        src={src}
+        src={resolvedSrc}
         alt={alt}
         fill
         priority={priority}
@@ -61,7 +63,7 @@ export function EditorialPhoto({
       <Parallax offset={parallaxOffset} className={`relative ${aspectClass} ${className}`}>
         <div className="photo-frame photo-zoom group relative h-full w-full overflow-hidden">
           <Image
-            src={src}
+            src={resolvedSrc}
             alt={alt}
             fill
             priority={priority}
@@ -106,7 +108,7 @@ export function PhotoStack({
         >
           <div className="photo-frame photo-zoom relative aspect-[3/4] w-full overflow-hidden sm:aspect-[4/5]">
             <Image
-              src={photo.src}
+              src={assetPath(photo.src)}
               alt={photo.alt}
               fill
               sizes="(max-width: 768px) 80vw, 28rem"

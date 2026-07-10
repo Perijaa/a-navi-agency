@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Expand, ChevronLeft, ChevronRight } from "lucide-react";
 import { gallery } from "@/lib/data";
-import { withBasePath } from "@/lib/base-path";
 import { BlurReveal } from "@/components/motion";
 import { PhotoLightbox, type LightboxItem } from "@/components/ui/photo-lightbox";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
@@ -33,7 +32,7 @@ export function Gallery() {
     () =>
       gallery.map((g) => ({
         id: g.id,
-        image: withBasePath(g.image),
+        image: g.image,
         alt: g.alt,
         caption: g.caption,
         location: g.location,

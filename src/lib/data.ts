@@ -7,6 +7,7 @@ import {
   Moon,
   type LucideIcon,
 } from "lucide-react";
+import { assetPath } from "./base-path";
 
 export interface PriceTier {
   label: string;
@@ -93,8 +94,8 @@ export const experiences: Experience[] = [
       "Over 800 five-star reviews. Omi\u0161\u2019s most beloved family tour, guests from 40+ countries.",
     icon: Ship,
     gradient: "from-teal-800/25 to-emerald-900/20",
-    image: "/images/zvone/glass-boat-dock.jpg",
-    detailImage: "/images/zvone/20260416_115400_IMG_4384.jpg",
+    image: assetPath("/images/zvone/glass-boat-dock.jpg"),
+    detailImage: assetPath("/images/zvone/20260416_115400_IMG_4384.jpg"),
     tag: "Most Popular",
     highlights: [
       "Crystal-clear glass bottom viewing",
@@ -133,8 +134,8 @@ export const experiences: Experience[] = [
       "The most relaxing way to reach Radmanove Mlinice from Omi\u0161. Guests return year after year.",
     icon: Navigation,
     gradient: "from-teal-700/25 to-emerald-800/20",
-    image: "/images/zvone/taxi-boat-guests-1.jpg",
-    detailImage: "/images/zvone/taxi-boat-hero.jpg",
+    image: assetPath("/images/zvone/taxi-boat-guests-1.jpg"),
+    detailImage: assetPath("/images/zvone/taxi-boat-hero.jpg"),
     tag: "Scenic",
     highlights: [
       "30-minute scenic canyon cruise",
@@ -172,8 +173,8 @@ export const experiences: Experience[] = [
       "Our most popular choice for couples and families exploring the Omi\u0161 riviera on their own.",
     icon: Anchor,
     gradient: "from-emerald-800/25 to-teal-900/20",
-    image: "/images/zvone/rent-boat-harbour.jpg",
-    detailImage: "/images/zvone/rent-a-boat-hero.png",
+    image: assetPath("/images/zvone/rent-boat-harbour.jpg"),
+    detailImage: assetPath("/images/zvone/rent-a-boat-hero.png"),
     tag: "Freedom",
     highlights: [
       "No boat license required",
@@ -208,8 +209,8 @@ export const experiences: Experience[] = [
       "The experience children talk about for years. Rated unforgettable by 97% of guests in Omi\u0161.",
     icon: Glasses,
     gradient: "from-stone-700/25 to-teal-900/20",
-    image: "/images/experiences/semi-submarine.jpg",
-    detailImage: "/images/experiences/semi-submarine-detail.jpg",
+    image: assetPath("/images/experiences/semi-submarine.jpg"),
+    detailImage: assetPath("/images/experiences/semi-submarine-detail.jpg"),
     tag: "Underwater",
     highlights: [
       "Panoramic underwater viewing windows",
@@ -244,8 +245,8 @@ export const experiences: Experience[] = [
       "Rated the #1 outdoor activity in Omi\u0161. Over 2,000 rafters this season alone.",
     icon: Waves,
     gradient: "from-emerald-700/25 to-teal-800/20",
-    image: "/images/experiences/rafting.jpg",
-    detailImage: "/images/experiences/rafting-detail.jpg",
+    image: assetPath("/images/experiences/rafting.jpg"),
+    detailImage: assetPath("/images/experiences/rafting-detail.jpg"),
     tag: "Adventure",
     highlights: [
       "12 km canyon descent",
@@ -284,8 +285,8 @@ export const experiences: Experience[] = [
       "Our most romantic tour on the Cetina. Guests call it the highlight of their stay in Omi\u0161.",
     icon: Moon,
     gradient: "from-indigo-900/25 to-teal-900/20",
-    image: "/images/zvone/night-ride-hero.png",
-    detailImage: "/images/zvone/night-ride-hero.png",
+    image: assetPath("/images/zvone/night-ride-hero.png"),
+    detailImage: assetPath("/images/zvone/night-ride-hero.png"),
     tag: "Evening",
     highlights: [
       "Illuminated glass-bottom viewing",
@@ -307,7 +308,7 @@ export function getExperienceSlugs() {
 export const gallery: GalleryItem[] = [
   {
     id: "g1",
-    image: "/images/zvone/canyon-bridge.jpg",
+    image: assetPath("/images/zvone/canyon-bridge.jpg"),
     alt: "Cetina canyon with the Omi\u0161 bridge",
     caption: "The Cetina gorge near Omi\u0161, carved over millennia of Dalmatian weather, seen from the canyon rim at golden hour.",
     location: "Cetina Canyon, Omi\u0161",
@@ -315,7 +316,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g2",
-    image: "/images/zvone/canyon-from-boat.jpg",
+    image: assetPath("/images/zvone/canyon-from-boat.jpg"),
     alt: "View from the boat through the Cetina canyon",
     caption: "Waters so clear the Cetina riverbed feels close enough to touch.",
     location: "Cetina River, Glass Boat Route",
@@ -323,7 +324,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g3",
-    image: "/images/gallery/rafting-action.jpg",
+    image: assetPath("/images/gallery/rafting-action.jpg"),
     alt: "Rafting through Cetina canyon",
     caption: "Twelve kilometres of Dalmatian canyon, two cliff jumps, and one unforgettable descent.",
     location: "Cetina Canyon Rafting",
@@ -331,7 +332,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g4",
-    image: "/images/zvone/taxi-boat-guests-2.jpg",
+    image: assetPath("/images/zvone/taxi-boat-guests-2.jpg"),
     alt: "Taxi boat guests on the Cetina",
     caption: "Past the Cetina river mouth, the Dalmatian coastline opens up into endless Adriatic blue.",
     location: "Cetina River, Taxi Boat",
@@ -339,7 +340,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g5",
-    image: "/images/zvone/taxi-boat-guests-4.jpg",
+    image: assetPath("/images/zvone/taxi-boat-guests-4.jpg"),
     alt: "Radmanove Mlinice taxi boat tour",
     caption: "When the sun drops behind Omi\u0161\u2019s medieval fortress, every boat ride becomes a private screening.",
     location: "Radmanove Mlinice, Cetina Canyon",
@@ -347,7 +348,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g6",
-    image: "/images/zvone/night-ride-hero.png",
+    image: assetPath("/images/zvone/night-ride-hero.png"),
     alt: "Illuminated glass boat on the Cetina at night",
     caption: "The glass bottom glows as the Cetina canyon closes in around you after dark.",
     location: "Cetina Canyon, Glass Boat",
@@ -355,7 +356,7 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g7",
-    image: "/images/zvone/taxi-boat-guests-6.jpg",
+    image: assetPath("/images/zvone/taxi-boat-guests-6.jpg"),
     alt: "Taxi boat to Radmanove Mlinice",
     caption: "Some Dalmatian beaches have no road. The only way in is by water from Omi\u0161.",
     location: "Cetina River, Taxi Boat",
