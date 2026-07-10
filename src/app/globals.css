@@ -6815,11 +6815,47 @@ select {
   z-index: 0;
 }
 
+.hero-media__video {
+  pointer-events: none;
+}
+
 .hero-media__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
+}
+
+.hero-media__overlay--scrim {
+  background: rgb(var(--rgb-dark) / 0.18);
+}
+
+.hero-media__overlay--gradient {
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--rgb-dark) / 0.32) 0%,
+    rgb(var(--rgb-dark) / 0.1) 45%,
+    rgb(var(--rgb-dark) / 0.52) 100%
+  );
+}
+
+@media (max-width: 767px) {
+  .hero-media__video {
+    filter: brightness(0.68) contrast(1.08) saturate(0.92);
+  }
+
+  .hero-media__overlay--scrim {
+    background: rgb(var(--rgb-dark) / 0.48);
+  }
+
+  .hero-media__overlay--gradient {
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--rgb-dark) / 0.62) 0%,
+      rgb(var(--rgb-dark) / 0.38) 42%,
+      rgb(var(--rgb-dark) / 0.72) 100%
+    );
+  }
 }
 
 .hero-media__content {

@@ -112,9 +112,9 @@ export const experiences: Experience[] = [
     subheadline:
       "A 30-minute scenic cruise from the Omi\u0161 waterfront through the towering Cetina canyon, followed by a leisurely break at the enchanting Radmanove Mlinice.",
     description:
-      "Leave the Omi\u0161 harbour behind and cruise 30 minutes through the Cetina canyon \u2014 where sheer Dalmatian limestone meets emerald water \u2014 to the storied Radmanove Mlinice for a 1.5-hour break in one of Croatia\u2019s most magical settings.",
+      "Leave the Omi\u0161 harbour behind and cruise 30 minutes through the Cetina canyon \u2014 where sheer Dalmatian limestone meets emerald water \u2014 to the storied Radmanove Mlinice for a 1-hour break in one of Croatia\u2019s most magical settings.",
     longDescription:
-      "Some journeys are destinations in themselves. Our taxi boat departs from the Omi\u0161 promenade and carves a gentle path through the Cetina River canyon, where sheer rock faces plunge into emerald water and the air smells of wild sage, rosemary, and Mediterranean pine. After 30 minutes of cinematic Dalmatian scenery, you arrive at Radmanove Mlinice \u2014 a nature-park retreat built around 17th-century stone mills, where the river pools into natural swimming holes beneath ancient trees. You\u2019ll have a full hour and a half to explore the estate, swim in canyon pools, or simply sit with a coffee at the water\u2019s edge while the Cetina slips past. When you\u2019re ready, the boat takes you home the same breathtaking way you came \u2014 back through the gorge to Omi\u0161. Perfect for every age and every pace.",
+      "Some journeys are destinations in themselves. Our taxi boat departs from the Omi\u0161 promenade and carves a gentle path through the Cetina River canyon, where sheer rock faces plunge into emerald water and the air smells of wild sage, rosemary, and Mediterranean pine. After 30 minutes of cinematic Dalmatian scenery, you arrive at Radmanove Mlinice \u2014 a nature-park retreat built around 17th-century stone mills, where the river pools into natural swimming holes beneath ancient trees. You\u2019ll have a full hour to explore the estate, swim in canyon pools, or simply sit with a coffee at the water\u2019s edge while the Cetina slips past. When you\u2019re ready, the boat takes you home the same breathtaking way you came \u2014 back through the gorge to Omi\u0161. Perfect for every age and every pace.",
     duration: "2 hours total",
     difficulty: "Easy",
     priceFrom: 15,
@@ -126,7 +126,7 @@ export const experiences: Experience[] = [
     ],
     benefits: [
       "30-minute scenic cruise through the towering Cetina canyon from Omi\u0161",
-      "1.5-hour leisure break at Radmanove Mlinice, a 17th-century Dalmatian mill estate",
+      "1-hour leisure break at Radmanove Mlinice, a 17th-century Dalmatian mill estate",
       "A nature-park atmosphere in the heart of Croatia\u2019s coastal canyon country",
     ],
     ctaLabel: "Book the Canyon Cruise",
@@ -139,7 +139,7 @@ export const experiences: Experience[] = [
     tag: "Scenic",
     highlights: [
       "30-minute scenic canyon cruise",
-      "1.5-hour stop at Radmanove Mlinice",
+      "1-hour stop at Radmanove Mlinice",
       "Nature-park atmosphere",
       "Suitable for all ages",
     ],
@@ -443,7 +443,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How long does each tour last?",
     answer:
-      "Glass Boat: ~35 min ride through the Cetina canyon + stop at Radmanove Mlinice. Taxi Boat: 30 min each way through the gorge + 1.5 h break. Rent a Boat: 3 hours or full day exploring the river and coast. Semi Submarine: 1 hour off the Omi\u0161 coast. Rafting: approximately 2.5 hours through the Cetina canyon including two swimming stops.",
+      "Glass Boat: ~35 min ride through the Cetina canyon + stop at Radmanove Mlinice. Taxi Boat: 30 min each way through the gorge + 1 h break. Rent a Boat: 3 hours or full day exploring the river and coast. Semi Submarine: 1 hour off the Omi\u0161 coast. Rafting: approximately 2.5 hours through the Cetina canyon including two swimming stops.",
   },
   {
     question: "What\u2019s included in the price?",

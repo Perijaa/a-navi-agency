@@ -76,7 +76,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       { title: "Free time to swim & explore" },
       { title: "Scenic return to Omiš" },
     ],
-    included: ["Round-trip boat transfer", "1.5 h at Radmanove Mlinice", "Life jackets", "Scenic canyon route"],
+    included: ["Round-trip boat transfer", "1 h at Radmanove Mlinice", "Life jackets", "Scenic canyon route"],
     bring: ["Swimwear", "Towel", "Sunscreen", "Water bottle"],
     galleryImages: [
       { src: assetPath("/images/zvone/taxi-boat-hero.jpg"), alt: "Taxi boat cruise through the Cetina gorge", span: "wide" },
@@ -85,7 +85,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       { src: assetPath("/images/zvone/taxi-boat-guests-6.jpg"), alt: "Taxi boat on the Cetina River", span: "normal" },
     ],
     detailFaqs: [
-      { question: "How long is the stop at Radmanove Mlinice?", answer: "You have 1.5 hours to swim, explore the mill estate, or relax by the river." },
+      { question: "How long is the stop at Radmanove Mlinice?", answer: "You have 1 hour to swim, explore the mill estate, or relax by the river." },
       { question: "Is this tour suitable for seniors?", answer: "Yes — it's our most relaxed tour with minimal walking and plenty of seating on board." },
       { question: "Where do we depart from?", answer: "The Cetina promenade in Omiš harbour, at our A-Navi desk." },
       { question: "Can we swim during the tour?", answer: "Yes, at Radmanove Mlinice there are natural swimming pools in the canyon." },

@@ -267,11 +267,8 @@ export function Hero() {
     >
       <HeroVideoBg parallaxY={reducedMotion ? 0 : videoY} />
 
-      <div className="hero-media__overlay bg-ink/18" aria-hidden />
-      <div
-        className="hero-media__overlay bg-gradient-to-b from-ink/30 via-transparent to-ink/50"
-        aria-hidden
-      />
+      <div className="hero-media__overlay hero-media__overlay--scrim" aria-hidden />
+      <div className="hero-media__overlay hero-media__overlay--gradient" aria-hidden />
 
       <motion.div
         style={{ opacity: reducedMotion ? 1 : contentOpacity }}
