@@ -14,7 +14,7 @@ export function HeroVideoBg({ parallaxY }: { parallaxY?: number | MotionValue<nu
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         poster={HERO_POSTER}
         className="h-full w-full object-cover"
       >

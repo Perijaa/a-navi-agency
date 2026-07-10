@@ -2,11 +2,17 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle, ShieldCheck, Clock3, CreditCard } from "lucide-react";
 import { faqs } from "@/lib/data";
 import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 import { EASE_OUT } from "@/lib/motion";
 import { homeHash } from "@/lib/base-path";
+
+const trustPoints = [
+  { icon: CreditCard, label: "No payment upfront" },
+  { icon: ShieldCheck, label: "Free cancellation 24h" },
+  { icon: Clock3, label: "Reply within hours" },
+] as const;
 
 function FaqItem({
   item,
@@ -53,13 +59,42 @@ export function Faq() {
 
   return (
     <section id="faq" className="faq-section bg-cream">
-      <div className="aw-container experiences-section__intro">
-        <BlurReveal className="experiences-section__copy">
-          <p className="aw-kicker">FAQ</p>
-          <h2 className="aw-headline mt-4 text-ink">Common questions.</h2>
-          <p className="experiences-section__lead mt-5 text-[17px] leading-relaxed text-stone-500">
-            No payment upfront. Free cancellation 24 hours before departure.
-          </p>
+      <div className="aw-container faq-v2__intro">
+        <BlurReveal className="faq-v2__intro-panel">
+          <div className="faq-v2__intro-copy experiences-section__copy">
+            <p className="experiences-section__eyebrow">FAQ</p>
+            <h2 className="experiences-section__headline">
+              <span className="experiences-section__headline-line">Common</span>
+              <span className="experiences-section__headline-accent">questions</span>
+            </h2>
+            <p className="experiences-section__lead faq-v2__lead">
+              Everything you need before booking — clear answers, no fine print, and no payment
+              required until you are ready.
+            </p>
+
+            <ul className="faq-v2__trust">
+              {trustPoints.map((point) => {
+                const Icon = point.icon;
+                return (
+                  <li key={point.label} className="faq-v2__trust-item">
+                    <span className="faq-v2__trust-icon" aria-hidden>
+                      <Icon strokeWidth={1.5} />
+                    </span>
+                    <span>{point.label}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="faq-v2__intro-aside" aria-hidden>
+            <div className="faq-v2__intro-badge">
+              <HelpCircle strokeWidth={1.5} />
+            </div>
+            <p className="faq-v2__intro-count">{faqs.length}</p>
+            <p className="faq-v2__intro-count-label">answers ready</p>
+            <p className="faq-v2__intro-note">Tap any question below</p>
+          </div>
         </BlurReveal>
       </div>
 
