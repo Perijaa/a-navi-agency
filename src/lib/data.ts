@@ -94,7 +94,7 @@ export const experiences: Experience[] = [
     icon: Ship,
     gradient: "from-teal-800/25 to-emerald-900/20",
     image: "/images/zvone/glass-boat-dock.jpg",
-    detailImage: "/images/zvone/canyon-from-boat.jpg",
+    detailImage: "/images/zvone/20260416_115400_IMG_4384.jpg",
     tag: "Most Popular",
     highlights: [
       "Crystal-clear glass bottom viewing",
@@ -134,7 +134,7 @@ export const experiences: Experience[] = [
     icon: Navigation,
     gradient: "from-teal-700/25 to-emerald-800/20",
     image: "/images/zvone/taxi-boat-guests-1.jpg",
-    detailImage: "/images/zvone/canyon-bridge.jpg",
+    detailImage: "/images/zvone/taxi-boat-hero.jpg",
     tag: "Scenic",
     highlights: [
       "30-minute scenic canyon cruise",
@@ -173,7 +173,7 @@ export const experiences: Experience[] = [
     icon: Anchor,
     gradient: "from-emerald-800/25 to-teal-900/20",
     image: "/images/zvone/rent-boat-harbour.jpg",
-    detailImage: "/images/zvone/rent-boat-interior.jpg",
+    detailImage: "/images/zvone/rent-a-boat-hero.png",
     tag: "Freedom",
     highlights: [
       "No boat license required",
@@ -284,8 +284,8 @@ export const experiences: Experience[] = [
       "Our most romantic tour on the Cetina. Guests call it the highlight of their stay in Omi\u0161.",
     icon: Moon,
     gradient: "from-indigo-900/25 to-teal-900/20",
-    image: "/images/zvone/glass-boat-night-canyon.jpg",
-    detailImage: "/images/zvone/glass-boat-night-canyon.jpg",
+    image: "/images/zvone/night-ride-hero.png",
+    detailImage: "/images/zvone/night-ride-hero.png",
     tag: "Evening",
     highlights: [
       "Illuminated glass-bottom viewing",
@@ -347,8 +347,8 @@ export const gallery: GalleryItem[] = [
   },
   {
     id: "g6",
-    image: "/images/zvone/glass-boat-night-canyon.jpg",
-    alt: "Glass boat in the Cetina canyon at night",
+    image: "/images/zvone/night-ride-hero.png",
+    alt: "Illuminated glass boat on the Cetina at night",
     caption: "The glass bottom glows as the Cetina canyon closes in around you after dark.",
     location: "Cetina Canyon, Glass Boat",
     span: "normal",

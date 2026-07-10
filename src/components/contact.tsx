@@ -59,16 +59,16 @@ export function Contact() {
               We confirm availability within hours — by email or WhatsApp.
             </p>
             <p className="contact-section__meta mt-6 text-[15px] text-stone-500">
-              <a href="tel:+385991234567" className="transition-colors hover:text-ink">
-                +385 99 123 4567
+              <a href="tel:+385957264937" className="transition-colors hover:text-ink">
+                0957264937
               </a>
               <span aria-hidden>·</span>
-              <a href="mailto:info@a-navi-agency.com" className="transition-colors hover:text-ink">
-                info@a-navi-agency.com
+              <a href="mailto:josipsinkovic6@gmail.com" className="transition-colors hover:text-ink">
+                josipsinkovic6@gmail.com
               </a>
               <span aria-hidden>·</span>
               <a
-                href="https://wa.me/385991234567"
+                href="https://wa.me/385957264937"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="transition-colors hover:text-ink"

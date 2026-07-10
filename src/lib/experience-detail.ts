@@ -37,8 +37,8 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Glass-bottom boat ride", "Stop at Radmanove Mlinice", "Life jackets", "Pet-friendly welcome"],
     bring: ["Sunscreen", "Camera", "Light jacket", "Comfortable shoes"],
     galleryImages: [
-      { src: "/images/zvone/glass-boat-dock.jpg", alt: "Glass boat at Omi\u0161 harbour", span: "wide" },
-      { src: "/images/zvone/canyon-from-boat.jpg", alt: "Cruising through the Cetina canyon", span: "normal" },
+      { src: "/images/zvone/20260416_115400_IMG_4384.jpg", alt: "Glass boat cruise through the Cetina canyon", span: "wide" },
+      { src: "/images/zvone/glass-boat-dock.jpg", alt: "Glass boat at Omi\u0161 harbour", span: "normal" },
       { src: "/images/zvone/glass-boat-night-canyon.jpg", alt: "Glass boat in the canyon at night", span: "tall" },
       { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina canyon and Omi\u0161 bridge", span: "normal" },
     ],
@@ -78,7 +78,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Round-trip boat transfer", "1.5 h at Radmanove Mlinice", "Life jackets", "Scenic canyon route"],
     bring: ["Swimwear", "Towel", "Sunscreen", "Water bottle"],
     galleryImages: [
-      { src: "/images/zvone/taxi-boat-guests-1.jpg", alt: "Taxi boat guests on the Cetina", span: "wide" },
+      { src: "/images/zvone/taxi-boat-hero.jpg", alt: "Taxi boat cruise through the Cetina gorge", span: "wide" },
       { src: "/images/zvone/taxi-boat-guests-2.jpg", alt: "Radmanove Mlinice taxi boat tour", span: "normal" },
       { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina canyon and Omi\u0161 bridge", span: "tall" },
       { src: "/images/zvone/taxi-boat-guests-6.jpg", alt: "Taxi boat on the Cetina River", span: "normal" },
@@ -119,8 +119,8 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Boat rental", "Fuel", "Safety equipment", "Coastal & river map", "Brief orientation"],
     bring: ["Sunscreen", "Swimwear", "Towel", "ID document", "Water & snacks"],
     galleryImages: [
-      { src: "/images/zvone/rent-boat-harbour.jpg", alt: "A-Navi boats at Omi\u0161 harbour", span: "wide" },
-      { src: "/images/zvone/rent-boat-interior.jpg", alt: "Rent a boat interior", span: "normal" },
+      { src: "/images/zvone/rent-a-boat-hero.png", alt: "Rent a boat on the Cetina near Omi\u0161", span: "wide" },
+      { src: "/images/zvone/rent-boat-harbour.jpg", alt: "A-Navi boats at Omi\u0161 harbour", span: "normal" },
       { src: "/images/gallery/taxi-boat-coast.jpg", alt: "Adriatic coastline", span: "tall" },
       { src: "/images/gallery/canyon-aerial.jpg", alt: "Aerial view of the coast", span: "normal" },
     ],
@@ -243,7 +243,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Glass-bottom night ride", "Illuminated viewing deck", "Life jackets", "Local crew"],
     bring: ["Light jacket", "Camera", "Comfortable shoes"],
     galleryImages: [
-      { src: "/images/zvone/glass-boat-night-canyon.jpg", alt: "Night ride through the Cetina canyon", span: "wide" },
+      { src: "/images/zvone/night-ride-hero.png", alt: "Illuminated glass boat on the Cetina at night", span: "wide" },
       { src: "/images/zvone/glass-boat-dock.jpg", alt: "Glass boat at Omiš harbour", span: "normal" },
       { src: "/images/zvone/canyon-from-boat.jpg", alt: "Cetina canyon by day", span: "tall" },
       { src: "/images/zvone/canyon-bridge.jpg", alt: "Cetina gorge", span: "normal" },

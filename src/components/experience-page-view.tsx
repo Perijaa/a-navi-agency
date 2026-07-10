@@ -134,7 +134,19 @@ export function ExperiencePageView({ slug }: { slug: string }) {
       <FloatingBookCta />
       <main className="bg-cream pb-safe-book-bar">
         {/* Hero — split layout */}
-        <section className="exp-hero">
+        <section
+          className={`exp-hero${
+            slug === "night-ride"
+              ? " exp-hero--night-ride"
+              : slug === "glass-boat"
+                ? " exp-hero--glass-boat"
+                : slug === "rent-a-boat"
+                  ? " exp-hero--rent-a-boat"
+                  : slug === "taxi-boat"
+                    ? " exp-hero--taxi-boat"
+                    : ""
+          }`}
+        >
           <div className="exp-hero__media">
             <Image
               src={experience.detailImage.replace("w=1200", "w=1800")}
@@ -143,7 +155,14 @@ export function ExperiencePageView({ slug }: { slug: string }) {
               priority
               sizes="100vw"
               className="object-cover"
-              style={{ objectPosition: "50% 35%" }}
+              style={
+                slug === "night-ride" ||
+                slug === "glass-boat" ||
+                slug === "rent-a-boat" ||
+                slug === "taxi-boat"
+                  ? undefined
+                  : { objectPosition: "50% 35%" }
+              }
             />
             <div className="exp-hero__overlay" aria-hidden />
           </div>

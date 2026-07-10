@@ -4605,6 +4605,133 @@ select {
   );
 }
 
+.exp-hero--night-ride .exp-hero__media img {
+  transform: scale(1.02);
+  object-position: 62% 48%;
+}
+
+.exp-hero--night-ride:hover .exp-hero__media img {
+  transform: scale(1.05);
+}
+
+.exp-hero--night-ride .exp-hero__overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgb(var(--rgb-dark) / 0.92) 0%,
+      rgb(var(--rgb-dark) / 0.55) 42%,
+      rgb(var(--rgb-dark) / 0.15) 72%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to top,
+      rgb(var(--rgb-dark) / 0.96) 0%,
+      rgb(var(--rgb-dark) / 0.45) 38%,
+      rgb(var(--rgb-dark) / 0.12) 100%
+    );
+}
+
+.exp-hero--night-ride .exp-hero__eyebrow {
+  background: linear-gradient(135deg, #7cff6b 0%, #3dd68c 100%);
+  color: rgb(var(--rgb-dark));
+  box-shadow: 0 4px 20px -4px rgb(124 255 107 / 0.45);
+}
+
+.exp-hero--night-ride .exp-hero__title {
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.35);
+}
+
+.exp-hero--night-ride .exp-hero__lead {
+  color: rgb(var(--rgb-bg) / 0.82);
+}
+
+.exp-hero--glass-boat .exp-hero__media img {
+  object-position: 58% 42%;
+}
+
+.exp-hero--glass-boat:hover .exp-hero__media img {
+  transform: scale(1.03);
+}
+
+.exp-hero--glass-boat .exp-hero__overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgb(var(--rgb-dark) / 0.88) 0%,
+      rgb(var(--rgb-dark) / 0.45) 45%,
+      rgb(var(--rgb-dark) / 0.12) 70%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to top,
+      rgb(var(--rgb-dark) / 0.94) 0%,
+      rgb(var(--rgb-dark) / 0.42) 42%,
+      rgb(var(--rgb-dark) / 0.1) 100%
+    );
+}
+
+.exp-hero--glass-boat .exp-hero__title {
+  text-shadow: 0 2px 20px rgb(0 0 0 / 0.25);
+}
+
+.exp-hero--rent-a-boat .exp-hero__media img {
+  object-position: 52% 44%;
+}
+
+.exp-hero--rent-a-boat:hover .exp-hero__media img {
+  transform: scale(1.03);
+}
+
+.exp-hero--rent-a-boat .exp-hero__overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgb(var(--rgb-dark) / 0.9) 0%,
+      rgb(var(--rgb-dark) / 0.48) 42%,
+      rgb(var(--rgb-dark) / 0.14) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to top,
+      rgb(var(--rgb-dark) / 0.95) 0%,
+      rgb(var(--rgb-dark) / 0.4) 40%,
+      rgb(var(--rgb-dark) / 0.08) 100%
+    );
+}
+
+.exp-hero--rent-a-boat .exp-hero__title {
+  text-shadow: 0 2px 20px rgb(0 0 0 / 0.28);
+}
+
+.exp-hero--taxi-boat .exp-hero__media img {
+  object-position: 56% 44%;
+}
+
+.exp-hero--taxi-boat:hover .exp-hero__media img {
+  transform: scale(1.03);
+}
+
+.exp-hero--taxi-boat .exp-hero__overlay {
+  background:
+    linear-gradient(
+      to right,
+      rgb(var(--rgb-dark) / 0.9) 0%,
+      rgb(var(--rgb-dark) / 0.46) 44%,
+      rgb(var(--rgb-dark) / 0.12) 70%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to top,
+      rgb(var(--rgb-dark) / 0.95) 0%,
+      rgb(var(--rgb-dark) / 0.42) 40%,
+      rgb(var(--rgb-dark) / 0.08) 100%
+    );
+}
+
+.exp-hero--taxi-boat .exp-hero__title {
+  text-shadow: 0 2px 20px rgb(0 0 0 / 0.25);
+}
+
 .exp-hero__inner {
   position: relative;
   z-index: 1;
@@ -6855,6 +6982,22 @@ button.photo-zoom {
   .exp-hero__lead {
     font-size: 1rem;
     margin-top: 1rem;
+  }
+
+  .exp-hero--night-ride .exp-hero__media img {
+    object-position: 55% 40%;
+  }
+
+  .exp-hero--glass-boat .exp-hero__media img {
+    object-position: 52% 38%;
+  }
+
+  .exp-hero--rent-a-boat .exp-hero__media img {
+    object-position: 50% 40%;
+  }
+
+  .exp-hero--taxi-boat .exp-hero__media img {
+    object-position: 52% 40%;
   }
 
   .exp-section__title {

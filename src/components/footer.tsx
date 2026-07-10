@@ -33,15 +33,15 @@ export function Footer({
             Discover Omiš from the water.
           </p>
           <div className="footer-v2__contact">
-            <a href="tel:+385991234567" className="footer-v2__contact-item">
+            <a href="tel:+385957264937" className="footer-v2__contact-item">
               <Phone className="h-4 w-4" />
-              <span>+385 99 123 4567</span>
+              <span>0957264937</span>
             </a>
-            <a href="mailto:info@a-navi-agency.com" className="footer-v2__contact-item">
+            <a href="mailto:josipsinkovic6@gmail.com" className="footer-v2__contact-item">
               <Mail className="h-4 w-4" />
-              <span>info@a-navi-agency.com</span>
+              <span>josipsinkovic6@gmail.com</span>
             </a>
-            <a href="https://wa.me/385991234567" target="_blank" rel="noopener noreferrer" className="footer-v2__contact-item footer-v2__contact-item--whatsapp">
+            <a href="https://wa.me/385957264937" target="_blank" rel="noopener noreferrer" className="footer-v2__contact-item footer-v2__contact-item--whatsapp">
               <MessageCircle className="h-4 w-4" />
               <span>WhatsApp</span>
             </a>
