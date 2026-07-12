@@ -13,6 +13,7 @@ import {
   guestTotal,
   type BookingDraft,
 } from "@/lib/booking-utils";
+import { getTourTitle, submitBookingInquiry } from "@/lib/submit-booking";
 
 export function Contact() {
   const reduced = useReducedMotion();
@@ -28,6 +29,8 @@ export function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     const draft = loadBookingDraft();
@@ -43,9 +46,29 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      await submitBookingInquiry({
+        draft: booking,
+        source: "contact-form",
+        tourTitle: getTourTitle(booking.experienceId),
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : "Could not send your request."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -152,12 +175,16 @@ export function Contact() {
                     </div>
 
                     <div className="contact-form__submit">
+                      {submitError && (
+                        <p className="mb-3 text-center text-sm text-red-600">{submitError}</p>
+                      )}
                       <button
                         type="submit"
-                        className="flex w-full min-h-11 items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-cream transition-opacity hover:opacity-90"
+                        disabled={isSubmitting}
+                        className="flex w-full min-h-11 items-center justify-center gap-2 rounded-full bg-primary text-[15px] font-medium text-cream transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         <Send className="h-4 w-4" />
-                        Send request
+                        {isSubmitting ? "Sending..." : "Send request"}
                       </button>
                       <p className="mt-4 text-center text-xs text-stone-400">
                         No payment now · Free cancellation 24h

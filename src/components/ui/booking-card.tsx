@@ -45,7 +45,7 @@ export type BookingCardProps = {
   showPrice?: boolean;
   showCta?: boolean;
   ctaLabel?: string;
-  onReserve?: (draft: BookingDraft) => void;
+  onReserve?: (draft: BookingDraft) => void | Promise<void>;
   onChange?: (draft: BookingDraft) => void;
   className?: string;
 };
@@ -150,6 +150,7 @@ export function BookingCard({
   const [date, setDate] = useState<Date | null>(() => parseDateInputValue(defaultDate));
   const [guests, setGuests] = useState<BookingGuests>(defaultGuests);
   const [panel, setPanel] = useState<Panel>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const today = useMemo(() => startOfDay(new Date()), []);
   const maxDate = useMemo(() => {
@@ -253,13 +254,21 @@ export function BookingCard({
     });
   };
 
-  const handleReserve = () => {
+  const handleReserve = async () => {
+    if (!onReserve || isSubmitting) return;
+
     const draft: BookingDraft = {
       experienceId,
       date: toDateInputValue(date),
       guests,
     };
-    onReserve?.(draft);
+
+    setIsSubmitting(true);
+    try {
+      await onReserve(draft);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const motionProps = panelMotion(reduced);
@@ -521,10 +530,11 @@ export function BookingCard({
           <button
             type="button"
             onClick={handleReserve}
+            disabled={isSubmitting}
             className={`booking-card-cta booking-card-cta--${variant}`}
           >
-            {ctaLabel}
-            <ArrowRight className="h-4 w-4" />
+            {isSubmitting ? "Sending..." : ctaLabel}
+            {!isSubmitting && <ArrowRight className="h-4 w-4" />}
           </button>
         </Magnetic>
       )}

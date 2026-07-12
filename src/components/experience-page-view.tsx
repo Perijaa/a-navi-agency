@@ -24,8 +24,8 @@ import { BlurReveal, Stagger, StaggerItem } from "@/components/motion";
 import { BookingCard } from "@/components/ui/booking-card";
 import { MeetingPointMap } from "@/components/ui/meeting-point-map";
 import { MEETING_POINT } from "@/lib/meeting-point";
-import { saveBookingDraft, type BookingDraft } from "@/lib/booking-utils";
-import { basePath, homeHash } from "@/lib/base-path";
+import { type BookingDraft } from "@/lib/booking-utils";
+import { submitBookingInquiry } from "@/lib/submit-booking";
 import { useState } from "react";
 
 const OVERVIEW_ICONS = {
@@ -37,29 +37,40 @@ const OVERVIEW_ICONS = {
   "life-buoy": LifeBuoy,
 } as const;
 
-function scrollToContact(draft: BookingDraft) {
-  saveBookingDraft(draft);
-  if (typeof window !== "undefined") {
-    const home = basePath ? `${basePath}/` : "/";
-    const onHome =
-      window.location.pathname === "/" ||
-      window.location.pathname === home ||
-      window.location.pathname === home.replace(/\/$/, "");
-
-    if (!onHome) {
-      window.location.href = homeHash("contact");
-      return;
-    }
-  }
-  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-}
-
 function StickyBooking({
   experience,
 }: {
   experience: NonNullable<ReturnType<typeof getExperienceBySlug>>;
 }) {
   const detail = getExperienceDetail(experience.id);
+  const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleReserve = async (draft: BookingDraft) => {
+    setError(null);
+    try {
+      await submitBookingInquiry({
+        draft,
+        source: "experience-page",
+        tourTitle: experience.title,
+      });
+      setStatus("success");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not send your request.");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <div className="exp-booking exp-booking--success">
+        <p className="exp-booking__success-title">Request sent</p>
+        <p className="exp-booking__success-copy">
+          We&apos;ll confirm availability at{" "}
+          <a href="mailto:josipsinkovic6@gmail.com">josipsinkovic6@gmail.com</a> within a few hours.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="exp-booking">
@@ -80,8 +91,9 @@ function StickyBooking({
         defaultExperienceId={experience.id}
         showPrice={false}
         ctaLabel="Book now"
-        onReserve={scrollToContact}
+        onReserve={handleReserve}
       />
+      {error && <p className="exp-booking__error">{error}</p>}
       <ul className="exp-booking__trust">
         <li>Today available</li>
         <li>Free cancellation</li>
