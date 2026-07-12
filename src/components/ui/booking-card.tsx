@@ -231,15 +231,13 @@ export function BookingCard({
     (viewYear === maxDate.getFullYear() && viewMonth < maxDate.getMonth());
 
   const updateGuests = (patch: Partial<BookingGuests>) => {
-    setGuests((prev) => {
-      const next = { ...prev, ...patch };
-      const total = guestTotal(next);
-      if (total > 20) return prev;
-      if (next.adults < 1) return prev;
-      if (next.children < 0) return prev;
-      emitDraft({ guests: next });
-      return next;
-    });
+    const next = { ...guests, ...patch };
+    const total = guestTotal(next);
+    if (total > 20) return;
+    if (next.adults < 1) return;
+    if (next.children < 0) return;
+    setGuests(next);
+    emitDraft({ guests: next });
   };
 
   const emitDraft = (patch?: Partial<{ experienceId: string; date: Date | null; guests: BookingGuests }>) => {
@@ -496,7 +494,7 @@ export function BookingCard({
             <Stepper
               variant={variant}
               label="Adults"
-              sublabel="Age 14+"
+              sublabel="Age 13+"
               value={guests.adults}
               min={1}
               max={20 - guests.children}

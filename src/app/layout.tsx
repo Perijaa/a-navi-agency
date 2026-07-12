@@ -26,7 +26,7 @@ const caveat = Caveat({
 export const metadata: Metadata = {
   title: "A-Navi Agency | Boat Tours & Rafting in Omiš, Croatia",
   description:
-    "Five boat tours from Omiš harbour: glass boat, taxi boat, rent a boat, semi submarine & Cetina rafting. Departures from Cetina promenade — from €15.",
+    "Five boat tours from Omiš harbour: glass boat, taxi boat, rent a boat, semi submarine & Cetina rafting. Departures from Cetina promenade — from €8.",
   keywords: [
     "boat tours",
     "Omiš",
