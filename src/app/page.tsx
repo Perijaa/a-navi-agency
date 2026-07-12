@@ -12,10 +12,13 @@ import { Footer } from "@/components/footer";
 import { MobileBookBar } from "@/components/mobile-book-bar";
 import { FloatingBookCta } from "@/components/floating-book-cta";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { JsonLd } from "@/components/json-ld";
+import { buildFaqPageSchema } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={buildFaqPageSchema()} />
       <ScrollProgress />
       <Navbar />
       <FloatingBookCta />

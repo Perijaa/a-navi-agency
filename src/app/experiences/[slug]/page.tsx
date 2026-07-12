@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { JsonLd } from "@/components/json-ld";
 import {
   getExperienceBySlug,
   getExperienceSlugs,
 } from "@/lib/data";
+import {
+  buildExperienceBreadcrumbSchema,
+  buildExperienceSchema,
+  defaultOgImage,
+} from "@/lib/structured-data";
+import { assetPath } from "@/lib/base-path";
 import { ExperiencePageView } from "@/components/experience-page-view";
 
 type Props = {
@@ -19,9 +26,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const experience = getExperienceBySlug(slug);
   if (!experience) return { title: "Tour not found" };
 
+  const title = `${experience.title} in Omiš`;
+  const description = `${experience.subheadline} From €${experience.priceFrom}. Book at A-Navi on the Cetina promenade.`;
+  const canonical = `/experiences/${slug}`;
+  const image = assetPath(experience.detailImage || experience.image);
+
   return {
-    title: `${experience.title} | A-Navi Omiš`,
-    description: experience.subheadline,
+    title,
+    description,
+    keywords: [
+      experience.title,
+      "Omiš",
+      "Cetina river",
+      "boat tour Croatia",
+      `${experience.title} Omiš`,
+    ],
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: `${title} | A-Navi Agency`,
+      description,
+      images: [
+        {
+          url: image,
+          alt: `${experience.title} — A-Navi boat tours in Omiš`,
+        },
+        defaultOgImage(),
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | A-Navi Agency`,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -33,5 +74,15 @@ export default async function ExperiencePage({ params }: Props) {
     notFound();
   }
 
-  return <ExperiencePageView slug={slug} />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          buildExperienceSchema(experience),
+          buildExperienceBreadcrumbSchema(slug, experience.title),
+        ]}
+      />
+      <ExperiencePageView slug={slug} />
+    </>
+  );
 }
