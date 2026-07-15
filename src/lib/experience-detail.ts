@@ -39,10 +39,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Glass-bottom boat ride", "Stop at Radmanove Mlinice", "Life jackets", "Pet-friendly welcome"],
     bring: ["Sunscreen", "Camera", "Light jacket", "Comfortable shoes"],
     galleryImages: [
-      { src: assetPath("/images/zvone/20260416_115400_IMG_4384.jpg"), alt: "Glass boat cruise through the Cetina canyon", span: "wide" },
-      { src: assetPath("/images/zvone/glass-boat-dock.jpg"), alt: "Glass boat at Omi\u0161 harbour", span: "normal" },
-      { src: assetPath("/images/zvone/glass-boat-night-canyon.jpg"), alt: "Glass boat in the canyon at night", span: "tall" },
-      { src: assetPath("/images/zvone/canyon-bridge.jpg"), alt: "Cetina canyon and Omi\u0161 bridge", span: "normal" },
+      { src: assetPath("/images/legacy/glass-boat/glass-boat-hero.jpg"), alt: "Glass boat on the Cetina in Omi\u0161", span: "wide" },
+      { src: assetPath("/images/legacy/glass-boat/glass-boat-canyon.jpg"), alt: "Glass boat cruise through the Cetina canyon", span: "normal" },
+      { src: assetPath("/images/legacy/glass-boat/radmanove-1.jpg"), alt: "Radmanove Mlinice from the glass boat", span: "tall" },
+      { src: assetPath("/images/legacy/glass-boat/radmanove-5.jpg"), alt: "Cetina canyon and Radmanove Mlinice", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is the Glass Boat suitable for children?", answer: "Yes — no age restrictions. The ride is calm and children love watching fish through the glass." },
@@ -84,10 +84,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Round-trip boat transfer", "1 h at Radmanove Mlinice", "Life jackets", "Scenic canyon route"],
     bring: ["Swimwear", "Towel", "Sunscreen", "Water bottle"],
     galleryImages: [
-      { src: assetPath("/images/zvone/taxi-boat-hero.jpg"), alt: "Taxi boat cruise through the Cetina gorge", span: "wide" },
-      { src: assetPath("/images/zvone/taxi-boat-guests-2.jpg"), alt: "Radmanove Mlinice taxi boat tour", span: "normal" },
-      { src: assetPath("/images/zvone/canyon-bridge.jpg"), alt: "Cetina canyon and Omi\u0161 bridge", span: "tall" },
-      { src: assetPath("/images/zvone/taxi-boat-guests-6.jpg"), alt: "Taxi boat on the Cetina River", span: "normal" },
+      { src: assetPath("/images/legacy/taxi-boat/taxi-boat-hero.jpg"), alt: "Taxi boat cruise to Radmanove Mlinice", span: "wide" },
+      { src: assetPath("/images/legacy/taxi-boat/taxi-boat-1.jpg"), alt: "Taxi boat on the Cetina gorge", span: "normal" },
+      { src: assetPath("/images/legacy/taxi-boat/radmanove-mlinice.jpg"), alt: "Radmanove Mlinice on the Cetina", span: "tall" },
+      { src: assetPath("/images/legacy/taxi-boat/taxi-boat-4.jpg"), alt: "Taxi boat guests on the Cetina River", span: "normal" },
     ],
     detailFaqs: [
       { question: "How long is the stop at Radmanove Mlinice?", answer: "You have 1 hour to swim, explore the mill estate, or relax by the river." },
@@ -129,10 +129,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Boat rental", "Fuel", "Safety equipment", "Coastal & river map", "Brief orientation"],
     bring: ["Sunscreen", "Swimwear", "Towel", "ID document", "Water & snacks"],
     galleryImages: [
-      { src: assetPath("/images/zvone/rent-a-boat-hero.png"), alt: "Rent a boat on the Cetina near Omi\u0161", span: "wide" },
-      { src: assetPath("/images/zvone/rent-boat-harbour.jpg"), alt: "A-Navi boats at Omi\u0161 harbour", span: "normal" },
-      { src: assetPath("/images/gallery/taxi-boat-coast.jpg"), alt: "Adriatic coastline", span: "tall" },
-      { src: assetPath("/images/gallery/canyon-aerial.jpg"), alt: "Aerial view of the coast", span: "normal" },
+      { src: assetPath("/images/legacy/rent-a-boat/rent-boat-hero.jpg"), alt: "Rent a boat on the Cetina near Omi\u0161", span: "wide" },
+      { src: assetPath("/images/legacy/rent-a-boat/rent-boat-2.jpg"), alt: "Self-drive boat on the Cetina", span: "normal" },
+      { src: assetPath("/images/legacy/taxi-boat/taxi-boat-2.jpg"), alt: "Boat rental at Omi\u0161 harbour", span: "tall" },
+      { src: assetPath("/images/legacy/taxi-boat/taxi-boat-3.jpg"), alt: "Explore the Cetina canyon by boat", span: "normal" },
     ],
     detailFaqs: [
       { question: "Do I need a boat license?", answer: "No license required. We provide a full briefing and coastal map before you depart." },
@@ -174,10 +174,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["30-minute semi-submarine ride", "Expert marine guide", "Climate-controlled cabin", "Panoramic windows"],
     bring: ["Camera", "Light layer", "Comfortable shoes", "Sea-sickness remedy if needed"],
     galleryImages: [
-      { src: assetPath("/images/semi-submarine/semi-submarine-1.jpg"), alt: "Semi submarine at the harbour", span: "wide" },
-      { src: assetPath("/images/semi-submarine/semi-submarine-3.jpg"), alt: "Underwater viewing cabin", span: "normal" },
-      { src: assetPath("/images/semi-submarine/semi-submarine-5.jpg"), alt: "Marine life through the windows", span: "tall" },
-      { src: assetPath("/images/semi-submarine/semi-submarine-7.jpg"), alt: "Adriatic underwater views", span: "normal" },
+      { src: assetPath("/images/legacy/semi-submarine/semi-sub-hero.jpg"), alt: "Semi submarine at Omi\u0161 harbour", span: "wide" },
+      { src: assetPath("/images/legacy/semi-submarine/semi-sub-1.jpg"), alt: "Semi submarine exterior", span: "normal" },
+      { src: assetPath("/images/legacy/semi-submarine/semi-sub-3.jpg"), alt: "Underwater viewing cabin", span: "tall" },
+      { src: assetPath("/images/legacy/semi-submarine/semi-sub-6.jpg"), alt: "Marine life through the windows", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is it safe for young children?", answer: "Yes — the cabin is climate-controlled and captivates children of all ages." },
@@ -220,10 +220,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     included: ["Professional guide", "Raft & paddles", "Helmet & life jacket", "Waterproof bag", "Insurance"],
     bring: ["Swimwear", "Towel", "Water shoes", "Change of clothes", "Water"],
     galleryImages: [
-      { src: assetPath("/images/experiences/rafting-detail.jpg"), alt: "Rafting the Cetina", span: "wide" },
-      { src: assetPath("/images/gallery/rafting-action.jpg"), alt: "Rafting through canyon", span: "normal" },
-      { src: assetPath("/images/omis/canyon.jpg"), alt: "Cetina canyon", span: "tall" },
-      { src: assetPath("/images/omis/crew-rafting.jpg"), alt: "Rafting crew on the river", span: "normal" },
+      { src: assetPath("/images/legacy/rafting/rafting-1.jpg"), alt: "Rafting the Cetina", span: "wide" },
+      { src: assetPath("/images/legacy/rafting/rafting-2.jpg"), alt: "Rafting through the canyon", span: "normal" },
+      { src: assetPath("/images/legacy/rafting/rafting-4.jpg"), alt: "Cetina canyon rafting action", span: "tall" },
+      { src: assetPath("/images/legacy/rafting/rafting-5.jpg"), alt: "Rafting crew on the Cetina", span: "normal" },
     ],
     detailFaqs: [
       { question: "Is rafting safe for beginners?", answer: "Yes — the route is graded for beginners and families with professional guides throughout." },
