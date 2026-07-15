@@ -21,7 +21,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     rating: 4.9,
     reviewCount: 420,
     overview: [
-      { icon: "clock", label: "30–35 min" },
+      { icon: "clock", label: "2 hours total" },
       { icon: "map-pin", label: "Omiš promenade" },
       { icon: "users", label: "Family friendly" },
       { icon: "euro", label: "From €15" },
@@ -144,7 +144,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     rating: 4.9,
     reviewCount: 310,
     overview: [
-      { icon: "clock", label: "1 hour" },
+      { icon: "clock", label: "30 min tour" },
       { icon: "map-pin", label: "Omiš coast" },
       { icon: "users", label: "Family favourite" },
       { icon: "euro", label: "From €14" },
@@ -158,7 +158,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       { title: "WWII wreck sighting" },
       { title: "Return to surface" },
     ],
-    included: ["1-hour semi-submarine ride", "Expert marine guide", "Climate-controlled cabin", "Panoramic windows"],
+    included: ["30-minute semi-submarine ride", "Expert marine guide", "Climate-controlled cabin", "Panoramic windows"],
     bring: ["Camera", "Light layer", "Comfortable shoes", "Sea-sickness remedy if needed"],
     galleryImages: [
       { src: assetPath("/images/semi-submarine/semi-submarine-1.jpg"), alt: "Semi submarine at the harbour", span: "wide" },
@@ -185,7 +185,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     rating: 4.9,
     reviewCount: 520,
     overview: [
-      { icon: "clock", label: "~2.5 hours" },
+      { icon: "clock", label: "4 hours total" },
       { icon: "map-pin", label: "Slime, near Omiš" },
       { icon: "users", label: "Ages 3+" },
       { icon: "euro", label: "From €35" },
@@ -227,7 +227,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     rating: 4.9,
     reviewCount: 165,
     overview: [
-      { icon: "clock", label: "Start 20:40" },
+      { icon: "clock", label: "2 hours total" },
       { icon: "map-pin", label: "Omiš promenade" },
       { icon: "users", label: "Couples & families" },
       { icon: "euro", label: "From €12" },
@@ -259,7 +259,7 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
     location: {
       meeting: "Cetina promenade, Omiš harbour",
       finish: "Same departure point",
-      note: "Evening departures — exact time confirmed when you book.",
+      note: "Start 20:40 — evening departures, exact time confirmed when you book.",
     },
     whyChoose: ["See the canyon in a different light", "Perfect for couples", "Unique illuminated glass-bottom views"],
   },

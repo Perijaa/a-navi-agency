@@ -23,7 +23,7 @@ export function ExperienceCard({
   return (
     <article className={className}>
       <Link href={`/experiences/${experience.id}`} className="tour-card tour-card--featured group">
-        <div className="tour-card__media">
+        <div className="tour-card__media relative">
           <Image
             src={experience.image}
             alt={experience.title}

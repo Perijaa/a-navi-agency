@@ -177,7 +177,7 @@ export function OmisDestination() {
           {highlights.map((item) => (
             <StaggerItem key={item.title}>
               <article className="omis-highlight-card">
-                <div className="omis-highlight-card__media">
+                <div className="omis-highlight-card__media relative">
                   <Image
                     src={item.image}
                     alt={item.alt}

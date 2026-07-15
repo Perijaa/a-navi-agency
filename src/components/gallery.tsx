@@ -134,7 +134,7 @@ export function Gallery() {
                   className="gallery-v2__card"
                   aria-label={`View ${item.alt}`}
                 >
-                  <div className="gallery-v2__frame">
+                  <div className="gallery-v2__frame relative">
                     <Image
                       src={item.image}
                       alt={item.alt}

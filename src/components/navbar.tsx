@@ -14,7 +14,7 @@ const LOGO_SRC = withBasePath("/images/logo.png");
 function NavLogo({ onHero = false }: { onHero?: boolean }) {
   return (
     <span className={cn("nav-brand", onHero && "nav-brand--hero")}>
-      <span className="nav-brand__mark">
+      <span className="nav-brand__mark relative">
         <Image
           src={LOGO_SRC}
           alt=""

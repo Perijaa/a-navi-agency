@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
       "Depart from the Omi\u0161 waterfront and glide into the towering Cetina canyon. Watch fish dart beneath the glass as limestone walls \u2014 sculpted by millennia of Dalmatian weather \u2014 rise around you, then arrive at the legendary Radmanove Mlinice, a hidden canyon estate that has drawn visitors for centuries.",
     longDescription:
       "There is something quietly extraordinary about watching the Cetina reveal its secrets through glass. As your boat slips past Omi\u0161\u2019s old stone bridge and into the canyon, towering limestone walls \u2014 sculpted by millions of years of Dalmatian weather \u2014 rise around you and the water beneath turns crystalline. Schools of fish trace silver lines across the riverbed. Pebbles shimmer in the shifting light. The 30\u201335 minute ride carries you deep into a gorge that few visitors to Croatia ever see, ending at Radmanove Mlinice \u2014 a centuries-old mill estate hidden where the canyon is narrowest. This is an experience designed for everyone: families with small children, couples seeking a quiet afternoon on the Cetina, and even your four-legged companions. No restrictions, no rush \u2014 just the canyon, the river, and pure, unhurried Dalmatian beauty.",
-    duration: "30\u201335 min ride",
+    duration: "2 hours total",
     difficulty: "Easy",
     priceFrom: 15,
     currency: "EUR",
@@ -94,7 +94,7 @@ export const experiences: Experience[] = [
       "Over 800 five-star reviews. Omi\u0161\u2019s most beloved family tour, guests from 40+ countries.",
     icon: Ship,
     gradient: "from-teal-800/25 to-emerald-900/20",
-    image: assetPath("/images/zvone/glass-boat-dock.jpg"),
+    image: assetPath("/images/zvone/glass-boat-card.png"),
     detailImage: assetPath("/images/zvone/20260416_115400_IMG_4384.jpg"),
     tag: "Most Popular",
     highlights: [
@@ -173,7 +173,7 @@ export const experiences: Experience[] = [
       "Our most popular choice for couples and families exploring the Omi\u0161 riviera on their own.",
     icon: Anchor,
     gradient: "from-emerald-800/25 to-teal-900/20",
-    image: assetPath("/images/zvone/rent-boat-harbour.jpg"),
+    image: assetPath("/images/zvone/rent-boat-card.png"),
     detailImage: assetPath("/images/zvone/rent-a-boat-hero.png"),
     tag: "Freedom",
     highlights: [
@@ -194,7 +194,7 @@ export const experiences: Experience[] = [
       "Descend below the Adriatic surface just off the Omi\u0161 coast. Come face-to-face with the marine life of the central Dalmatian sea and the haunting silhouette of a Second World War shipwreck resting on the seabed.",
     longDescription:
       "The moment you descend the stairs and the waterline rises above the windows, everything changes. Suddenly you are inside the Adriatic \u2014 not on it. The waters off the Omi\u0161 coast harbour a rich ecosystem: shoals of bream and mullet drift past the panoramic glass, sea urchins cling to the rocky Dalmatian seabed, and then, emerging from the blue-green haze, the unmistakable outline of a World War II shipwreck appears \u2014 a silent reminder of the history that lies beneath this ancient coastline. Our expert marine guide narrates every moment, turning the voyage into a living documentary of the central Adriatic. The cabin is climate-controlled and perfectly comfortable, making this an experience that captivates children and adults alike. For families visiting Omi\u0161, it\u2019s pure magic \u2014 the kind of wonder that stays with your kids long after the holiday ends.",
-    duration: "1 hour",
+    duration: "30 min tour",
     difficulty: "Easy",
     priceFrom: 14,
     currency: "EUR",
@@ -230,7 +230,7 @@ export const experiences: Experience[] = [
       "Depart from the village of Slime, just outside Omi\u0161, and descend 12 km through the Cetina canyon \u2014 where waterfalls thread down ancient Dalmatian rock and the river alternates between whitewater and mirror-still pools. Professional guides and full equipment provided.",
     longDescription:
       "The Cetina canyon does not ease you in \u2014 it takes your breath away from the first stroke. Departing from the small village of Slime, nestled in the hills above Omi\u0161, you board a professional raft and begin a 12-kilometre descent through one of Croatia\u2019s most dramatic natural corridors. The Dalmatian canyon walls rise hundreds of metres above you, waterfalls thread down the rock face, and the river alternates between thrilling whitewater and mirror-still pools fed by underground springs. Along the way, your guide stops twice at designated spots where you can leap from cliffs into the turquoise Cetina water below, or simply float and take in the silence of a landscape that has looked this way for millennia. The entire adventure takes around two and a half hours, and every piece of equipment \u2014 helmet, life jacket, waterproof bag \u2014 is provided. Safe for children aged 3 and above, and unforgettable for everyone who visits this corner of Dalmatia.",
-    duration: "~2.5 hours",
+    duration: "4 hours total",
     difficulty: "Active",
     priceFrom: 35,
     currency: "EUR",
@@ -266,7 +266,7 @@ export const experiences: Experience[] = [
       "As daylight fades over Omi\u0161, board our glass boat and slip into the Cetina canyon under the stars. The riverbed glows beneath the glass as limestone walls close in around you — a quiet, cinematic journey through Dalmatia after dark.",
     longDescription:
       "There is a different Cetina after sunset. The crowds fade, the canyon narrows, and the only light comes from the boat itself — casting the ancient riverbed in gold through the glass floor. Our Night Ride departs from the Omi\u0161 promenade on select evenings and follows the same magical corridor as our daytime glass boat tours, but the atmosphere is entirely its own: starlight above, illuminated water below, and the deep silence of a gorge that has watched over this river for millennia. Perfect for couples, photographers, and anyone who wants to see the Cetina in its most intimate hour. Life jackets provided, calm water throughout, and the same warm welcome from our local crew.",
-    duration: "30\u201335 min ride",
+    duration: "2 hours total",
     difficulty: "Easy",
     priceFrom: 12,
     currency: "EUR",
@@ -443,7 +443,7 @@ export const faqs: FaqItem[] = [
   {
     question: "How long does each tour last?",
     answer:
-      "Glass Boat: ~35 min ride through the Cetina canyon + stop at Radmanove Mlinice. Taxi Boat: 30 min each way through the gorge + 1 h break. Rent a Boat: 3 hours or full day exploring the river and coast. Semi Submarine: 1 hour off the Omi\u0161 coast. Rafting: approximately 2.5 hours through the Cetina canyon including two swimming stops.",
+      "Glass Boat: ~35 min ride through the Cetina canyon + stop at Radmanove Mlinice. Taxi Boat: 30 min each way through the gorge + 1 h break. Rent a Boat: 3 hours or full day exploring the river and coast. Semi Submarine: 30 min off the Omi\u0161 coast. Rafting: 4 hours total through the Cetina canyon including two swimming stops.",
   },
   {
     question: "What\u2019s included in the price?",
