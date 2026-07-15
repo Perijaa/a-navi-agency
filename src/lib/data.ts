@@ -95,7 +95,7 @@ export const experiences: Experience[] = [
     icon: Ship,
     gradient: "from-teal-800/25 to-emerald-900/20",
     image: assetPath("/images/zvone/glass-boat-card.png"),
-    detailImage: assetPath("/images/zvone/20260416_115400_IMG_4384.jpg"),
+    detailImage: assetPath("/images/zvone/glass-boat-card.png"),
     tag: "Most Popular",
     highlights: [
       "Crystal-clear glass bottom viewing",
@@ -135,7 +135,7 @@ export const experiences: Experience[] = [
     icon: Navigation,
     gradient: "from-teal-700/25 to-emerald-800/20",
     image: assetPath("/images/zvone/taxi-boat-guests-1.jpg"),
-    detailImage: assetPath("/images/zvone/taxi-boat-hero.jpg"),
+    detailImage: assetPath("/images/zvone/taxi-boat-guests-1.jpg"),
     tag: "Scenic",
     highlights: [
       "30-minute scenic canyon cruise",
@@ -174,7 +174,7 @@ export const experiences: Experience[] = [
     icon: Anchor,
     gradient: "from-emerald-800/25 to-teal-900/20",
     image: assetPath("/images/zvone/rent-boat-card.png"),
-    detailImage: assetPath("/images/zvone/rent-a-boat-hero.png"),
+    detailImage: assetPath("/images/zvone/rent-boat-card.png"),
     tag: "Freedom",
     highlights: [
       "No boat license required",
