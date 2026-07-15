@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://perijaa.github.io/a-navi-agency/a-navi-agency
+Sitemap: https://perijaa.github.io/a-navi-agency/a-navi-agency/sitemap.xml/
