@@ -1,4 +1,5 @@
 import { experiences } from "@/lib/data";
+import { getBookingPriceQuote } from "@/lib/booking-pricing";
 import {
   formatBookingDate,
   formatGuestSummary,
@@ -41,6 +42,10 @@ export async function submitBookingInquiry(payload: BookingInquiryPayload): Prom
     payload.tourTitle ?? getTourTitle(payload.draft.experienceId);
   const dateLabel = formatBookingDate(parseDateInputValue(payload.draft.date));
   const guestsLabel = formatGuestSummary(payload.draft.guests);
+  const priceQuote = getBookingPriceQuote(
+    payload.draft.experienceId,
+    payload.draft.guests,
+  );
 
   const body = {
     _subject: `A-Navi booking · ${tour}`,
@@ -50,6 +55,7 @@ export async function submitBookingInquiry(payload: BookingInquiryPayload): Prom
     Tour: tour,
     Date: dateLabel,
     Guests: guestsLabel,
+    "Estimated total": priceQuote ? `€${priceQuote.total}` : "—",
     Name: payload.name?.trim() || "Not provided",
     Email: payload.email?.trim() || "Not provided",
     Phone: payload.phone?.trim() || "Not provided",

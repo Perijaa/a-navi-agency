@@ -6468,6 +6468,70 @@ select {
   color: var(--color-cetina);
 }
 
+.exp-pricing {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .exp-pricing {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+.exp-pricing__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  border: 1px solid var(--color-stone-200);
+  background: white;
+  transition: all 0.25s ease;
+}
+
+.exp-pricing__card:hover {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, rgba(26, 143, 168, 0.04) 0%, rgba(26, 143, 168, 0.02) 100%);
+  box-shadow: 0 8px 32px -12px rgb(var(--rgb-dark) / 0.12);
+  transform: translateY(-2px);
+}
+
+.exp-pricing__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(26, 143, 168, 0.15) 0%, rgba(26, 143, 168, 0.08) 100%);
+}
+
+.exp-pricing__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-cetina);
+}
+
+.exp-pricing__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-stone-600);
+  letter-spacing: -0.01em;
+}
+
+.exp-pricing__price {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  letter-spacing: -0.03em;
+}
+
 .exp-reviews {
   display: grid;
   gap: 1rem;
@@ -7909,6 +7973,52 @@ button.photo-zoom {
 .booking-card-trust--solid svg,
 .booking-card-trust--floating svg {
   color: var(--color-primary);
+}
+
+.booking-card-breakdown {
+  margin-top: 1rem;
+}
+
+.booking-card-breakdown--glass {
+  box-shadow: none;
+}
+
+.booking-card-breakdown__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.125rem;
+  border-radius: 14px;
+  border: 1px solid rgba(26, 143, 168, 0.18);
+  background: linear-gradient(135deg, rgba(26, 143, 168, 0.1) 0%, rgba(26, 143, 168, 0.04) 100%);
+}
+
+.booking-card-breakdown--glass .booking-card-breakdown__total {
+  border-color: rgb(var(--rgb-bg) / 0.14);
+  background: rgb(var(--rgb-bg) / 0.1);
+}
+
+.booking-card-breakdown__total-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-stone-600);
+}
+
+.booking-card-breakdown--glass .booking-card-breakdown__total-label {
+  color: rgb(var(--rgb-bg) / 0.72);
+}
+
+.booking-card-breakdown__total-value {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+.booking-card-breakdown--glass .booking-card-breakdown__total-value {
+  color: rgb(var(--rgb-bg) / 0.98);
 }
 
 @media (prefers-reduced-motion: reduce) {

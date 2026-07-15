@@ -32,6 +32,12 @@ import {
   toDateInputValue,
   parseDateInputValue,
 } from "@/lib/booking-utils";
+import {
+  formatBookingTotal,
+  getBookingPriceQuote,
+  getFlatPartyRateHint,
+  getGuestPriceLabel,
+} from "@/lib/booking-pricing";
 
 type Panel = "activity" | "date" | "guests" | null;
 
@@ -163,6 +169,13 @@ export function BookingCard({
   const [viewMonth, setViewMonth] = useState(() => (date ?? today).getMonth());
 
   const experience = getExperience(experienceId);
+  const priceQuote = useMemo(
+    () => (experienceId ? getBookingPriceQuote(experienceId, guests) : null),
+    [experienceId, guests],
+  );
+  const adultPriceLabel = experienceId ? getGuestPriceLabel(experienceId, "Adults") : undefined;
+  const childPriceLabel = experienceId ? getGuestPriceLabel(experienceId, "Children") : undefined;
+  const flatPartyHint = experienceId ? getFlatPartyRateHint(experienceId) : undefined;
   const calendarCells = useMemo(
     () => getCalendarMonth(viewYear, viewMonth),
     [viewYear, viewMonth]
@@ -282,17 +295,32 @@ export function BookingCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: EASE_OUT }}
     >
-      {showPrice && experience && (
+      {showPrice && experience && priceQuote && (
         <div className="booking-card-price">
-          <span className={`booking-card-price-from booking-card-price-from--${variant}`}>
-            From
-          </span>
-          <span className={`booking-card-price-value booking-card-price-value--${variant}`}>
-            &euro;{experience.priceFrom}
-          </span>
-          <span className={`booking-card-price-unit booking-card-price-unit--${variant}`}>
-            / person
-          </span>
+          {priceQuote.model === "per-guest" ? (
+            <>
+              <span className={`booking-card-price-from booking-card-price-from--${variant}`}>
+                Adults
+              </span>
+              <span className={`booking-card-price-value booking-card-price-value--${variant}`}>
+                {adultPriceLabel ?? `€${priceQuote.adultUnitPrice}`}
+              </span>
+              {childPriceLabel ? (
+                <span className={`booking-card-price-unit booking-card-price-unit--${variant}`}>
+                  · Children {childPriceLabel}
+                </span>
+              ) : null}
+            </>
+          ) : (
+            <>
+              <span className={`booking-card-price-from booking-card-price-from--${variant}`}>
+                Boat rate
+              </span>
+              <span className={`booking-card-price-value booking-card-price-value--${variant}`}>
+                {flatPartyHint}
+              </span>
+            </>
+          )}
         </div>
       )}
 
@@ -503,7 +531,11 @@ export function BookingCard({
             <Stepper
               variant={variant}
               label="Adults"
-              sublabel="Age 13+"
+              sublabel={
+                flatPartyHint
+                  ? flatPartyHint
+                  : adultPriceLabel ?? "Age 13+"
+              }
               value={guests.adults}
               min={1}
               max={20 - guests.children}
@@ -512,7 +544,11 @@ export function BookingCard({
             <Stepper
               variant={variant}
               label="Children"
-              sublabel="Ages 0–13"
+              sublabel={
+                flatPartyHint
+                  ? "Same boat rate applies to whole party"
+                  : childPriceLabel ?? "Ages 0–13"
+              }
               value={guests.children}
               min={0}
               max={20 - guests.adults}
@@ -524,6 +560,17 @@ export function BookingCard({
           </motion.div>
         )}
       </AnimatePresence>
+
+      {priceQuote ? (
+        <div className={`booking-card-breakdown booking-card-breakdown--${variant}`}>
+          <div className="booking-card-breakdown__total">
+            <span className="booking-card-breakdown__total-label">Estimated total</span>
+            <strong className="booking-card-breakdown__total-value">
+              {formatBookingTotal(priceQuote.total)}
+            </strong>
+          </div>
+        </div>
+      ) : null}
 
       {showCta && (
         <Magnetic className="booking-card-cta-wrap">

@@ -277,6 +277,23 @@ export function ExperiencePageView({ slug }: { slug: string }) {
               </ul>
             </BlurReveal>
 
+            {detail.pricingTiers?.length ? (
+              <BlurReveal className="exp-section">
+                <h2 className="exp-section__title">Pricing</h2>
+                <div className="exp-pricing">
+                  {detail.pricingTiers.map((tier) => (
+                    <div key={tier.label} className="exp-pricing__card">
+                      <div className="exp-pricing__icon-wrap" aria-hidden="true">
+                        <Euro className="exp-pricing__icon" strokeWidth={1.75} />
+                      </div>
+                      <span className="exp-pricing__label">{tier.label}</span>
+                      <strong className="exp-pricing__price">{tier.price}</strong>
+                    </div>
+                  ))}
+                </div>
+              </BlurReveal>
+            ) : null}
+
             {/* Reviews */}
             <BlurReveal className="exp-section">
               <h2 className="exp-section__title">Guest reviews</h2>

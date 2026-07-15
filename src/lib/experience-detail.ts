@@ -13,6 +13,7 @@ export type ExperienceDetailExtras = {
   detailFaqs: FaqItem[];
   location: { meeting: string; finish: string; note: string };
   whyChoose: string[];
+  pricingTiers?: { label: string; price: string }[];
 };
 
 export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
@@ -56,6 +57,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "Look for the A-Navi desk where the river meets the old town bridge.",
     },
     whyChoose: ["Omiš's most popular family tour", "Crystal canyon views without getting wet", "Pet-friendly — bring the whole family"],
+    pricingTiers: [
+      { label: "Children", price: "€15 per person" },
+      { label: "Adults", price: "€20 per person" },
+    ],
   },
   "taxi-boat": {
     cardSummary: "Scenic canyon cruise to Radmanove Mlinice with time to explore.",
@@ -97,6 +102,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "30-minute scenic cruise each way through the Cetina gorge.",
     },
     whyChoose: ["Most relaxing way to reach the canyon", "Perfect for families and seniors", "Swim in natural canyon pools"],
+    pricingTiers: [
+      { label: "Children", price: "€8 per person" },
+      { label: "Adults", price: "€15 per person" },
+    ],
   },
   "rent-a-boat": {
     cardSummary: "Chart your own course from the Cetina canyon to the Adriatic.",
@@ -138,6 +147,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "Explore upstream on the Cetina or out to hidden Adriatic beaches.",
     },
     whyChoose: ["Total freedom on the water", "No license needed", "Reach beaches no road can access"],
+    pricingTiers: [
+      { label: "2 person", price: "€50" },
+      { label: "2+ person", price: "€70" },
+    ],
   },
   "semi-submarine": {
     cardSummary: "Descend below the Adriatic and watch marine life through panoramic windows.",
@@ -179,6 +192,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "The route follows the Omiš coastline with underwater viewing windows.",
     },
     whyChoose: ["Unique underwater experience", "Perfect for families with kids", "Expert narration throughout"],
+    pricingTiers: [
+      { label: "Children", price: "€14 per person" },
+      { label: "Adults", price: "€25 per person" },
+    ],
   },
   rafting: {
     cardSummary: "The ultimate Cetina adventure through Croatia's wildest canyon.",
@@ -221,6 +238,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "12 km descent through the Cetina canyon with two swimming stops.",
     },
     whyChoose: ["#1 outdoor activity in Omiš", "12 km of dramatic canyon", "Cliff jumps & wild swimming"],
+    pricingTiers: [
+      { label: "Children", price: "€35 per person" },
+      { label: "Adults", price: "€45 per person" },
+    ],
   },
   "night-ride": {
     cardSummary: "An illuminated evening cruise through the Cetina canyon after dark.",
@@ -262,6 +283,10 @@ export const experienceDetailExtras: Record<string, ExperienceDetailExtras> = {
       note: "Start 20:40 — evening departures, exact time confirmed when you book.",
     },
     whyChoose: ["See the canyon in a different light", "Perfect for couples", "Unique illuminated glass-bottom views"],
+    pricingTiers: [
+      { label: "Children", price: "€12 per person" },
+      { label: "Adults", price: "€25 per person" },
+    ],
   },
 };
 
